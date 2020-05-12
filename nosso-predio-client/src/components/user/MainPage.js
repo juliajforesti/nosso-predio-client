@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
-import axios from 'axios'
+import axios from 'axios';
+import { Link } from "react-router-dom";
+
 
 
 class MainPage extends Component {
@@ -36,7 +38,6 @@ class MainPage extends Component {
   }
 
   render() { 
-    console.log(this.props)
 
     return (  
       <div>
@@ -44,6 +45,7 @@ class MainPage extends Component {
         <div>
           {this.props.user.buildings.length < 1 ? (
             <div>
+            <Link to='/adicionar-condominio'>Adicionar Condominio</Link>
             <input type='text' value={this.state.search} onChange={this.handleChange} />
             {this.state.buildings.map(building => {
               return <h1>{building.name}</h1>
