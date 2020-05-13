@@ -17,7 +17,7 @@ class AddBuilding extends Component {
 
   handleSubmit(e){
     e.preventDefault()
-    axios.post('http://localhost:5000/api/add-building', {name: this.state.name, cep: this.state.cep, number: this.state.number})
+    axios.post('http://localhost:5000/api/add-building', {name: this.state.name, cep: this.state.cep, number: this.state.number}, {withCredentials: true} )
     .then(response => {
       this.props.history.push('/pagina-principal')
     })
