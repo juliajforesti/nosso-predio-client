@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import axios from 'axios';
+import MainService from "../MainService";
+
 
 class AddBuilding extends Component {
   constructor(props) {
@@ -8,26 +9,29 @@ class AddBuilding extends Component {
       name: "",
       cep: "",
       number: "",
-      residents: props.user._id
+      // residents: props.user._id,
     };
+    this.service = new MainService();
+
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
-
   }
 
-  handleSubmit(e){
-    e.preventDefault()
-    axios.post('http://localhost:5000/api/add-building', {name: this.state.name, cep: this.state.cep, number: this.state.number}, {withCredentials: true} )
-    .then(response => {
-      this.props.history.push('/pagina-principal')
-    })
+  handleSubmit(e) {
+    e.preventDefault();
+    const {name, cep, number} = this.state
+    this.service
+      .addBuilding(name, cep, number)
+      .then((response) => {
+        this.props.history.push("/pagina-principal");
+    });
   }
 
-  handleChange(e){
-    const {name, value} = e.target
+  handleChange(e) {
+    const { name, value } = e.target;
     this.setState({
-      [name]: value
-    })
+      [name]: value,
+    });
   }
 
   render() {
@@ -37,12 +41,27 @@ class AddBuilding extends Component {
         <div>
           <form onSubmit={this.handleSubmit}>
             <label>Nome:</label>
-            <input onChange={this.handleChange} type="text" name="name" value={this.state.name} />
+            <input
+              onChange={this.handleChange}
+              type="text"
+              name="name"
+              value={this.state.name}
+            />
             <label>CEP:</label>
-            <input onChange={this.handleChange} type="text" name="cep" value={this.state.cep} />
+            <input
+              onChange={this.handleChange}
+              type="text"
+              name="cep"
+              value={this.state.cep}
+            />
             <label>Número:</label>
-            <input onChange={this.handleChange} type="number" name="number" value={this.state.number} />
-            <button type='submit' >Salvar</button>
+            <input
+              onChange={this.handleChange}
+              type="number"
+              name="number"
+              value={this.state.number}
+            />
+            <button type="submit">Salvar</button>
           </form>
         </div>
       </div>

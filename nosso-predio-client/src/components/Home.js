@@ -9,7 +9,9 @@ const Home = () => {
       <h1>Nosso Prédio</h1>
     </div>
     <div>
-      <Link to='/signup'>Cadastre-se agora</Link>
+      <Link to='/signup'>Cadastre-se agora</Link> <br/>
+      <Link to='/pagina-principal'>Pagina principal</Link>
+
     </div>
     <div>
       <h2>Sobre</h2>

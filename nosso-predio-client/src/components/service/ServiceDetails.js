@@ -4,23 +4,23 @@ import { Link } from "react-router-dom";
 
 
 
-class BuildingDetails extends Component {
+class ServiceDetails extends Component {
   constructor(props) {
     super(props);
     this.state = {  
-      building: {},
+      service: {},
       apiCalled: false
     }
     this.service = new MainService();
 
   }
-  getBuildingDetails(){
+  getServiceDetails(){
     if (!this.state.apiCalled){
       const {params} = this.props.match
-      this.service.getBuildingDetails(params.id)
+      this.service.getServiceDetails(params.id, params.servicoId)
       .then(response => {
         this.setState({
-          building: response,
+          service: response,
           apiCalled: true,
         })
       })
@@ -28,14 +28,15 @@ class BuildingDetails extends Component {
   }
 
   render() { 
-    this.getBuildingDetails();
+    this.getServiceDetails();
     return (  
       <div>
-        <Link to={`/condominio/${this.state.building._id}/adicionar-serviço`}>Adicionar Serviço/Produto</Link>
-        {this.state.building.name}
+        <Link to={`/condominio/${this.state.service.building}/adicionar-serviço`}>Adicionar Serviço/Produto</Link>
+        <br/>
+        {this.state.service.name}
       </div>
     );
   }
 }
- 
-export default BuildingDetails;
+
+export default ServiceDetails;

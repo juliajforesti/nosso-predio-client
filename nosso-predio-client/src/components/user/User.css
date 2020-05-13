@@ -1,0 +1,12 @@
+* {
+  margin: 0;
+}
+
+.building-box {
+  border: 1px solid black;
+  border-radius: 10px;
+  width: 20rem;
+  padding: 1.5rem;
+  margin: 1rem;
+}
+
