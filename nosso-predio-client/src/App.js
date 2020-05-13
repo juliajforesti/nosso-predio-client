@@ -8,7 +8,12 @@ import Login from "./components/auth/Login";
 import Home from "./components/Home";
 import ProtectedRoutes from "./components/auth/ProtectedRoutes";
 import MainPage from "./components/user/MainPage";
-import AddBuilding from './components/building/AddBuilding'
+import AddBuilding from "./components/building/AddBuilding";
+import BuildingDetails from "./components/building/BuildingDetails";
+import AddService from "./components/service/AddService";
+import ServiceDetails from './components/service/ServiceDetails';
+
+
 
 // import { render } from '@testing-library/react';
 
@@ -72,13 +77,31 @@ class App extends Component {
                 path="/pagina-principal"
                 component={MainPage}
                 user={this.state.loggedUser}
+                getUser={this.getUser}
               />
               <ProtectedRoutes
                 exact
                 path="/adicionar-condominio"
                 component={AddBuilding}
                 user={this.state.loggedUser}
-                
+              />
+              <ProtectedRoutes
+                exact
+                path="/condominio/:id"
+                component={BuildingDetails}
+                user={this.state.loggedUser}
+              />
+              <ProtectedRoutes
+                exact
+                path="/condominio/:id/adicionar-serviço"
+                component={AddService}
+                user={this.state.loggedUser}
+              />
+              <ProtectedRoutes
+                exact
+                path="/condominio/:id/serviço/:servicoId"
+                component={ServiceDetails}
+                user={this.state.loggedUser}
               />
             </Switch>
           </div>
