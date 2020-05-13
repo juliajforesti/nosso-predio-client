@@ -38,7 +38,7 @@ class Signup extends Component {
         name: ''
       })
       this.props.getUser(response)
-      this.props.history.push('/main-page')
+      this.props.history.push('/pagina-principal')
     })
     .catch(err => console.log(err))
   }

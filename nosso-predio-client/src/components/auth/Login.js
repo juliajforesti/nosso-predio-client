@@ -35,7 +35,7 @@ class Login extends Component {
         password: '',
       })
       this.props.getUser(response)
-      this.props.history.push('/main-page')
+      this.props.history.push('/pagina-principal')
     })
     .catch(err => console.log(err))
   }

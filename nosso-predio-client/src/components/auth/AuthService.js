@@ -12,7 +12,6 @@ class AuthService {
     return this.service
       .post("/signup", { email, password, name })
       .then((response) => (
-        
         response.data
         ));
   }

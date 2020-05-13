@@ -8,6 +8,7 @@ import Login from "./components/auth/Login";
 import Home from "./components/Home";
 import ProtectedRoutes from "./components/auth/ProtectedRoutes";
 import MainPage from "./components/user/MainPage";
+import AddBuilding from './components/building/AddBuilding'
 
 // import { render } from '@testing-library/react';
 
@@ -68,9 +69,16 @@ class App extends Component {
               <Route exact path="/" component={Home} />
               <ProtectedRoutes
                 exact
-                path="/main-page"
+                path="/pagina-principal"
                 component={MainPage}
                 user={this.state.loggedUser}
+              />
+              <ProtectedRoutes
+                exact
+                path="/adicionar-condominio"
+                component={AddBuilding}
+                user={this.state.loggedUser}
+                
               />
             </Switch>
           </div>
