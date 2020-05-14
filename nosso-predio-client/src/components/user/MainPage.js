@@ -17,15 +17,26 @@ class MainPage extends Component {
       buildingApiCalled: false,
       serviceApiCalled: false,
       orderAPICalled: false,
+      toggleButton: false,
+      confirmationCode: '',
     };
     this.service = new MainService();
 
-    this.handleChange = this.handleChange.bind(this);
+    this.handleChangeCode = this.handleChangeCode.bind(this);
+    this.handleChangeSearch = this.handleChangeSearch.bind(this);
+    this.handleOnSubmit = this.handleOnSubmit.bind(this);
+
   }
 
-  handleChange(e) {
+  handleChangeSearch(e) {
     this.setState({
       search: e.target.value.toLowerCase(),
+    });
+  }
+
+  handleChangeCode(e) {
+    this.setState({
+      confirmationCode: e.target.value,
     });
   }
 
@@ -85,20 +96,48 @@ class MainPage extends Component {
     }
   }
 
+  handleToggle(){
+    this.setState({
+      toggleButton: !this.state.toggleButton
+    })
+  }
+
+  handleOnSubmit(e){
+    e.preventDefault()
+    this.service.buildingInvite(this.state.confirmationCode).then(response => {
+      this.setState({
+        toggleButton: !this.state.toggleButton,
+        confirmationCode: '',
+      })
+    })
+  }
+
   render() {
     // IF USER DOESNT HAVE BUILDINGS
     if (this.props.user.buildings.length < 1) {
       this.getBuildings();
       return (
         <div>
-          <h1> Main Page </h1>
+          <h1> Main Page </h1> <br/>
           <div>
             <div>
-              <Link to="/adicionar-condominio">Adicionar Condominio</Link>
+              <Link to="/adicionar-condominio">Adicionar Condominio</Link> <br/> <br/>
+              <button onClick={()=>this.handleToggle()}>Já tem um convite? Junte-se ao seu condomínio</button> <br/> <br/>
+              {this.state.toggleButton ? (
+                <form onSubmit={this.handleOnSubmit} type= 'submit'>
+                  <input onChange={this.handleChangeCode} value={this.state.confirmationCode} type='text' name='confirmationCode' placeholder='insira seu código de acesso'/>
+                  <button type='submit' >Enviar</button>
+                </form>
+              ) : (
+                <></>
+              )
+              }
+
               <input
                 type="text"
                 value={this.state.search}
-                onChange={this.handleChange}
+                onChange={this.handleChangeSearch}
+                placeholder='Buscar pelo nome'
               />
               {this.state.buildings
                 .filter((elem) => {
@@ -126,14 +165,24 @@ class MainPage extends Component {
         <div>
           <h1> Main Page </h1>
           <div>
-            <Link to="/adicionar-condominio">Adicionar Condominio</Link>
+            <Link to="/adicionar-condominio">Adicionar Condominio</Link>  <br/> <br/>
+            <button onClick={()=>this.handleToggle()}>Já tem um convite? Junte-se ao seu condomínio</button> <br/> <br/>
+              {this.state.toggleButton ? (
+                <form onSubmit={this.handleOnSubmit} type= 'submit'>
+                  <input onChange={this.handleChangeCode} value={this.state.confirmationCode} type='text' name='confirmationCode' placeholder='insira seu código de acesso'/>
+                  <button type='submit' >Enviar</button>
+                </form>
+              ) : (
+                <></>
+              )
+              }
           </div>
           <div>
             <br />
             <input
               type="text"
               value={this.state.search}
-              onChange={this.handleChange}
+              onChange={this.handleChangeSearch}
               placeholder="Buscar pelo nome"
             />
           </div>
