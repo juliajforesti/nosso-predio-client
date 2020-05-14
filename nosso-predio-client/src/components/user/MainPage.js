@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import MainService from "../MainService";
 import "./User.css";
+// import BuildingsList from "../building/BuildingsList";
+import ServicesList from "../service/ServicesList";
 
 class MainPage extends Component {
   constructor(props) {
@@ -10,6 +12,7 @@ class MainPage extends Component {
       buildings: [],
       services: [],
       search: "",
+      // filteredBuildings: [],
       buildingApiCalled: false,
       serviceApiCalled: false,
     };
@@ -52,7 +55,15 @@ class MainPage extends Component {
     }
   }
 
-  getServices() {
+  // getSearchedBuildings() {
+  //   this.setState({
+  //     filteredBuildings: this.state.buildings.filter((buildings) =>
+  //       buildings.name.toLowerCase().includes(this.state.search)
+  //     ),
+  //   });
+  // }
+
+  getUserServices() {
     if (!this.state.serviceApiCalled) {
       this.service.getAllServices().then((response) => {
         this.setState({
@@ -68,6 +79,7 @@ class MainPage extends Component {
   }
 
   render() {
+    // IF USER DOESNT HAVE BUILDINGS
     if (this.props.user.buildings.length < 1) {
       this.getBuildings();
       return (
@@ -81,25 +93,27 @@ class MainPage extends Component {
                 value={this.state.search}
                 onChange={this.handleChange}
               />
-              {console.log(this.state.buildings)}
               {this.state.buildings
                 .filter((elem) => {
                   return elem.name.toLowerCase().includes(this.state.search);
                 })
                 .map((building, idx) => {
                   return (
-                    <div className="building-box">
-                      <h1 key={idx}>{building.name}</h1>
+                    <div key={idx} className="building-box">
+                      <h1>{building.name}</h1>
                     </div>
                   );
                 })}
+              {/* <BuildingsList buildings={this.state.filteredBuildings} {...this.props}></BuildingsList> */}
             </div>
           </div>
         </div>
       );
+
+      // IF USER HAS BUILDINGS
     } else {
       this.getUserBuildings();
-      this.getServices();
+      this.getUserServices();
       return (
         <div>
           <h1> Main Page </h1>
@@ -124,8 +138,8 @@ class MainPage extends Component {
               })
               .map((building, idx) => {
                 return (
-                  <div className="building-box">
-                    <h1 key={idx}>{building.name}</h1>
+                  <div key={idx} className="building-box">
+                    <h1>{building.name}</h1>
                     <Link to={`/condominio/${building._id}`}>Acessar</Link>
                   </div>
                 );
@@ -135,14 +149,10 @@ class MainPage extends Component {
           <div>
             <h3>Meus Serviços</h3>
             {this.props.user.services.length > 0 ? (
-              this.state.services.map((service, idx) => {
-                return (
-                  <div className="building-box">
-                    <h2 key={idx}>{service.name}</h2>
-                    <Link to={`/condominio/${service.building}/serviço/${service._id}`}>Acessar</Link>
-                  </div>
-                )
-              })
+              <ServicesList
+                services={this.state.services}
+                {...this.props}
+              ></ServicesList>
             ) : (
               <div></div>
             )}
