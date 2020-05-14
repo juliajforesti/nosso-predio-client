@@ -28,10 +28,9 @@ class BuildingDetails extends Component {
     }
   }
 
-  getUserServices() {
+  getBuildingServices() {
     if (!this.state.serviceApiCalled) {
       this.service.getAllServices().then((response) => {
-        console.log(response)
         this.setState({
           serviceApiCalled: true,
           services: response.filter((service) =>
@@ -46,24 +45,26 @@ class BuildingDetails extends Component {
 
   render() {
     this.getBuildingDetails();
-    this.getUserServices();
+    this.getBuildingServices();
     return (
       <div>
         <div>
           <h1>{this.state.building.name}</h1>
         </div>
-        {
-          this.state.building.owner === this.props.user._id ? (
-          <p>Link para convidar outros: {`http://localhost:3000/${this.state.building.confirmationCode}`}</p>
-          ) : (
-            <></>
-          )
-        }
+        {this.state.building.owner === this.props.user._id ? (
+          <p>
+            Link para convidar outros:{" "}
+            {`http://localhost:3000/${this.state.building.confirmationCode}`}
+          </p>
+        ) : (
+          <></>
+        )}
         <div>
           <Link to={`/condominio/${this.state.building._id}/adicionar-serviço`}>
             Adicionar Serviço/Produto
           </Link>
         </div>
+        <h2>Serviços/Produtos disponíveis</h2>
         <ServicesList services={this.state.services} {...this.props} />
       </div>
     );

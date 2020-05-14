@@ -42,8 +42,7 @@ class MainService {
         date,
         apartment,
       })
-      .then((response) => response.data)
-      .catch((err) => console.log("errouuuuuuu"));
+      .then((response) => response.data);
   }
 
   getAllServices() {
@@ -62,7 +61,23 @@ class MainService {
 
   addOrder(buildingId, serviceId, quantity) {
     return this.service
-      .post(`/building/${buildingId}/service/${serviceId}/add-order`, {quantity})
+      .post(`/building/${buildingId}/service/${serviceId}/add-order`, {
+        quantity,
+      })
+      .then((response) => response.data);
+  }
+
+  buildingInvite(code) {
+    return this.service
+      .get(`building-invitation/${code}`)
+      .then((response) => response.data);
+  }
+
+  changeStatus(buildingId, serviceId, orderId, status) {
+    return this.service
+      .post(
+        `/building/${buildingId}/service/${serviceId}/status-order/${orderId}`, {status}
+      )
       .then((response) => response.data);
   }
 }
