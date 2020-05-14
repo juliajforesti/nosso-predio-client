@@ -37,7 +37,7 @@ class MainPage extends Component {
   handleChangeCode(e) {
     this.setState({
       confirmationCode: e.target.value,
-    });
+    }, () => this.getBuildings());
   }
 
   getBuildings() {
@@ -104,11 +104,14 @@ class MainPage extends Component {
 
   handleOnSubmit(e){
     e.preventDefault()
+
     this.service.buildingInvite(this.state.confirmationCode).then(response => {
       this.setState({
         toggleButton: !this.state.toggleButton,
         confirmationCode: '',
+
       })
+      window.location.reload(false);
     })
   }
 
