@@ -47,15 +47,23 @@ class MainService {
   }
 
   getAllServices() {
+    return this.service.get("/services").then((response) => response.data);
+  }
+
+  getServiceDetails(buildingId, serviceId) {
     return this.service
-      .get("/services")
+      .get(`/building/${buildingId}/service/${serviceId}`)
       .then((response) => response.data);
   }
 
-  getServiceDetails(buildingId, serviceId){
+  getAllOrders() {
+    return this.service.get("/orders").then((response) => response.data);
+  }
+
+  addOrder(buildingId, serviceId, quantity) {
     return this.service
-    .get(`/building/${buildingId}/service/${serviceId}`)
-    .then((response) => response.data);
+      .post(`/building/${buildingId}/service/${serviceId}/add-order`, {quantity})
+      .then((response) => response.data);
   }
 }
 
