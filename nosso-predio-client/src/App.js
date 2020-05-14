@@ -11,7 +11,7 @@ import MainPage from "./components/user/MainPage";
 import AddBuilding from "./components/building/AddBuilding";
 import BuildingDetails from "./components/building/BuildingDetails";
 import AddService from "./components/service/AddService";
-import ServiceDetails from './components/service/ServiceDetails';
+import ServiceDetails from "./components/service/ServiceDetails";
 
 class App extends Component {
   constructor(props) {
@@ -55,6 +55,7 @@ class App extends Component {
         this.setState({
           loggedUser: null,
         });
+        this.props.history.push(`/`);
       })
       .catch((err) => console.log(err));
   }
@@ -65,7 +66,11 @@ class App extends Component {
       <div>
         {this.state.loggedUser ? (
           <div>
-            <Navbar user={this.state.loggedUser} logout={this.logout} />
+            <Navbar
+              user={this.state.loggedUser}
+              logout={this.logout}
+              {...this.props}
+            />
             <Switch>
               <Route exact path="/" component={Home} />
               <ProtectedRoutes
@@ -103,9 +108,12 @@ class App extends Component {
           </div>
         ) : (
           <div>
-            <Navbar user={this.state.loggedUser} logout={this.logout} />
+            <Navbar
+              user={this.state.loggedUser}
+              logout={this.logout}
+              {...this.props}
+            />
             <Switch>
-              <Route exact path="/" component={Home} />
               <Route
                 exact
                 path="/signup"
@@ -116,6 +124,7 @@ class App extends Component {
                 path="/login"
                 render={(props) => <Login getUser={this.getUser} {...props} />}
               />
+              <Route component={Home} />
             </Switch>
           </div>
         )}

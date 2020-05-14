@@ -4,17 +4,19 @@ import MainService from "../MainService";
 import "./User.css";
 // import BuildingsList from "../building/BuildingsList";
 import ServicesList from "../service/ServicesList";
+import OrderList from "../order/OrderList";
 
 class MainPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
       buildings: [],
+      orders: [],
       services: [],
       search: "",
-      // filteredBuildings: [],
       buildingApiCalled: false,
       serviceApiCalled: false,
+      orderAPICalled: false,
     };
     this.service = new MainService();
 
@@ -55,14 +57,6 @@ class MainPage extends Component {
     }
   }
 
-  // getSearchedBuildings() {
-  //   this.setState({
-  //     filteredBuildings: this.state.buildings.filter((buildings) =>
-  //       buildings.name.toLowerCase().includes(this.state.search)
-  //     ),
-  //   });
-  // }
-
   getUserServices() {
     if (!this.state.serviceApiCalled) {
       this.service.getAllServices().then((response) => {
@@ -75,6 +69,19 @@ class MainPage extends Component {
       });
     } else {
       return;
+    }
+  }
+
+  getUserOrders() {
+    if (!this.state.orderAPICalled) {
+      this.service.getAllOrders().then((response) => {
+        this.setState({
+          orders: response.filter((order) =>
+            order.origin.includes(this.props.user._id)
+          ),
+          orderAPICalled: true,
+        });
+      });
     }
   }
 
@@ -114,6 +121,7 @@ class MainPage extends Component {
     } else {
       this.getUserBuildings();
       this.getUserServices();
+      this.getUserOrders();
       return (
         <div>
           <h1> Main Page </h1>
@@ -159,7 +167,7 @@ class MainPage extends Component {
           </div>
           <div>
             <h3>Meus Pedidos</h3>
-            
+            <OrderList orders={this.state.orders} {...this.props} />
           </div>
         </div>
       );

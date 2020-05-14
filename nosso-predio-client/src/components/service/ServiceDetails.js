@@ -57,11 +57,11 @@ class ServiceDetails extends Component {
           this.state.service.owner === this.props.user._id ? (
             <div>
             <h3>Pedidos:</h3>
-              <OrderList orders={this.state.orders} {...this.props} />
+              <OrderList building={this.state.service.building} orders={this.state.orders} {...this.props} />
               </div>
           ) : (
             <div>
-              <OrderForm {...this.props} building={this.state.service.building}  service={this.state.service._id} />
+              <OrderForm {...this.props}  service={this.state.service._id}/>
             </div>
           )
         }
