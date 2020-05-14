@@ -12,6 +12,8 @@ import AddBuilding from "./components/building/AddBuilding";
 import BuildingDetails from "./components/building/BuildingDetails";
 import AddService from "./components/service/AddService";
 import ServiceDetails from "./components/service/ServiceDetails";
+import ProfilePage from "./components/user/ProfilePage";
+
 
 class App extends Component {
   constructor(props) {
@@ -103,6 +105,13 @@ class App extends Component {
                 path="/condominio/:id/serviço/:servicoId"
                 component={ServiceDetails}
                 user={this.state.loggedUser}
+              />
+              <ProtectedRoutes
+                exact
+                path="/perfil"
+                component={ProfilePage}
+                user={this.state.loggedUser}
+                getUser={this.getUser}
               />
             </Switch>
           </div>

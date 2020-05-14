@@ -34,9 +34,15 @@ class AuthService {
     .then((response) => response.data)
   }
 
-  edit(email, name, password, userId){
+  edit(email, name, userId){
     return this.service
-    .post(`/edit-user/${userId}`, {email, name, password})
+    .post(`/edit-user/${userId}`, {email, name}, {new: true})
+    .then((response) => response.data)
+  }
+
+  editPassword( password, userId){
+    return this.service
+    .post(`/edit-password/${userId}`, {password}, {new: true})
     .then((response) => response.data)
   }
 

@@ -22,7 +22,7 @@ class MainService {
 
   addBuilding(name, cep, number) {
     return this.service
-      .post("/add-building", { name, cep, number })
+      .post("/add-building", { name, cep, number }, {new: true})
       .then((response) => response.data);
   }
 
@@ -41,7 +41,7 @@ class MainService {
         price,
         date,
         apartment,
-      })
+      }, {new: true})
       .then((response) => response.data);
   }
 
@@ -63,20 +63,20 @@ class MainService {
     return this.service
       .post(`/building/${buildingId}/service/${serviceId}/add-order`, {
         quantity,
-      })
+      }, {new: true})
       .then((response) => response.data);
   }
 
   buildingInvite(code) {
     return this.service
-      .get(`building-invitation/${code}`)
+      .get(`building-invitation/${code}`, {new: true})
       .then((response) => response.data);
   }
 
   changeStatus(buildingId, serviceId, orderId, status) {
     return this.service
       .post(
-        `/building/${buildingId}/service/${serviceId}/status-order/${orderId}`, {status}
+        `/building/${buildingId}/service/${serviceId}/status-order/${orderId}`, {status}, {new: true}
       )
       .then((response) => response.data);
   }

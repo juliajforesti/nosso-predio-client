@@ -24,7 +24,8 @@ class AddBuilding extends Component {
       .addBuilding(name, cep, number)
       .then((response) => {
         this.props.history.push("/pagina-principal");
-    });
+      });
+      console.log(this.props)
   }
 
   handleChange(e) {
