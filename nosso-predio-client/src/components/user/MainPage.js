@@ -157,6 +157,10 @@ class MainPage extends Component {
               <div></div>
             )}
           </div>
+          <div>
+            <h3>Meus Pedidos</h3>
+            
+          </div>
         </div>
       );
     }

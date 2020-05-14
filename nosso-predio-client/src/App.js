@@ -13,10 +13,6 @@ import BuildingDetails from "./components/building/BuildingDetails";
 import AddService from "./components/service/AddService";
 import ServiceDetails from './components/service/ServiceDetails';
 
-
-
-// import { render } from '@testing-library/react';
-
 class App extends Component {
   constructor(props) {
     super(props);
