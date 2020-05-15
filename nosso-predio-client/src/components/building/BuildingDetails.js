@@ -31,6 +31,7 @@ class BuildingDetails extends Component {
     if (!this.state.buildingApiCalled) {
       const { params } = this.props.match;
       this.service.getBuildingDetails(params.id).then((response) => {
+        console.log(response)
         this.setState({
           building: response,
           buildingApiCalled: true,
