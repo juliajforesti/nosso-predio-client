@@ -3,6 +3,7 @@ import MainService from "../MainService";
 import { Link } from "react-router-dom";
 import OrderList from "../order/OrderList";
 import OrderForm from "../order/OrderForm";
+import EditService from "./EditService";
 
 class ServiceDetails extends Component {
   constructor(props) {
@@ -12,9 +13,17 @@ class ServiceDetails extends Component {
       orders: [],
       serviceAPICalled: false,
       orderAPICalled: false,
+      toggleEdit: false,
     };
     this.service = new MainService();
     this.handleStatus = this.handleStatus.bind(this);
+    this.getEditedService = this.getEditedService.bind(this);
+    this.handleClick = this.handleClick.bind(this);
+  }
+  handleClick() {
+    this.setState({
+      toggleEdit: !this.state.toggleEdit,
+    });
   }
 
   getServiceDetails() {
@@ -36,7 +45,7 @@ class ServiceDetails extends Component {
       this.service.getAllOrders().then((response) => {
         this.setState({
           orders: response.filter((order) =>
-            order.service.includes(this.state.service._id)
+            order.service._id.includes(this.state.service._id)
           ),
           orderAPICalled: true,
         });
@@ -46,9 +55,14 @@ class ServiceDetails extends Component {
   handleStatus(buildingId, serviceId, orderId, status) {
     this.service
       .changeStatus(buildingId, serviceId, orderId, status)
-      .then((response) =>
-        console.log(response));
-  }  
+      .then((response) => console.log(response));
+  }
+
+  getEditedService(newService) {
+    this.setState({
+      service: newService,
+    });
+  }
 
   render() {
     this.getServiceDetails();
@@ -61,9 +75,25 @@ class ServiceDetails extends Component {
           Adicionar Serviço/Produto
         </Link>
         <br />
-        {this.state.service.name}
+        <h1>{this.state.service.name}</h1>
+        <h4>{this.state.service.date}</h4>
+        <p>{this.state.service.category}</p>
+        <p>{this.state.service.description}</p>
+        <img src={this.state.service.image} alt={this.state.service.name} />
+
         {this.state.service.owner === this.props.user._id ? (
           <div>
+            {!this.state.toggleEdit ? (
+              <>
+            <button onClick={this.handleClick}>Editar</button>
+              </>
+            ) : (
+              <EditService
+                handleClick={this.handleClick}
+                getEditedService={this.getEditedService}
+                service={this.state.service}
+              />
+            )}
             <h3>Pedidos:</h3>
             <OrderList
               handleStatus={this.handleStatus}

@@ -80,6 +80,15 @@ class MainService {
       )
       .then((response) => response.data);
   }
+
+  editBuilding(buildingId, name, cep, number){
+    return this.service.post(`/edit-building/${buildingId}`, {name, cep, number})
+    .then(response => response.data)
+  }
+  editService(buildingId, serviceId, name, description, price, category, apartment, date){
+    return this.service.post(`/building/${buildingId}/edit-service/${serviceId}`, {name, description, price, category, apartment, date})
+    .then(response => response.data)
+  }
 }
 
 export default MainService;

@@ -20,12 +20,20 @@ class AddService extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    const {params} = this.props.match
-    const buildingId = params.id
+    const { params } = this.props.match;
+    const buildingId = params.id;
     const { name, description, category, price, date, apartment } = this.state;
 
     this.service
-      .addService(name, description, category, price, date, apartment, buildingId)
+      .addService(
+        name,
+        description,
+        category,
+        price,
+        date,
+        apartment,
+        buildingId
+      )
       .then((response) => {
         this.props.history.push(`/condominio/${buildingId}`);
       });
@@ -59,12 +67,11 @@ class AddService extends Component {
               value={this.state.description}
             />
             <label>Categoria:</label>
-            <input
-              onChange={this.handleChange}
-              type="text"
-              name="category"
-              value={this.state.number}
-            />
+            <select onChange={this.handleChange} name="category">
+              <option value="Produto">Produto</option>
+              <option value="Serviço">Serviço</option>
+            </select>
+            
             <label>Preço:</label>
             <input
               onChange={this.handleChange}
