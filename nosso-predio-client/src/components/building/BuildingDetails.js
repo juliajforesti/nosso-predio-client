@@ -67,6 +67,7 @@ class BuildingDetails extends Component {
     return (
       <div>
         <div>
+        <Link to='/pagina-principal'><button>Voltar</button></Link>
           <h1>{this.state.building.name}</h1>
           {this.props.user._id === this.state.building.owner ? (
             <button onClick={this.handleClick}>Editar</button>
