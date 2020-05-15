@@ -25,6 +25,7 @@ class MainPage extends Component {
     this.handleChangeCode = this.handleChangeCode.bind(this);
     this.handleChangeSearch = this.handleChangeSearch.bind(this);
     this.handleOnSubmit = this.handleOnSubmit.bind(this);
+    this.handleStatus = this.handleStatus.bind(this);
 
   }
 
@@ -113,6 +114,12 @@ class MainPage extends Component {
       })
       window.location.reload(false);
     })
+  }
+  handleStatus(buildingId, serviceId, orderId, status) {
+    this.service
+      .changeStatus(buildingId, serviceId, orderId, status)
+      .then((response) => console.log(response)
+      );
   }
 
   render() {
@@ -219,7 +226,7 @@ class MainPage extends Component {
           </div>
           <div>
             <h3>Meus Pedidos</h3>
-            <OrderList orders={this.state.orders} {...this.props} />
+            <OrderList handleStatus={this.handleStatus} orders={this.state.orders} {...this.props} />
           </div>
         </div>
       );

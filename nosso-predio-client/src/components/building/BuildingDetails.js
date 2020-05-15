@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import MainService from "../MainService";
 import { Link } from "react-router-dom";
 import ServicesList from "../service/ServicesList";
+import EditBuilding from './EditBuilding'
 
 class BuildingDetails extends Component {
   constructor(props) {
@@ -12,8 +13,18 @@ class BuildingDetails extends Component {
       search: "",
       buildingApiCalled: false,
       serviceApiCalled: false,
+      toggleEdit: false,
     };
     this.service = new MainService();
+    this.handleClick = this.handleClick.bind(this);
+    this.getEditedBuilding = this.getEditedBuilding.bind(this);
+
+
+  }
+  handleClick() {
+    this.setState({ 
+      toggleEdit: !this.state.toggleEdit,
+    });
   }
 
   getBuildingDetails() {
@@ -26,6 +37,11 @@ class BuildingDetails extends Component {
         });
       });
     }
+  }
+  getEditedBuilding(newBuilding) {
+    this.setState({
+      building: newBuilding,
+    });
   }
 
   getBuildingServices() {
@@ -43,6 +59,7 @@ class BuildingDetails extends Component {
     }
   }
 
+
   render() {
     this.getBuildingDetails();
     this.getBuildingServices();
@@ -50,6 +67,12 @@ class BuildingDetails extends Component {
       <div>
         <div>
           <h1>{this.state.building.name}</h1>
+          {this.props.user._id === this.state.building.owner ? (
+            <button onClick={this.handleClick}>Editar</button>
+          ) : (<></>)}
+          {this.state.toggleEdit ? (
+            <EditBuilding getEditedBuilding={this.getEditedBuilding} building={this.state.building} handleClick={this.handleClick} />
+          ) : (<></>)}
         </div>
         {this.state.building.owner === this.props.user._id ? (
           <p>
