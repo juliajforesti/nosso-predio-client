@@ -28,7 +28,7 @@ class OrderForm extends Component {
         this.setState({
           quantity: 0,
         });
-        this.props.history.push(`/condominio/${building}/serviço/${service}`);
+        this.props.history.push(`/pagina-principal`);
       })
       .catch((err) => console.log(err));
   }

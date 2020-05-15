@@ -12,6 +12,7 @@ class MainPage extends Component {
     this.state = {
       buildings: [],
       orders: [],
+      activeOrders:[],
       services: [],
       search: "",
       buildingApiCalled: false,
@@ -19,6 +20,7 @@ class MainPage extends Component {
       orderAPICalled: false,
       toggleButton: false,
       confirmationCode: '',
+      toggleStatusButton: true,
     };
     this.service = new MainService();
 
@@ -26,6 +28,10 @@ class MainPage extends Component {
     this.handleChangeSearch = this.handleChangeSearch.bind(this);
     this.handleOnSubmit = this.handleOnSubmit.bind(this);
     this.handleStatus = this.handleStatus.bind(this);
+    this.handleToggleStatus = this.handleToggleStatus.bind(this);
+
+
+    
 
   }
 
@@ -103,23 +109,36 @@ class MainPage extends Component {
     })
   }
 
+  handleToggleStatus(){
+    this.setState({
+      toggleStatusButton: !this.state.toggleStatusButton
+    })
+  }
+
   handleOnSubmit(e){
     e.preventDefault()
-
     this.service.buildingInvite(this.state.confirmationCode).then(response => {
       this.setState({
         toggleButton: !this.state.toggleButton,
         confirmationCode: '',
-
+        buildingApiCalled:false,
       })
-      window.location.reload(false);
     })
   }
   handleStatus(buildingId, serviceId, orderId, status) {
     this.service
       .changeStatus(buildingId, serviceId, orderId, status)
-      .then((response) => console.log(response)
+      .then((response) => this.setState({
+        orderAPICalled: false
+      })
       );
+  }
+
+  activeOrders(){
+    const orders = [...this.state.orders]
+    this.setState({
+      activeOrders: orders.filter(order => order.status !== "Cancelado")
+    })
   }
 
   render() {
@@ -226,7 +245,14 @@ class MainPage extends Component {
           </div>
           <div>
             <h3>Meus Pedidos</h3>
-            <OrderList handleStatus={this.handleStatus} orders={this.state.orders} {...this.props} />
+              <button onClick={this.handleToggleStatus}>
+              {this.state.toggleStatusButton ? ('Mostrar todos os pedidos') : ('Mostrar somente pedidos ativos')}
+              </button>
+              {this.state.toggleStatusButton ? (
+                <OrderList activeOrders={this.activeOrders} handleStatus={this.handleStatus} orders={this.state.orders.filter(order => order.status !== "Cancelado")} {...this.props} />
+              ):(
+                <OrderList handleStatus={this.handleStatus} orders={this.state.orders} {...this.props}/>
+              )}
           </div>
         </div>
       );
