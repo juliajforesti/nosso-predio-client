@@ -4,6 +4,7 @@ import React, { Component } from "react";
 import AuthService from "./AuthService";
 import { Link } from "react-router-dom";
 
+
 class Login extends Component {
   constructor(props) {
     super(props);
@@ -45,6 +46,7 @@ class Login extends Component {
     })
   }
 
+
   render() { 
     return (  
       <div className="">
@@ -80,6 +82,7 @@ class Login extends Component {
         <div>
             <p>{this.state.errorMessage}</p>
         </div>
+
         <p>
           Não tem uma conta?
           <Link to={"/signup"}> Cadastre-se</Link>
