@@ -63,8 +63,6 @@ class ProfilePage extends Component {
   handleFileUpload(e) {
     const uploadData = new FormData();
 
-    console.log('foto pra upload---------------------->', e.target.files[0])
-
     uploadData.append("image", e.target.files[0]);
 
     this.service.editPhoto(uploadData, this.props.user._id).then((response) => {
