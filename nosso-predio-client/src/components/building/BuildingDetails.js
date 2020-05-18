@@ -65,11 +65,7 @@ class BuildingDetails extends Component {
     return (
       <div>
         <div>
-<<<<<<< HEAD
-        <Link to='/pagina-principal'><button>Voltar</button></Link>
-=======
           <img src={this.state.building.image} alt={this.state.building.name} />
->>>>>>> master
           <h1>{this.state.building.name}</h1>
           {this.props.user._id === this.state.building.owner ? (
             <button onClick={this.handleClick}>Editar</button>

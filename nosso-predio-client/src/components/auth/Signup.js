@@ -10,7 +10,8 @@ class Signup extends Component {
     this.state = {
       email: '',
       password: '',
-      name: ''
+      name: '',
+      errorMessage: null,
     }
     this.service = new AuthService();
 
@@ -40,7 +41,11 @@ class Signup extends Component {
       this.props.getUser(response)
       this.props.history.push('/pagina-principal')
     })
-    .catch(err => console.log(err))
+    .catch(err => {
+      this.setState({
+        errorMessage: 'Email já cadastrado'
+      })
+    })
   }
 
   render() { 
@@ -86,8 +91,14 @@ class Signup extends Component {
               />
             </div>
           </div>
-          <input className="button" type="submit" value="Signup" />
+          {this.state.password.length < 6 ? (
+          <input disabled className="button" type="submit" value="Signup" />
+          ): (
+            <input  className="button" type="submit" value="Signup" />
+          ) }
         </form>
+        <p>Crie uma senha com no mínimo 6 caracteres</p>
+        <p>{this.state.errorMessage}</p>
         <p>
           Já tem uma conta?
           <Link to={"/login"}> Entre</Link>
