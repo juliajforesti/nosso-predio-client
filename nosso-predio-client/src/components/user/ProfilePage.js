@@ -16,6 +16,7 @@ class ProfilePage extends Component {
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handlePasswordSubmit = this.handlePasswordSubmit.bind(this);
+    this.handleFileUpload = this.handleFileUpload.bind(this);
 
     this.service = new AuthService();
   }
@@ -41,14 +42,14 @@ class ProfilePage extends Component {
     e.preventDefault();
     const { password, passwordConfirmation } = this.state;
     const userId = this.props.user._id;
-    if (password === passwordConfirmation ) {
+    if (password === passwordConfirmation) {
       this.service.editPassword(password, userId).then((response) =>
         this.setState({
           toggleEdit: !this.state.toggleEdit,
         })
       );
     } else {
-      return
+      return;
     }
   }
 
@@ -60,11 +61,13 @@ class ProfilePage extends Component {
   }
 
   handleFileUpload(e) {
-    const upload = new FormData();
+    const uploadData = new FormData();
 
-    upload.append("image", e.target.files[0]);
+    console.log('foto pra upload---------------------->', e.target.files[0])
 
-    this.service.editPhoto(upload, this.props.user._id).then((response) => {
+    uploadData.append("image", e.target.files[0]);
+
+    this.service.editPhoto(uploadData, this.props.user._id).then((response) => {
       this.props.getUser(response);
       this.setState({
         toggleEdit: !this.state.toggleEdit,
@@ -104,15 +107,13 @@ class ProfilePage extends Component {
                   name="email"
                   value={this.state.email}
                 ></input>
-                <label>Alterar foto de perfil:</label>
-                <input
-                  onChange={this.handleFileUpload}
-                  type="file"
-                  name="image"
-                ></input>
                 <button type="submit">Salvar</button>
               </form>
-
+              <label>Alterar foto de perfil:</label>
+              <input
+                onChange={this.handleFileUpload}
+                type="file"
+              />
               <form onSubmit={this.handlePasswordSubmit}>
                 <label>Senha:</label>
                 <input
