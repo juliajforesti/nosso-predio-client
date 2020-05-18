@@ -49,7 +49,7 @@ class AuthService {
 
   editPhoto(image, userId){
     return this.service
-    .post(`/edit-photo/${userId}`, {image}, {new: true})
+    .post(`/edit-photo/${userId}`, image, {new: true})
     .then((response) => response.data)
   }
 
