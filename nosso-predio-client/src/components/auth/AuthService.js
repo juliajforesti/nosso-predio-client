@@ -47,6 +47,12 @@ class AuthService {
     .then((response) => response.data)
   }
 
+  editPhoto(image, userId){
+    return this.service
+    .post(`/edit-photo/${userId}`, {image}, {new: true})
+    .then((response) => response.data)
+  }
+
 }
 
 export default AuthService;
