@@ -10,7 +10,7 @@
   font-size: 1.5rem;
   height: 5rem;
   align-items: center;
-  background-color: rgb(155, 148, 148);
+  background-color: #556080;
   color: white;
 }
 
@@ -32,7 +32,7 @@
 .nav-link>button {
   border: none;
   font-size: 1.4rem;
-  background-color: rgb(155, 148, 148);
+  background-color: #556080;
   color: white;
 
 }
