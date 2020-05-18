@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import MainService from "../MainService";
 import { Link } from "react-router-dom";
 import ServicesList from "../service/ServicesList";
-import EditBuilding from './EditBuilding'
+import EditBuilding from "./EditBuilding";
 
 class BuildingDetails extends Component {
   constructor(props) {
@@ -18,11 +18,9 @@ class BuildingDetails extends Component {
     this.service = new MainService();
     this.handleClick = this.handleClick.bind(this);
     this.getEditedBuilding = this.getEditedBuilding.bind(this);
-
-
   }
   handleClick() {
-    this.setState({ 
+    this.setState({
       toggleEdit: !this.state.toggleEdit,
     });
   }
@@ -31,7 +29,6 @@ class BuildingDetails extends Component {
     if (!this.state.buildingApiCalled) {
       const { params } = this.props.match;
       this.service.getBuildingDetails(params.id).then((response) => {
-        
         this.setState({
           building: response,
           buildingApiCalled: true,
@@ -39,7 +36,9 @@ class BuildingDetails extends Component {
       });
     }
   }
+
   getEditedBuilding(newBuilding) {
+    console.log()
     this.setState({
       building: newBuilding,
     });
@@ -60,26 +59,37 @@ class BuildingDetails extends Component {
     }
   }
 
-
   render() {
     this.getBuildingDetails();
     this.getBuildingServices();
     return (
       <div>
         <div>
+<<<<<<< HEAD
         <Link to='/pagina-principal'><button>Voltar</button></Link>
+=======
+          <img src={this.state.building.image} alt={this.state.building.name} />
+>>>>>>> master
           <h1>{this.state.building.name}</h1>
           {this.props.user._id === this.state.building.owner ? (
             <button onClick={this.handleClick}>Editar</button>
-          ) : (<></>)}
+          ) : (
+            <></>
+          )}
           {this.state.toggleEdit ? (
-            <EditBuilding getEditedBuilding={this.getEditedBuilding} building={this.state.building} handleClick={this.handleClick} />
-          ) : (<></>)}
+            <EditBuilding
+              getEditedBuilding={this.getEditedBuilding}
+              building={this.state.building}
+              handleClick={this.handleClick}
+            />
+          ) : (
+            <></>
+          )}
         </div>
         {this.state.building.owner === this.props.user._id ? (
           <p>
             Link para convidar outros:{" "}
-            {`http://localhost:3000/${this.state.building.confirmationCode}`}
+            {`${this.state.building.confirmationCode}`}
           </p>
         ) : (
           <></>

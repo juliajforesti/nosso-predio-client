@@ -85,9 +85,21 @@ class MainService {
     return this.service.post(`/edit-building/${buildingId}`, {name, cep, number})
     .then(response => response.data)
   }
+
+  editBuildingPhoto(image, buildingId){
+    return this.service.post(`/edit-building-photo/${buildingId}`, image, {new: true})
+    .then(response => response.data)
+  }
+
   editService(buildingId, serviceId, name, description, price, category, apartment, date){
     return this.service.post(`/building/${buildingId}/edit-service/${serviceId}`, {name, description, price, category, apartment, date})
     .then(response => response.data)
+  }
+
+  editServicePhoto(image, buildingId, serviceId){
+    return this.service
+    .post(`/building/${buildingId}/edit-service-photo/${serviceId}`, image, {new: true})
+    .then((response) => response.data)
   }
 }
 
