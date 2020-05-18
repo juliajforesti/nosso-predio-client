@@ -10,6 +10,7 @@ class Login extends Component {
     this.state = {
       email: '',
       password: '',
+      errorMessage: null,
     }
     this.service = new AuthService();
 
@@ -37,7 +38,11 @@ class Login extends Component {
       this.props.getUser(response)
       this.props.history.push('/pagina-principal')
     })
-    .catch(err => console.log(err))
+    .catch(err => {
+      this.setState({
+        errorMessage: 'Email e/ou senha incorretos'
+      })
+    })
   }
 
   render() { 
@@ -72,6 +77,9 @@ class Login extends Component {
           </div>
           <input className="button" type="submit" value="Entrar" />
         </form>
+        <div>
+            <p>{this.state.errorMessage}</p>
+        </div>
         <p>
           Não tem uma conta?
           <Link to={"/signup"}> Cadastre-se</Link>

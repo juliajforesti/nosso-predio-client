@@ -95,7 +95,7 @@ class MainPage extends Component {
       this.service.getAllOrders().then((response) => {
         this.setState({
           orders: response.filter((order) =>
-            order.origin.includes(this.props.user._id)
+            order.origin._id.includes(this.props.user._id)
           ),
           orderAPICalled: true,
         });

@@ -18,6 +18,9 @@ const OrderList = (props) => {
 
             {/* USER QUE CRIOU O SERVIÇO? */}
             {props.user.services.includes(order.service._id) ? (
+              <div>
+              <p>Pedido por: {order.origin.name}</p>
+
               <form
                 onChange={(e) =>
                   props.handleStatus(
@@ -40,6 +43,7 @@ const OrderList = (props) => {
                     ))}
                 </select>
               </form>
+              </div>
             ) : (
               <div>
                 <p>Status do pedido: {order.status}</p>

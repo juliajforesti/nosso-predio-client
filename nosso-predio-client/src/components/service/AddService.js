@@ -7,7 +7,7 @@ class AddService extends Component {
     this.state = {
       name: "",
       description: "",
-      category: "",
+      category: "Produto",
       price: "",
       date: "",
       apartment: "",

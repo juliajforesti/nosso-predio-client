@@ -81,8 +81,10 @@ class ServiceDetails extends Component {
         <p>{this.state.service.description}</p>
         <img src={this.state.service.image} alt={this.state.service.name} />
 
+      
         {this.state.service.owner === this.props.user._id ? (
           <div>
+        <Link to='/pagina-principal'><button>Voltar</button></Link>
             {!this.state.toggleEdit ? (
               <>
             <button onClick={this.handleClick}>Editar</button>
@@ -104,6 +106,7 @@ class ServiceDetails extends Component {
           </div>
         ) : (
           <div>
+        <Link to={`/condominio/${this.state.service.building}`}><button>Voltar</button></Link>
             <h3>Faça seu pedido</h3>
             <OrderForm {...this.props} service={this.state.service._id} />
           </div>
