@@ -4,8 +4,8 @@ import MainService from "../MainService";
 class EditBuilding extends Component {
   constructor(props) {
     super(props);
-    const {name} = this.props.building;
-    const {cep, number} = this.props.building.address;
+    const { name } = this.props.building;
+    const { cep, number } = this.props.building.address;
 
     this.state = {
       name: name,
@@ -15,6 +15,7 @@ class EditBuilding extends Component {
     this.service = new MainService();
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.handleFileUpload = this.handleFileUpload.bind(this);
   }
 
   handleFormSubmit(e) {
@@ -24,11 +25,12 @@ class EditBuilding extends Component {
     this.service
       .editBuilding(buildingId, name, cep, number)
       .then((response) => {
-        console.log(response)
-        this.props.handleClick()
-        this.props.getEditedBuilding(response)
+        console.log(response);
+        this.props.handleClick();
+        this.props.getEditedBuilding(response);
       });
   }
+
   handleChange(e) {
     const { name, value } = e.target;
     this.setState({
@@ -36,9 +38,27 @@ class EditBuilding extends Component {
     });
   }
 
+  handleFileUpload(e) {
+    const uploadData = new FormData();
+
+    console.log(e.target.files[0])
+
+    uploadData.append("image", e.target.files[0]);
+    const buildingId = this.props.building._id;
+
+    this.service.editBuildingPhoto(uploadData, buildingId)
+    .then((response) => {
+      console.log(response)
+      this.props.getEditedBuilding(response);
+      this.props.handleClick();
+    });
+  }
+
   render() {
     return (
       <div>
+        <label>Alterar imagem:</label>
+        <input type="file" onChange={this.handleFileUpload} />
         <form onSubmit={this.handleFormSubmit}>
           <label>Nome:</label>
           <input
