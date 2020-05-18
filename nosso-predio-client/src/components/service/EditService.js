@@ -23,10 +23,12 @@ class EditService extends Component {
     this.service = new MainService();
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.handleFileUpload = this.handleFileUpload.bind(this);
   }
+
   handleFormSubmit(e) {
     e.preventDefault();
-    const buildingId = this.props.service.building._id;
+    const buildingId = this.props.service.building;
     const serviceId = this.props.service._id;
 
     const { name, description, price, category, apartment, date } = this.state;
@@ -47,15 +49,33 @@ class EditService extends Component {
         this.props.getEditedService(response);
       });
   }
+
   handleChange(e) {
     const { name, value } = e.target;
     this.setState({
       [name]: value,
     });
   }
+
+  handleFileUpload(e) {
+    const uploadData = new FormData();
+
+    uploadData.append("image", e.target.files[0]);
+    const buildingId = this.props.service.building;
+    const serviceId = this.props.service._id;
+
+    this.service
+      .editServicePhoto(uploadData, buildingId, serviceId)
+      .then((response) => {
+        this.props.getEditedService(response);
+      });
+  }
+
   render() {
     return (
       <div>
+        <label>Alterar imagem:</label>
+        <input type="file" onChange={this.handleFileUpload} />
         <form onSubmit={this.handleFormSubmit}>
           <label>Nome:</label>
           <input
@@ -79,23 +99,16 @@ class EditService extends Component {
             value={this.state.price}
           ></input>
           <label>Categoria:</label>
-          {this.props.service.category === 'Produto' ? (
-          <select
-            onChange={this.handleChange}
-            name="category"
-          >
-            <option value='Produto'>Produto</option>
-            <option value='Serviço'>Serviço</option>
-          </select>
-
+          {this.props.service.category === "Produto" ? (
+            <select onChange={this.handleChange} name="category">
+              <option value="Produto">Produto</option>
+              <option value="Serviço">Serviço</option>
+            </select>
           ) : (
-          <select
-            onChange={this.handleChange}
-            name="category"
-          >
-            <option value='Serviço'>Serviço</option>
-            <option value='Produto'>Produto</option>
-          </select>
+            <select onChange={this.handleChange} name="category">
+              <option value="Serviço">Serviço</option>
+              <option value="Produto">Produto</option>
+            </select>
           )}
           <label>Complemento:</label>
           <input
