@@ -52,6 +52,7 @@ class ServiceDetails extends Component {
       });
     }
   }
+  
   handleStatus(buildingId, serviceId, orderId, status) {
     this.service
       .changeStatus(buildingId, serviceId, orderId, status)
