@@ -79,7 +79,7 @@ class App extends Component {
             />
             <div className="app-container">
               <Switch>
-                <Route exact path="/" component={Home} />
+                <Route exact path="/" render={(props) => <Home user={this.state.loggedUser} {...props} />}/>
                 <ProtectedRoutes
                   exact
                   path="/pagina-principal"
@@ -157,7 +157,7 @@ class App extends Component {
             />
             <div className="app-container">
               <Switch>
-                <Route exact path="/" component={Home} />
+                <Route exact path="/"  render={(props) => <Home user={this.state.loggedUser} {...props} />} />
                 <Route
                   exact
                   path="/signup"

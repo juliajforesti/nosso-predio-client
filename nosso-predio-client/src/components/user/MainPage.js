@@ -237,9 +237,7 @@ class MainPage extends Component {
                   </div>
                 );
               })
-
             : this.state.buildings.map((building, idx) => {
-
                 return (
                   <div key={idx}>
                     <Link to={`/condominio/${building._id}`}>
