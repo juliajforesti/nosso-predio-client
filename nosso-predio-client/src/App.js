@@ -14,7 +14,6 @@ import AddService from "./components/service/AddService";
 import ServiceDetails from "./components/service/ServiceDetails";
 import ProfilePage from "./components/user/ProfilePage";
 
-
 class App extends Component {
   constructor(props) {
     super(props);
@@ -65,7 +64,7 @@ class App extends Component {
   render() {
     this.fetchUser();
     return (
-      <div>
+      <div className='app-outer-container'>
         {this.state.loggedUser ? (
           <div>
             <Navbar
@@ -73,47 +72,49 @@ class App extends Component {
               logout={this.logout}
               {...this.props}
             />
-            <Switch>
-              <Route exact path="/" component={Home} />
-              <ProtectedRoutes
-                exact
-                path="/pagina-principal"
-                component={MainPage}
-                user={this.state.loggedUser}
-                getUser={this.getUser}
-              />
-              <ProtectedRoutes
-                exact
-                path="/adicionar-condominio"
-                component={AddBuilding}
-                user={this.state.loggedUser}
-              />
-              <ProtectedRoutes
-                exact
-                path="/condominio/:id"
-                component={BuildingDetails}
-                user={this.state.loggedUser}
-              />
-              <ProtectedRoutes
-                exact
-                path="/condominio/:id/adicionar-serviço"
-                component={AddService}
-                user={this.state.loggedUser}
-              />
-              <ProtectedRoutes
-                exact
-                path="/condominio/:id/serviço/:servicoId"
-                component={ServiceDetails}
-                user={this.state.loggedUser}
-              />
-              <ProtectedRoutes
-                exact
-                path="/perfil"
-                component={ProfilePage}
-                user={this.state.loggedUser}
-                getUser={this.getUser}
-              />
-            </Switch>
+            <div className="app-container">
+              <Switch>
+                <Route exact path="/" component={Home} user={this.state.loggedUser} />
+                <ProtectedRoutes
+                  exact
+                  path="/pagina-principal"
+                  component={MainPage}
+                  user={this.state.loggedUser}
+                  getUser={this.getUser}
+                />
+                <ProtectedRoutes
+                  exact
+                  path="/adicionar-condominio"
+                  component={AddBuilding}
+                  user={this.state.loggedUser}
+                />
+                <ProtectedRoutes
+                  exact
+                  path="/condominio/:id"
+                  component={BuildingDetails}
+                  user={this.state.loggedUser}
+                />
+                <ProtectedRoutes
+                  exact
+                  path="/condominio/:id/adicionar-serviço"
+                  component={AddService}
+                  user={this.state.loggedUser}
+                />
+                <ProtectedRoutes
+                  exact
+                  path="/condominio/:id/serviço/:servicoId"
+                  component={ServiceDetails}
+                  user={this.state.loggedUser}
+                />
+                <ProtectedRoutes
+                  exact
+                  path="/perfil"
+                  component={ProfilePage}
+                  user={this.state.loggedUser}
+                  getUser={this.getUser}
+                />
+              </Switch>
+            </div>
           </div>
         ) : (
           <div>
@@ -122,19 +123,25 @@ class App extends Component {
               logout={this.logout}
               {...this.props}
             />
-            <Switch>
-              <Route
-                exact
-                path="/signup"
-                render={(props) => <Signup getUser={this.getUser} {...props} />}
-              />
-              <Route
-                exact
-                path="/login"
-                render={(props) => <Login getUser={this.getUser} {...props} />}
-              />
-              <Route component={Home} />
-            </Switch>
+            <div className="app-container">
+              <Switch>
+                <Route
+                  exact
+                  path="/signup"
+                  render={(props) => (
+                    <Signup getUser={this.getUser} {...props} />
+                  )}
+                />
+                <Route
+                  exact
+                  path="/login"
+                  render={(props) => (
+                    <Login getUser={this.getUser} {...props} />
+                  )}
+                />
+                <Route component={Home} />
+              </Switch>
+            </div>
           </div>
         )}
       </div>
