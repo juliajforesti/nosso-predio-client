@@ -16,7 +16,8 @@ import ServiceDetails from "./components/service/ServiceDetails";
 import ProfilePage from "./components/user/ProfilePage";
 import ServicesPage from "./components/service/ServicesPage";
 import OrdersPage from "./components/order/OrdersPage";
-import InvitePage from './components/building/InvitePage'
+import InvitePage from "./components/building/InvitePage";
+import RedirectToMain from "./components/RedirectToMain";
 
 class App extends Component {
   constructor(props) {
@@ -68,7 +69,7 @@ class App extends Component {
   render() {
     this.fetchUser();
     return (
-      <div className='app-outer-container'>
+      <div className="app-outer-container">
         {this.state.loggedUser ? (
           <div>
             <Navbar
@@ -76,74 +77,76 @@ class App extends Component {
               logout={this.logout}
               {...this.props}
             />
-      <div className="app-container">
-            <Switch>
-              <Route exact path="/" component={Home} />
-              <ProtectedRoutes
-                exact
-                path="/pagina-principal"
-                component={MainPage}
-                user={this.state.loggedUser}
-                getUser={this.getUser}
-              />
-              <ProtectedRoutes
-                exact
-                path="/adicionar-condominio"
-                component={AddBuilding}
-                user={this.state.loggedUser}
-              />
-              <ProtectedRoutes
-                exact
-                path="/condominio/:id"
-                component={BuildingDetails}
-                user={this.state.loggedUser}
-              />
-              <ProtectedRoutes
-                exact
-                path="/condominio/:id/adicionar-serviço"
-                component={AddService}
-                user={this.state.loggedUser}
-              />
-              <ProtectedRoutes
-                exact
-                path="/condominio/:id/serviço/:servicoId"
-                component={ServiceDetails}
-                user={this.state.loggedUser}
-              />
-              <ProtectedRoutes
-                exact
-                path="/meus-condominios"
-                component={BuildingsPage}
-                user={this.state.loggedUser}
-              />
-              <ProtectedRoutes
-                exact
-                path="/meus-serviços"
-                component={ServicesPage}
-                user={this.state.loggedUser}
-              />
-              <ProtectedRoutes
-                exact
-                path="/meus-pedidos"
-                component={OrdersPage}
-                user={this.state.loggedUser}
-              />
-              <ProtectedRoutes
-                exact
-                path="/convite/:invitationCode"
-                component={InvitePage}
-                user={this.state.loggedUser}
-                getUser={this.getUser}
-              />
-              <ProtectedRoutes
-                exact
-                path="/perfil"
-                component={ProfilePage}
-                user={this.state.loggedUser}
-                getUser={this.getUser}
-              />
-            </Switch>
-       </div>
+            <div className="app-container">
+              <Switch>
+                <Route exact path="/" component={Home} />
+                <ProtectedRoutes
+                  exact
+                  path="/pagina-principal"
+                  component={MainPage}
+                  user={this.state.loggedUser}
+                  getUser={this.getUser}
+                />
+                <ProtectedRoutes
+                  exact
+                  path="/adicionar-condominio"
+                  component={AddBuilding}
+                  user={this.state.loggedUser}
+                />
+                <ProtectedRoutes
+                  exact
+                  path="/condominio/:id"
+                  component={BuildingDetails}
+                  user={this.state.loggedUser}
+                />
+                <ProtectedRoutes
+                  exact
+                  path="/condominio/:id/adicionar-serviço"
+                  component={AddService}
+                  user={this.state.loggedUser}
+                />
+                <ProtectedRoutes
+                  exact
+                  path="/condominio/:id/serviço/:servicoId"
+                  component={ServiceDetails}
+                  user={this.state.loggedUser}
+                />
+                <ProtectedRoutes
+                  exact
+                  path="/meus-condominios"
+                  component={BuildingsPage}
+                  user={this.state.loggedUser}
+                />
+                <ProtectedRoutes
+                  exact
+                  path="/meus-serviços"
+                  component={ServicesPage}
+                  user={this.state.loggedUser}
+                />
+                <ProtectedRoutes
+                  exact
+                  path="/meus-pedidos"
+                  component={OrdersPage}
+                  user={this.state.loggedUser}
+                />
+                <ProtectedRoutes
+                  exact
+                  path="/convite/:invitationCode"
+                  component={InvitePage}
+                  user={this.state.loggedUser}
+                  getUser={this.getUser}
+                />
+                <ProtectedRoutes
+                  exact
+                  path="/perfil"
+                  component={ProfilePage}
+                  user={this.state.loggedUser}
+                  getUser={this.getUser}
+                />
+                {/* this route will catch any route that wasnt matched in previous routes */}
+                <Route component={RedirectToMain} />
+              </Switch>
+            </div>
           </div>
         ) : (
           <div>
@@ -154,6 +157,7 @@ class App extends Component {
             />
             <div className="app-container">
               <Switch>
+                <Route exact path="/" component={Home} />
                 <Route
                   exact
                   path="/signup"
@@ -168,7 +172,7 @@ class App extends Component {
                     <Login getUser={this.getUser} {...props} />
                   )}
                 />
-                <Route component={Home} />
+                <Route component={RedirectToMain} />
               </Switch>
             </div>
           </div>
