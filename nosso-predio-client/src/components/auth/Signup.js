@@ -111,17 +111,13 @@ class Signup extends Component {
             <input className="auth-button" type="submit" value="Signup" />
           )}
         </form>
+
         <div className='auth-google'>
-        <p className='auth-alternative'>Ou então entre com sua conta Google</p>
-          <GoogleLogin
-            clientId="109485928712-4bupqc5nh8sos95nu8k7ssc41o7sf8eu.apps.googleusercontent.com"
-            buttonText="Login"
-            onSuccess={this.responseGoogle}
-            onFailure={this.responseGoogle}
-            cookiePolicy={"single_host_origin"}
+        <p className='auth-alternative'>Ou então entre com sua conta Google/Facebook</p>
+        <a href="http://localhost:5000/api/auth/google">GOOGLE</a>
+        <a href="http://localhost:5000/api/auth/facebook">FACEBOOK</a>
           />
         </div>
-
         <p>{this.state.errorMessage}</p>
 
       </div>

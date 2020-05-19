@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import MainService from "../MainService";
 import "./User.css";
-// import BuildingsList from "../building/BuildingsList";
 import ServicesList from "../service/ServicesList";
 import OrderList from "../order/OrderList";
 
@@ -16,6 +15,7 @@ class MainPage extends Component {
       services: [],
       search: "",
       buildingApiCalled: false,
+      userApiCalled: false,
       serviceApiCalled: false,
       orderAPICalled: false,
       toggleButton: false,
@@ -38,12 +38,22 @@ class MainPage extends Component {
   }
 
   handleChangeCode(e) {
-    this.setState(
-      {
-        confirmationCode: e.target.value,
-      },
-      () => this.getBuildings()
-    );
+
+    this.setState({
+      confirmationCode: e.target.value,
+    });
+  }
+
+  getUserUpdated() {
+    if (!this.state.userApiCalled) {
+      this.service.getUser(this.props.user._id).then((response) => {
+        this.props.getUser(response)
+        this.setState({
+          userApiCalled: true,
+        });
+      });
+    }
+
   }
 
   getBuildings() {
@@ -114,18 +124,19 @@ class MainPage extends Component {
     });
   }
 
-  handleOnSubmit(e) {
-    e.preventDefault();
-    this.service
-      .buildingInvite(this.state.confirmationCode)
-      .then((response) => {
-        this.setState({
-          toggleButton: !this.state.toggleButton,
-          confirmationCode: "",
-          buildingApiCalled: false,
-        });
-      });
+
+  handleOnSubmit(e){
+    e.preventDefault()
+    this.service.buildingInvite(this.state.confirmationCode).then(response => {
+      this.setState({
+        toggleButton: !this.state.toggleButton,
+        confirmationCode: '',
+        buildingApiCalled:false,
+        userApiCalled:false,
+      })
+    })
   }
+
   handleStatus(buildingId, serviceId, orderId, status) {
     this.service
       .changeStatus(buildingId, serviceId, orderId, status)
@@ -144,6 +155,7 @@ class MainPage extends Component {
   }
 
   render() {
+    this.getUserUpdated()
     // IF USER DOESNT HAVE BUILDINGS
     if (this.props.user.buildings.length < 1) {
       this.getBuildings();
@@ -170,6 +182,7 @@ class MainPage extends Component {
                     placeholder="insira seu código de acesso"
                   />
                   <button type="submit">Enviar</button>
+
                 </form>
               ) : (
                 <></>
@@ -191,7 +204,6 @@ class MainPage extends Component {
                     </div>
                   );
                 })}
-              {/* <BuildingsList buildings={this.state.filteredBuildings} {...this.props}></BuildingsList> */}
             </div>
           </div>
         </div>
@@ -243,6 +255,11 @@ class MainPage extends Component {
               onChange={this.handleChangeSearch}
               placeholder="Buscar pelo nome"
             />
+
+          </div>
+
+          <div>
+          <Link to="/meus-condominios">Meus condominios</Link>
             {this.state.buildings
               .filter((elem) => {
                 return elem.name.toLowerCase().includes(this.state.search);
@@ -258,7 +275,7 @@ class MainPage extends Component {
           </div>
 
           <div>
-            <h3>Meus Serviços</h3>
+          <Link to="/meus-serviços">Meus serviços</Link>
             {this.props.user.services.length > 0 ? (
               <ServicesList
                 services={this.state.services}
@@ -269,28 +286,16 @@ class MainPage extends Component {
             )}
           </div>
           <div>
-            <h3>Meus Pedidos</h3>
-            <button onClick={this.handleToggleStatus}>
-              {this.state.toggleStatusButton
-                ? "Mostrar todos os pedidos"
-                : "Mostrar somente pedidos ativos"}
-            </button>
-            {this.state.toggleStatusButton ? (
-              <OrderList
-                activeOrders={this.activeOrders}
-                handleStatus={this.handleStatus}
-                orders={this.state.orders.filter(
-                  (order) => order.status !== "Cancelado"
-                )}
-                {...this.props}
-              />
-            ) : (
-              <OrderList
-                handleStatus={this.handleStatus}
-                orders={this.state.orders}
-                {...this.props}
-              />
-            )}
+
+          <Link to="/meus-pedidos">Meus pedidos</Link>
+              <button onClick={this.handleToggleStatus}>
+              {this.state.toggleStatusButton ? ('Mostrar todos os pedidos') : ('Mostrar somente pedidos ativos')}
+              </button>
+              {this.state.toggleStatusButton ? (
+                <OrderList activeOrders={this.activeOrders} handleStatus={this.handleStatus} orders={this.state.orders.filter(order => order.status !== "Cancelado")} {...this.props} />
+              ):(
+                <OrderList handleStatus={this.handleStatus} orders={this.state.orders} {...this.props}/>
+              )}
           </div>
         </div>
       );
