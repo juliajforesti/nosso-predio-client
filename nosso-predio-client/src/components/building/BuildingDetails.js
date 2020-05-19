@@ -3,6 +3,7 @@ import MainService from "../MainService";
 import { Link } from "react-router-dom";
 import ServicesList from "../service/ServicesList";
 import EditBuilding from "./EditBuilding";
+import InviteLink from "./InviteLink";
 
 class BuildingDetails extends Component {
   constructor(props) {
@@ -38,7 +39,7 @@ class BuildingDetails extends Component {
   }
 
   getEditedBuilding(newBuilding) {
-    console.log()
+    console.log();
     this.setState({
       building: newBuilding,
     });
@@ -83,10 +84,7 @@ class BuildingDetails extends Component {
           )}
         </div>
         {this.state.building.owner === this.props.user._id ? (
-          <p>
-            Link para convidar outros:{" "}
-            {`${this.state.building.confirmationCode}`}
-          </p>
+          <InviteLink code={this.state.building.confirmationCode} />
         ) : (
           <></>
         )}
