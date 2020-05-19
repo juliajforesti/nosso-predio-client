@@ -97,6 +97,8 @@ class Signup extends Component {
             <input  className="button" type="submit" value="Signup" />
           ) }
         </form>
+        <a href="http://localhost:5000/api/auth/google">GOOGLE</a>
+        <a href="http://localhost:5000/api/auth/facebook">FACEBOOK</a>
         <p>Crie uma senha com no mínimo 6 caracteres</p>
         <p>{this.state.errorMessage}</p>
         <p>
