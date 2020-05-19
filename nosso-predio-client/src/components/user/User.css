@@ -21,6 +21,15 @@ body{
   text-shadow: 3px 2px 5px #6593A6;
   font-size: 2.5rem;
 }
+
+.welcome-section{
+  text-align: center;
+  padding: 1rem;
+  background-color: white;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+  color: #3F6473;
+}
 .add-building-box{
   text-align: center;
   border-radius: 0.2rem;
@@ -94,7 +103,7 @@ body{
   /* text-shadow: 1px 1px 3px #6593A6; */
   display: flex;
   align-items: center;
-  box-shadow: 1px 1px 2px #6593A6;;
+  box-shadow: 1px 1px 2px #6593A6;
 }
 .card-img{
   width: 3rem;
