@@ -38,7 +38,7 @@ class MainPage extends Component {
   getUserUpdated() {
     if (!this.state.userApiCalled) {
       this.service.getUser(this.props.user._id).then((response) => {
-        this.props.getUser(response)
+        this.props.getUser(response);
         this.setState({
           userApiCalled: true,
         });
@@ -114,17 +114,20 @@ class MainPage extends Component {
     })
   }
 
-  handleOnSubmit(e){
-    e.preventDefault()
-    this.service.buildingInvite(this.state.confirmationCode).then(response => {
-      this.setState({
-        toggleButton: !this.state.toggleButton,
-        confirmationCode: '',
-        buildingApiCalled:false,
-        userApiCalled:false,
-      })
-    })
-  }
+
+  handleOnSubmit(e) {
+    e.preventDefault();
+    this.service
+      .buildingInvite(this.state.confirmationCode)
+      .then((response) => {
+        this.setState({
+          toggleButton: !this.state.toggleButton,
+          confirmationCode: "",
+          buildingApiCalled: false,
+          userApiCalled: false,
+        });
+      });
+
 
   handleStatus(buildingId, serviceId, orderId, status) {
     this.service
@@ -143,7 +146,7 @@ class MainPage extends Component {
   }
 
   render() {
-    this.getUserUpdated()
+    this.getUserUpdated();
     // IF USER DOESNT HAVE BUILDINGS
     if (this.props.user.buildings.length < 1) {
       this.getBuildings();
@@ -155,23 +158,28 @@ class MainPage extends Component {
               <Link to="/adicionar-condominio">Adicionar Condominio</Link> <br/> <br/>
               <button onClick={()=>this.handleToggle()}>Já tem um convite? Junte-se ao seu condomínio</button> <br/> <br/>
               {this.state.toggleButton ? (
-                <form onSubmit={this.handleOnSubmit} type= 'submit'>
-                  <input onChange={this.handleChangeCode} value={this.state.confirmationCode} type='text' name='confirmationCode' placeholder='insira seu código de acesso'/>
-                  <button type='submit' >Enviar</button> <br/> <br/>
+
+                <form onSubmit={this.handleOnSubmit} type="submit">
+                  <input
+                    onChange={this.handleChangeCode}
+                    value={this.state.confirmationCode}
+                    type="text"
+                    name="confirmationCode"
+                    placeholder="insira seu código de acesso"
+                  />
+                  <button type="submit">Enviar</button>
                 </form>
               ) : (
                 <></>
-              )
-              }
-              {
-              this.state.buildings
-                .map((building, idx) => {
-                  return (
-                    <div key={idx} className="building-box">
-                      <h1>{building.name}</h1>
-                    </div>
-                  );
-                })}
+              )}
+              {this.state.buildings.map((building, idx) => {
+                return (
+                  <div key={idx} className="card-box">
+                    <h1>{building.name}</h1>
+                  </div>
+                );
+              })}
+
             </div>
           </div>
         </div>
@@ -187,8 +195,19 @@ class MainPage extends Component {
         <div>
           <h1> Main Page </h1>
           <div>
-            <Link to="/adicionar-condominio">Adicionar Condominio</Link>  <br/> <br/>
-            <button onClick={()=>this.handleToggle()}>Já tem um convite? Junte-se ao seu condomínio</button> <br/> <br/>
+            <div className="add-building-box">
+              <Link className="add-building-btn" to="/adicionar-condominio">
+                Criar Condominio
+              </Link>
+            </div>
+            <div className="invitation-code-box">
+              <button
+                className="invitation-code-btn"
+                onClick={() => this.handleToggle()}
+              >
+                Já tem um convite? Clique aqui para inserir o código
+              </button>
+
               {this.state.toggleButton ? (
                 <form onSubmit={this.handleOnSubmit} type= 'submit'>
                   <input onChange={this.handleChangeCode} value={this.state.confirmationCode} type='text' name='confirmationCode' placeholder='insira seu código de acesso'/>
@@ -199,51 +218,92 @@ class MainPage extends Component {
               )
               }
           </div>
-            <br />
-          <Link to="/meus-condominios">Meus condominios</Link>
-            { this.props.user.buildings.length > 3 ? (
-              this.state.buildings.slice(0,3).map((building, idx) => {
+          <div className="main-page-section-title-container">
+            <Link className="main-page-section-title" to="/meus-condominios">
+              Meus condominios
+            </Link>
+          </div>
+          {this.props.user.buildings.length > 3
+            ? this.state.buildings.slice(0, 3).map((building, idx) => {
                 return (
-                  <div key={idx} className="building-box">
-                    <h1>{building.name}</h1>
-                    <Link to={`/condominio/${building._id}`}>Acessar</Link>
-                  </div>
-                )
-              })
-            ) :  (this.state.buildings
-              .map((building, idx) => {
-                return (
-                  <div key={idx} className="building-box">
-                    <h1>{building.name}</h1>
-                    <Link to={`/condominio/${building._id}`}>Acessar</Link>
+                  <div>
+                    <Link to={`/condominio/${building._id}`}>
+                      <div className="card-box">
+                        <img className="card-img" src={building.image} alt="" />
+                        <h3>{building.name}</h3>
+                        <p>CEP: {building.address.cep}</p>
+                      </div>
+                    </Link>
                   </div>
                 );
-              }))}
-              { this.props.user.buildings.length > 3 ? 
-               <Link to="/meus-condominios">Ver mais</Link>
-              : <div></div>}
+              })
+            : this.state.buildings.map((building, idx) => {
+                return (
+                  <div key={idx}>
+                    <Link to={`/condominio/${building._id}`}>
+                      <div className="card-box">
+                        <img className="card-img" src={building.image} alt="" />
+                        <h3>{building.name}</h3>
+                        <p>{building.address.cep}</p>
+                      </div>
+                    </Link>
+                  </div>
+                );
+              })}
+          {this.props.user.buildings.length > 3 ? (
+            <div className='see-more-box'>
+            <Link className='see-more-btn' to="/meus-condominios">Ver mais</Link>
+            </div>
+          ) : (
+            <div></div>
+          )}
+
+          <div className="main-page-section-title-container">
+            <Link className="main-page-section-title" to="/meus-serviços">
+              Meus serviços e produtos
+            </Link>
           </div>
           <div>
-          <Link to="/meus-serviços">Meus serviços</Link>
             {this.props.user.services.length > 0 ? (
               <ServicesList
                 services={this.state.services}
                 {...this.props}
               ></ServicesList>
-            ) : <></>}
+            ) : (
+              <></>
+            )}
+          </div>
+
+          <div className="main-page-section-title-container">
+            <Link className="main-page-section-title" to="/meus-pedidos">
+              Meus pedidos
+            </Link>
+
           </div>
           <div>
-          <Link to="/meus-pedidos">Meus pedidos</Link>
-              <button onClick={this.handleToggleStatus}>
-              {this.state.toggleStatusButton ? ('Mostrar todos os pedidos') : ('Mostrar somente pedidos ativos')}
-              </button>
-              {this.state.toggleStatusButton ? (
-                <OrderList activeOrders={this.activeOrders} handleStatus={this.handleStatus} orders={this.state.orders.filter(order => order.status !== "Cancelado")} {...this.props} />
-              ):(
-                <OrderList handleStatus={this.handleStatus} orders={this.state.orders} {...this.props}/>
-              )}
+            <button onClick={this.handleToggleStatus}>
+              {this.state.toggleStatusButton
+                ? "Mostrar todos os pedidos"
+                : "Mostrar somente pedidos ativos"}
+            </button>
+            {this.state.toggleStatusButton ? (
+              <OrderList
+                activeOrders={this.activeOrders}
+                handleStatus={this.handleStatus}
+                orders={this.state.orders.filter(
+                  (order) => order.status !== "Cancelado"
+                )}
+                {...this.props}
+              />
+            ) : (
+              <OrderList
+                handleStatus={this.handleStatus}
+                orders={this.state.orders}
+                {...this.props}
+              />
+            )}
           </div>
-          </div>
+        </div>
       );
     }
   }
