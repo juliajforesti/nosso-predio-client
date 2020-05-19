@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import MainService from "../MainService";
 import "./User.css";
-// import BuildingsList from "../building/BuildingsList";
 import ServicesList from "../service/ServicesList";
 import OrderList from "../order/OrderList";
 
@@ -29,10 +28,6 @@ class MainPage extends Component {
     this.handleOnSubmit = this.handleOnSubmit.bind(this);
     this.handleStatus = this.handleStatus.bind(this);
     this.handleToggleStatus = this.handleToggleStatus.bind(this);
-
-
-    
-
   }
 
   handleChangeSearch(e) {
@@ -44,7 +39,7 @@ class MainPage extends Component {
   handleChangeCode(e) {
     this.setState({
       confirmationCode: e.target.value,
-    }, () => this.getBuildings());
+    });
   }
 
   getBuildings() {
@@ -125,6 +120,7 @@ class MainPage extends Component {
       })
     })
   }
+
   handleStatus(buildingId, serviceId, orderId, status) {
     this.service
       .changeStatus(buildingId, serviceId, orderId, status)
@@ -179,7 +175,6 @@ class MainPage extends Component {
                     </div>
                   );
                 })}
-              {/* <BuildingsList buildings={this.state.filteredBuildings} {...this.props}></BuildingsList> */}
             </div>
           </div>
         </div>
@@ -217,7 +212,7 @@ class MainPage extends Component {
           </div>
 
           <div>
-            <h3>Meus Condominios</h3>
+          <Link to="/meus-condominios">Meus condominios</Link>
             {this.state.buildings
               .filter((elem) => {
                 return elem.name.toLowerCase().includes(this.state.search);
@@ -233,7 +228,7 @@ class MainPage extends Component {
           </div>
 
           <div>
-            <h3>Meus Serviços</h3>
+          <Link to="/meus-serviços">Meus serviços</Link>
             {this.props.user.services.length > 0 ? (
               <ServicesList
                 services={this.state.services}
@@ -244,7 +239,7 @@ class MainPage extends Component {
             )}
           </div>
           <div>
-            <h3>Meus Pedidos</h3>
+          <Link to="/meus-pedidos">Meus pedidos</Link>
               <button onClick={this.handleToggleStatus}>
               {this.state.toggleStatusButton ? ('Mostrar todos os pedidos') : ('Mostrar somente pedidos ativos')}
               </button>

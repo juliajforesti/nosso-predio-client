@@ -10,9 +10,12 @@ import ProtectedRoutes from "./components/auth/ProtectedRoutes";
 import MainPage from "./components/user/MainPage";
 import AddBuilding from "./components/building/AddBuilding";
 import BuildingDetails from "./components/building/BuildingDetails";
+import BuildingsPage from "./components/building/BuildingsPage";
 import AddService from "./components/service/AddService";
 import ServiceDetails from "./components/service/ServiceDetails";
 import ProfilePage from "./components/user/ProfilePage";
+import ServicesPage from "./components/service/ServicesPage";
+import OrdersPage from "./components/order/OrdersPage";
 
 
 class App extends Component {
@@ -104,6 +107,24 @@ class App extends Component {
                 exact
                 path="/condominio/:id/serviço/:servicoId"
                 component={ServiceDetails}
+                user={this.state.loggedUser}
+              />
+              <ProtectedRoutes
+                exact
+                path="/meus-condominios"
+                component={BuildingsPage}
+                user={this.state.loggedUser}
+              />
+              <ProtectedRoutes
+                exact
+                path="/meus-serviços"
+                component={ServicesPage}
+                user={this.state.loggedUser}
+              />
+              <ProtectedRoutes
+                exact
+                path="/meus-pedidos"
+                component={OrdersPage}
                 user={this.state.loggedUser}
               />
               <ProtectedRoutes
