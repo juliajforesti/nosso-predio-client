@@ -23,6 +23,11 @@ class AuthService {
       .then((response) => response.data)
   }
 
+  googleLogin(){
+    return this.service.get('/auth/google')
+    .then(response => response.data)
+  }
+
   logout() {
     return this.service
     .get("/logout", {})
