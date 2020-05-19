@@ -11,14 +11,14 @@ class MainPage extends Component {
     this.state = {
       buildings: [],
       orders: [],
-      activeOrders:[],
+      activeOrders: [],
       services: [],
       buildingApiCalled: false,
       userApiCalled: false,
       serviceApiCalled: false,
       orderAPICalled: false,
       toggleButton: false,
-      confirmationCode: '',
+      confirmationCode: "",
       toggleStatusButton: true,
     };
     this.service = new MainService();
@@ -102,18 +102,17 @@ class MainPage extends Component {
     }
   }
 
-  handleToggle(){
+  handleToggle() {
     this.setState({
-      toggleButton: !this.state.toggleButton
-    })
+      toggleButton: !this.state.toggleButton,
+    });
   }
 
-  handleToggleStatus(){
+  handleToggleStatus() {
     this.setState({
-      toggleStatusButton: !this.state.toggleStatusButton
-    })
+      toggleStatusButton: !this.state.toggleStatusButton,
+    });
   }
-
 
   handleOnSubmit(e) {
     e.preventDefault();
@@ -127,22 +126,23 @@ class MainPage extends Component {
           userApiCalled: false,
         });
       });
-
+  }
 
   handleStatus(buildingId, serviceId, orderId, status) {
     this.service
       .changeStatus(buildingId, serviceId, orderId, status)
-      .then((response) => this.setState({
-        orderAPICalled: false
-      })
+      .then((response) =>
+        this.setState({
+          orderAPICalled: false,
+        })
       );
   }
 
-  activeOrders(){
-    const orders = [...this.state.orders]
+  activeOrders() {
+    const orders = [...this.state.orders];
     this.setState({
-      activeOrders: orders.filter(order => order.status !== "Cancelado")
-    })
+      activeOrders: orders.filter((order) => order.status !== "Cancelado"),
+    });
   }
 
   render() {
@@ -152,13 +152,18 @@ class MainPage extends Component {
       this.getBuildings();
       return (
         <div>
-          <h1> Main Page </h1> <br/>
+          <div className='main-page-title-box'>
+            <h1> Olá {this.props.user.name} </h1>
+          </div>
           <div>
             <div>
-              <Link to="/adicionar-condominio">Adicionar Condominio</Link> <br/> <br/>
-              <button onClick={()=>this.handleToggle()}>Já tem um convite? Junte-se ao seu condomínio</button> <br/> <br/>
+              <Link to="/adicionar-condominio">Adicionar Condominio</Link>{" "}
+              <br /> <br />
+              <button onClick={() => this.handleToggle()}>
+                Já tem um convite? Junte-se ao seu condomínio
+              </button>{" "}
+              <br /> <br />
               {this.state.toggleButton ? (
-
                 <form onSubmit={this.handleOnSubmit} type="submit">
                   <input
                     onChange={this.handleChangeCode}
@@ -179,7 +184,6 @@ class MainPage extends Component {
                   </div>
                 );
               })}
-
             </div>
           </div>
         </div>
@@ -192,118 +196,138 @@ class MainPage extends Component {
       this.getUserOrders();
       return (
         <div>
-        <div>
-          <h1> Main Page </h1>
-          <div>
-            <div className="add-building-box">
-              <Link className="add-building-btn" to="/adicionar-condominio">
-                Criar Condominio
-              </Link>
-            </div>
-            <div className="invitation-code-box">
-              <button
-                className="invitation-code-btn"
-                onClick={() => this.handleToggle()}
-              >
-                Já tem um convite? Clique aqui para inserir o código
-              </button>
+          <div className='main-page-title-box'>
+            <h1> Olá {this.props.user.name} </h1>
+          </div>
+            <div>
+              <div className="add-building-box">
+                <Link className="add-building-btn" to="/adicionar-condominio">
+                  Criar Condominio
+                </Link>
+              </div>
+              <div className="invitation-code-box">
+                <button
+                  className="invitation-code-btn"
+                  onClick={() => this.handleToggle()}
+                >
+                  Já tem um convite? Clique aqui para inserir o código
+                </button>
 
-              {this.state.toggleButton ? (
-                <form onSubmit={this.handleOnSubmit} type= 'submit'>
-                  <input onChange={this.handleChangeCode} value={this.state.confirmationCode} type='text' name='confirmationCode' placeholder='insira seu código de acesso'/>
-                  <button type='submit' >Enviar</button>
-                </form>
-              ) : (
-                <></>
-              )
-              }
-          </div>
-          <div className="main-page-section-title-container">
-            <Link className="main-page-section-title" to="/meus-condominios">
-              Meus condominios
-            </Link>
-          </div>
-          {this.props.user.buildings.length > 3
-            ? this.state.buildings.slice(0, 3).map((building, idx) => {
-                return (
-                  <div>
-                    <Link to={`/condominio/${building._id}`}>
-                      <div className="card-box">
-                        <img className="card-img" src={building.image} alt="" />
-                        <h3>{building.name}</h3>
-                        <p>CEP: {building.address.cep}</p>
-                      </div>
-                    </Link>
-                  </div>
-                );
-              })
-            : this.state.buildings.map((building, idx) => {
-                return (
-                  <div key={idx}>
-                    <Link to={`/condominio/${building._id}`}>
-                      <div className="card-box">
-                        <img className="card-img" src={building.image} alt="" />
-                        <h3>{building.name}</h3>
-                        <p>{building.address.cep}</p>
-                      </div>
-                    </Link>
-                  </div>
-                );
-              })}
-          {this.props.user.buildings.length > 3 ? (
-            <div className='see-more-box'>
-            <Link className='see-more-btn' to="/meus-condominios">Ver mais</Link>
-            </div>
-          ) : (
-            <div></div>
-          )}
-
-          <div className="main-page-section-title-container">
-            <Link className="main-page-section-title" to="/meus-serviços">
-              Meus serviços e produtos
-            </Link>
-          </div>
-          <div>
-            {this.props.user.services.length > 0 ? (
-              <ServicesList
-                services={this.state.services}
-                {...this.props}
-              ></ServicesList>
-            ) : (
-              <></>
-            )}
-          </div>
-
-          <div className="main-page-section-title-container">
-            <Link className="main-page-section-title" to="/meus-pedidos">
-              Meus pedidos
-            </Link>
-
-          </div>
-          <div>
-            <button onClick={this.handleToggleStatus}>
-              {this.state.toggleStatusButton
-                ? "Mostrar todos os pedidos"
-                : "Mostrar somente pedidos ativos"}
-            </button>
-            {this.state.toggleStatusButton ? (
-              <OrderList
-                activeOrders={this.activeOrders}
-                handleStatus={this.handleStatus}
-                orders={this.state.orders.filter(
-                  (order) => order.status !== "Cancelado"
+                {this.state.toggleButton ? (
+                  <form onSubmit={this.handleOnSubmit} type="submit">
+                    <input
+                      onChange={this.handleChangeCode}
+                      value={this.state.confirmationCode}
+                      type="text"
+                      name="confirmationCode"
+                      placeholder="insira seu código de acesso"
+                    />
+                    <button type="submit">Enviar</button>
+                  </form>
+                ) : (
+                  <></>
                 )}
-                {...this.props}
-              />
-            ) : (
-              <OrderList
-                handleStatus={this.handleStatus}
-                orders={this.state.orders}
-                {...this.props}
-              />
-            )}
+              </div>
+
+              <div className="main-page-section-title-container">
+                <Link
+                  className="main-page-section-title"
+                  to="/meus-condominios"
+                >
+                  Meus condominios
+                </Link>
+              </div>
+              {this.props.user.buildings.length > 3
+                ? this.state.buildings.slice(0, 3).map((building, idx) => {
+                    return (
+                      <div>
+                        <Link to={`/condominio/${building._id}`}>
+                          <div className="card-box">
+                            <img
+                              className="card-img"
+                              src={building.image}
+                              alt=""
+                            />
+                            <h3>{building.name}</h3>
+                            <p>CEP: {building.address.cep}</p>
+                          </div>
+                        </Link>
+                      </div>
+                    );
+                  })
+                : this.state.buildings.map((building, idx) => {
+                    return (
+                      <div key={idx}>
+                        <Link to={`/condominio/${building._id}`}>
+                          <div className="card-box">
+                            <img
+                              className="card-img"
+                              src={building.image}
+                              alt=""
+                            />
+                            <h3>{building.name}</h3>
+                            <p>{building.address.cep}</p>
+                          </div>
+                        </Link>
+                      </div>
+                    );
+                  })}
+              {this.props.user.buildings.length > 3 ? (
+                <div className="see-more-box">
+                  <Link className="see-more-btn" to="/meus-condominios">
+                    Ver mais
+                  </Link>
+                </div>
+              ) : (
+                <div></div>
+              )}
+
+              <div className="main-page-section-title-container">
+                <Link className="main-page-section-title" to="/meus-serviços">
+                  Meus serviços e produtos
+                </Link>
+              </div>
+              <div>
+                {this.props.user.services.length > 0 ? (
+                  <ServicesList
+                    services={this.state.services}
+                    {...this.props}
+                  ></ServicesList>
+                ) : (
+                  <></>
+                )}
+              </div>
+
+              <div className="main-page-section-title-container">
+                <Link className="main-page-section-title" to="/meus-pedidos">
+                  Meus pedidos
+                </Link>
+              </div>
+              <div>
+                <button onClick={this.handleToggleStatus}>
+                  {this.state.toggleStatusButton
+                    ? "Mostrar todos os pedidos"
+                    : "Mostrar somente pedidos ativos"}
+                </button>
+                {this.state.toggleStatusButton ? (
+                  <OrderList
+                    activeOrders={this.activeOrders}
+                    handleStatus={this.handleStatus}
+                    orders={this.state.orders.filter(
+                      (order) => order.status !== "Cancelado"
+                    )}
+                    {...this.props}
+                  />
+                ) : (
+                  <OrderList
+                    handleStatus={this.handleStatus}
+                    orders={this.state.orders}
+                    {...this.props}
+                  />
+                )}
+              </div>
+            </div>
           </div>
-        </div>
       );
     }
   }
