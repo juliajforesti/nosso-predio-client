@@ -23,7 +23,7 @@ export default class InviteLink extends Component {
         </div>
         <div>
           <button onClick={() => {
-            navigator.clipboard.writeText(`http://localhost:3000/convite/${this.props.code}`);
+            navigator.clipboard.writeText(`http://nosso-predio.herokuapp.com/convite/${this.props.code}`);
             this.copyCodeToClipboard();
           }}>
             Copiar link
