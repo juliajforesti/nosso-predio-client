@@ -11,14 +11,14 @@ class MainPage extends Component {
     this.state = {
       buildings: [],
       orders: [],
-      activeOrders: [],
+      activeOrders:[],
       services: [],
       buildingApiCalled: false,
       userApiCalled: false,
       serviceApiCalled: false,
       orderAPICalled: false,
       toggleButton: false,
-      confirmationCode: "",
+      confirmationCode: '',
       toggleStatusButton: true,
     };
     this.service = new MainService();
@@ -102,17 +102,18 @@ class MainPage extends Component {
     }
   }
 
-  handleToggle() {
+  handleToggle(){
     this.setState({
-      toggleButton: !this.state.toggleButton,
-    });
+      toggleButton: !this.state.toggleButton
+    })
   }
 
-  handleToggleStatus() {
+  handleToggleStatus(){
     this.setState({
-      toggleStatusButton: !this.state.toggleStatusButton,
-    });
+      toggleStatusButton: !this.state.toggleStatusButton
+    })
   }
+
 
   handleOnSubmit(e) {
     e.preventDefault();
@@ -126,23 +127,22 @@ class MainPage extends Component {
           userApiCalled: false,
         });
       });
-  }
+
 
   handleStatus(buildingId, serviceId, orderId, status) {
     this.service
       .changeStatus(buildingId, serviceId, orderId, status)
-      .then((response) =>
-        this.setState({
-          orderAPICalled: false,
-        })
+      .then((response) => this.setState({
+        orderAPICalled: false
+      })
       );
   }
 
-  activeOrders() {
-    const orders = [...this.state.orders];
+  activeOrders(){
+    const orders = [...this.state.orders]
     this.setState({
-      activeOrders: orders.filter((order) => order.status !== "Cancelado"),
-    });
+      activeOrders: orders.filter(order => order.status !== "Cancelado")
+    })
   }
 
   render() {
@@ -151,19 +151,14 @@ class MainPage extends Component {
     if (this.props.user.buildings.length < 1) {
       this.getBuildings();
       return (
-        <div className="app">
-          <div className="main-page-title-box">
-            <h1> Olá {this.props.user.name}! </h1> <br />
-          </div>
+        <div>
+          <h1> Main Page </h1> <br/>
           <div>
             <div>
-              <Link to="/adicionar-condominio">Adicionar Condominio</Link>{" "}
-              <br /> <br />
-              <button onClick={() => this.handleToggle()}>
-                Já tem um convite? Junte-se ao seu condomínio
-              </button>{" "}
-              <br /> <br />
+              <Link to="/adicionar-condominio">Adicionar Condominio</Link> <br/> <br/>
+              <button onClick={()=>this.handleToggle()}>Já tem um convite? Junte-se ao seu condomínio</button> <br/> <br/>
               {this.state.toggleButton ? (
+
                 <form onSubmit={this.handleOnSubmit} type="submit">
                   <input
                     onChange={this.handleChangeCode}
@@ -184,6 +179,7 @@ class MainPage extends Component {
                   </div>
                 );
               })}
+
             </div>
           </div>
         </div>
@@ -195,10 +191,9 @@ class MainPage extends Component {
       this.getUserServices();
       this.getUserOrders();
       return (
-        <div className="app">
-          <div className="main-page-title-box">
-            <h1> Olá {this.props.user.name}! </h1>
-          </div>
+        <div>
+        <div>
+          <h1> Main Page </h1>
           <div>
             <div className="add-building-box">
               <Link className="add-building-btn" to="/adicionar-condominio">
@@ -212,21 +207,16 @@ class MainPage extends Component {
               >
                 Já tem um convite? Clique aqui para inserir o código
               </button>
+
               {this.state.toggleButton ? (
-                <form onSubmit={this.handleOnSubmit} type="submit">
-                  <input
-                    onChange={this.handleChangeCode}
-                    value={this.state.confirmationCode}
-                    type="text"
-                    name="confirmationCode"
-                    placeholder="insira seu código de acesso"
-                  />
-                  <button type="submit">Enviar</button>
+                <form onSubmit={this.handleOnSubmit} type= 'submit'>
+                  <input onChange={this.handleChangeCode} value={this.state.confirmationCode} type='text' name='confirmationCode' placeholder='insira seu código de acesso'/>
+                  <button type='submit' >Enviar</button>
                 </form>
               ) : (
                 <></>
-              )}
-            </div>
+              )
+              }
           </div>
           <div className="main-page-section-title-container">
             <Link className="main-page-section-title" to="/meus-condominios">
@@ -283,10 +273,12 @@ class MainPage extends Component {
               <></>
             )}
           </div>
+
           <div className="main-page-section-title-container">
             <Link className="main-page-section-title" to="/meus-pedidos">
               Meus pedidos
             </Link>
+
           </div>
           <div>
           <div className='see-more-box'>

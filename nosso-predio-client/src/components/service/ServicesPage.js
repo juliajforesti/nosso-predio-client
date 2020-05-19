@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import MainService from "../MainService";
 import ServicesList from "../service/ServicesList";
+import { Link } from "react-router-dom";
 
 
 class ServicesPage extends Component {
@@ -45,8 +46,9 @@ class ServicesPage extends Component {
         <div>
           <h1> Meus serviços/produtos </h1> <br />
           <div>
-            <h1>Você ainda não tem nenhum serviço.</h1>
+            <h1>Você ainda não tem nenhum serviço, entre em um dos seus condominios e crie um!</h1>
           </div>
+          <Link to='/pagina-principal'><button>Voltar</button></Link>
         </div>
       );
 
@@ -74,6 +76,7 @@ class ServicesPage extends Component {
                 {...this.props}
               ></ServicesList>
           </div>
+          <Link to='/pagina-principal'><button>Voltar</button></Link>
         </div>
       );
     }
