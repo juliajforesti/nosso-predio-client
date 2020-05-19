@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import MainService from "../MainService";
 import OrderList from "./OrderList";
+import { Link } from "react-router-dom";
 
 
 class OrdersPage extends Component {
@@ -64,6 +65,7 @@ class OrdersPage extends Component {
           <div>
             <h1>Você ainda não tem nenhum pedido, acesse um de seus condominios e peça!</h1>
           </div>
+          <Link to='/pagina-principal'><button>Voltar</button></Link>
         </div>
       );
 
@@ -82,6 +84,7 @@ class OrdersPage extends Component {
                 <OrderList handleStatus={this.handleStatus} orders={this.state.orders} {...this.props}/>
               )}
           </div>
+          <Link to='/pagina-principal'><button>Voltar</button></Link>
         </div>
       );
     }
