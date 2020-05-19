@@ -8,7 +8,7 @@ const OrderList = (props) => {
     <div>
       {orders.map((order, idx) => {
         return (
-          <div key={idx} className="building-box">
+          <div key={idx} className="card-box">
             <Link
               to={`/condominio/${order.service.building}/serviço/${order.service._id}`}
             >

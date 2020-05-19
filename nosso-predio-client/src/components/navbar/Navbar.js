@@ -17,7 +17,7 @@ const Navbar = (props) => {
         ) : (
           <div className='nav-right-side'>
             <NavLink className='nav-link-right' to='/perfil'>Perfil</NavLink>
-            <button className='nav-link-right' onClick={() => props.logout()}>Logout</button>
+            <button className='logout-btn' onClick={() => props.logout()}>Logout</button>
           </div>
         )}
       </div>

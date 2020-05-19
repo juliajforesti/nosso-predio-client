@@ -1,14 +1,13 @@
 
 
 .nav-main-box {
-
   padding: 0.5rem 1rem;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   font-size: 0.8rem;
   align-items: center;
-  background-color: #556080;
+  background-color: #3F6473;
   color: white;
   /* width: 100%; */
 }
@@ -36,11 +35,13 @@
   padding-left: 1rem;
   text-decoration: none;
   color: white;
-
 }
-.nav-link>button {
+.logout-btn {
   border: none;
-  font-size: 1.4rem;
-  background-color: #556080;
+  font-size: 0.75rem;
+  background-color: #3F6473;
   color: white;
+  padding-left: 1rem;
+  cursor: pointer;
+
 }
