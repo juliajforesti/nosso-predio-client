@@ -16,6 +16,7 @@ import ServiceDetails from "./components/service/ServiceDetails";
 import ProfilePage from "./components/user/ProfilePage";
 import ServicesPage from "./components/service/ServicesPage";
 import OrdersPage from "./components/order/OrdersPage";
+import InvitePage from './components/building/InvitePage'
 
 
 class App extends Component {
@@ -126,6 +127,13 @@ class App extends Component {
                 path="/meus-pedidos"
                 component={OrdersPage}
                 user={this.state.loggedUser}
+              />
+              <ProtectedRoutes
+                exact
+                path="/convite/:invitationCode"
+                component={InvitePage}
+                user={this.state.loggedUser}
+                getUser={this.getUser}
               />
               <ProtectedRoutes
                 exact
