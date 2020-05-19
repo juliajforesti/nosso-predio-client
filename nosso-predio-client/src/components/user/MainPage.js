@@ -15,6 +15,7 @@ class MainPage extends Component {
       services: [],
       search: "",
       buildingApiCalled: false,
+      userApiCalled: false,
       serviceApiCalled: false,
       orderAPICalled: false,
       toggleButton: false,
@@ -40,6 +41,17 @@ class MainPage extends Component {
     this.setState({
       confirmationCode: e.target.value,
     });
+  }
+
+  getUserUpdated() {
+    if (!this.state.userApiCalled) {
+      this.service.getUser(this.props.user._id).then((response) => {
+        this.props.getUser(response)
+        this.setState({
+          userApiCalled: true,
+        });
+      });
+    }
   }
 
   getBuildings() {
@@ -117,6 +129,7 @@ class MainPage extends Component {
         toggleButton: !this.state.toggleButton,
         confirmationCode: '',
         buildingApiCalled:false,
+        userApiCalled:false,
       })
     })
   }
@@ -138,6 +151,7 @@ class MainPage extends Component {
   }
 
   render() {
+    this.getUserUpdated()
     // IF USER DOESNT HAVE BUILDINGS
     if (this.props.user.buildings.length < 1) {
       this.getBuildings();
@@ -151,7 +165,7 @@ class MainPage extends Component {
               {this.state.toggleButton ? (
                 <form onSubmit={this.handleOnSubmit} type= 'submit'>
                   <input onChange={this.handleChangeCode} value={this.state.confirmationCode} type='text' name='confirmationCode' placeholder='insira seu código de acesso'/>
-                  <button type='submit' >Enviar</button>
+                  <button type='submit' >Enviar</button> <br/> <br/>
                 </form>
               ) : (
                 <></>
