@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const OrderList = (props) => {
   const { orders } = props;
-  let statusAvailable = ["Pendente", "Confirmado", "Entregue", "Calcelado"];
+  let statusAvailable = ["Pendente", "Confirmado", "Entregue", "Cancelado"];
   return (
     <div>
       {orders.map((order, idx) => {
@@ -20,8 +20,8 @@ const OrderList = (props) => {
             {props.user.services.includes(order.service._id) ? (
               <div>
               <p>Pedido por: {order.origin.name}</p>
-
-              <form
+              { order.status !== 'Cancelado' ?
+              (<form
                 onChange={(e) =>
                   props.handleStatus(
                     order.service.building,
@@ -42,7 +42,11 @@ const OrderList = (props) => {
                       </option>
                     ))}
                 </select>
-              </form>
+              </form>) : (
+                <p>Status: Cancelado</p>
+              )
+
+              }
               </div>
             ) : (
               <div>
