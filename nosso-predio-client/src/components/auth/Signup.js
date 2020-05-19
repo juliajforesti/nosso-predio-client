@@ -3,7 +3,6 @@
 import React, { Component } from "react";
 import AuthService from "./AuthService";
 import { Link } from "react-router-dom";
-import GoogleLogin from "react-google-login";
 import "./Auth.css";
 
 class Signup extends Component {

@@ -87,6 +87,8 @@ class BuildingsPage extends Component {
             <div>
               <Link to="/adicionar-condominio">Adicionar Condominio</Link>{" "}
               <br /> <br />
+            <h1>Você ainda não tem nenhum condominio, entre peça o link para seus vizinhos ou crie!</h1>
+            <br /> <br />
               <button onClick={() => this.handleToggle()}>
                 Já tem um convite? Junte-se ao seu condomínio
               </button>{" "}
@@ -105,25 +107,9 @@ class BuildingsPage extends Component {
               ) : (
                 <></>
               )}
-              <input
-                type="text"
-                value={this.state.search}
-                onChange={this.handleChangeSearch}
-                placeholder="Buscar pelo nome"
-              />
-              {this.state.buildings
-                .filter((elem) => {
-                  return elem.name.toLowerCase().includes(this.state.search);
-                })
-                .map((building, idx) => {
-                  return (
-                    <div key={idx} className="building-box">
-                      <h1>{building.name}</h1>
-                    </div>
-                  );
-                })}
             </div>
           </div>
+          <Link to='/pagina-principal'><button>Voltar</button></Link>
         </div>
       );
 
@@ -179,6 +165,7 @@ class BuildingsPage extends Component {
                 );
               })}
           </div>
+          <Link to='/pagina-principal'><button>Voltar</button></Link>
         </div>
       );
     }
