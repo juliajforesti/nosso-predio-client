@@ -210,7 +210,7 @@ class MainPage extends Component {
                   </div>
                 )
               })
-            ) :  (this.props.user.buildings
+            ) :  (this.state.buildings
               .map((building, idx) => {
                 return (
                   <div key={idx} className="building-box">
