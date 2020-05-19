@@ -155,8 +155,8 @@ class MainPage extends Component {
           <h1> Main Page </h1> <br/>
           <div>
             <div>
-              <Link to="/adicionar-condominio">Adicionar Condominio</Link> <br/> <br/>
-              <button onClick={()=>this.handleToggle()}>Já tem um convite? Junte-se ao seu condomínio</button> <br/> <br/>
+              <Link to="/adicionar-condominio">Adicionar Condominio</Link> 
+              <button onClick={()=>this.handleToggle()}>Já tem um convite? Junte-se ao seu condomínio</button> 
               {this.state.toggleButton ? (
 
                 <form onSubmit={this.handleOnSubmit} type="submit">
