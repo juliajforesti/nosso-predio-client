@@ -18,7 +18,6 @@ import ServicesPage from "./components/service/ServicesPage";
 import OrdersPage from "./components/order/OrdersPage";
 import InvitePage from './components/building/InvitePage'
 
-
 class App extends Component {
   constructor(props) {
     super(props);
@@ -69,7 +68,7 @@ class App extends Component {
   render() {
     this.fetchUser();
     return (
-      <div>
+      <div className='app-outer-container'>
         {this.state.loggedUser ? (
           <div>
             <Navbar
@@ -77,6 +76,7 @@ class App extends Component {
               logout={this.logout}
               {...this.props}
             />
+      <div className="app-container">
             <Switch>
               <Route exact path="/" component={Home} />
               <ProtectedRoutes
@@ -143,6 +143,7 @@ class App extends Component {
                 getUser={this.getUser}
               />
             </Switch>
+       </div>
           </div>
         ) : (
           <div>
@@ -151,19 +152,25 @@ class App extends Component {
               logout={this.logout}
               {...this.props}
             />
-            <Switch>
-              <Route
-                exact
-                path="/signup"
-                render={(props) => <Signup getUser={this.getUser} {...props} />}
-              />
-              <Route
-                exact
-                path="/login"
-                render={(props) => <Login getUser={this.getUser} {...props} />}
-              />
-              <Route component={Home} />
-            </Switch>
+            <div className="app-container">
+              <Switch>
+                <Route
+                  exact
+                  path="/signup"
+                  render={(props) => (
+                    <Signup getUser={this.getUser} {...props} />
+                  )}
+                />
+                <Route
+                  exact
+                  path="/login"
+                  render={(props) => (
+                    <Login getUser={this.getUser} {...props} />
+                  )}
+                />
+                <Route component={Home} />
+              </Switch>
+            </div>
           </div>
         )}
       </div>

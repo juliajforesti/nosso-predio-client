@@ -11,14 +11,14 @@ class MainPage extends Component {
     this.state = {
       buildings: [],
       orders: [],
-      activeOrders:[],
+      activeOrders: [],
       services: [],
       buildingApiCalled: false,
       userApiCalled: false,
       serviceApiCalled: false,
       orderAPICalled: false,
       toggleButton: false,
-      confirmationCode: '',
+      confirmationCode: "",
       toggleStatusButton: true,
     };
     this.service = new MainService();
@@ -30,6 +30,7 @@ class MainPage extends Component {
   }
 
   handleChangeCode(e) {
+
     this.setState({
       confirmationCode: e.target.value,
     });
@@ -44,6 +45,7 @@ class MainPage extends Component {
         });
       });
     }
+
   }
 
   getBuildings() {
@@ -102,17 +104,18 @@ class MainPage extends Component {
     }
   }
 
-  handleToggle(){
+  handleToggle() {
     this.setState({
-      toggleButton: !this.state.toggleButton
-    })
+      toggleButton: !this.state.toggleButton,
+    });
   }
 
-  handleToggleStatus(){
+  handleToggleStatus() {
     this.setState({
-      toggleStatusButton: !this.state.toggleStatusButton
-    })
+      toggleStatusButton: !this.state.toggleStatusButton,
+    });
   }
+
 
   handleOnSubmit(e){
     e.preventDefault()
@@ -129,17 +132,18 @@ class MainPage extends Component {
   handleStatus(buildingId, serviceId, orderId, status) {
     this.service
       .changeStatus(buildingId, serviceId, orderId, status)
-      .then((response) => this.setState({
-        orderAPICalled: false
-      })
+      .then((response) =>
+        this.setState({
+          orderAPICalled: false,
+        })
       );
   }
 
-  activeOrders(){
-    const orders = [...this.state.orders]
+  activeOrders() {
+    const orders = [...this.state.orders];
     this.setState({
-      activeOrders: orders.filter(order => order.status !== "Cancelado")
-    })
+      activeOrders: orders.filter((order) => order.status !== "Cancelado"),
+    });
   }
 
   render() {
@@ -148,19 +152,33 @@ class MainPage extends Component {
     if (this.props.user.buildings.length < 1) {
       this.getBuildings();
       return (
-        <div>
-          <h1> Main Page </h1> <br/>
+        <div className="app">
+          <div className="main-page-title-box">
+            <h1> Olá {this.props.user.name}! </h1> <br />
+          </div>
           <div>
             <div>
-              <Link to="/adicionar-condominio">Adicionar Condominio</Link> <br/> <br/>
-              <button onClick={()=>this.handleToggle()}>Já tem um convite? Junte-se ao seu condomínio</button> <br/> <br/>
+              <Link to="/adicionar-condominio">Adicionar Condominio</Link>{" "}
+              <br /> <br />
+              <button onClick={() => this.handleToggle()}>
+                Já tem um convite? Junte-se ao seu condomínio
+              </button>{" "}
+              <br /> <br />
               {this.state.toggleButton ? (
-                <form onSubmit={this.handleOnSubmit} type= 'submit'>
-                  <input onChange={this.handleChangeCode} value={this.state.confirmationCode} type='text' name='confirmationCode' placeholder='insira seu código de acesso'/>
-                  <button type='submit' >Enviar</button> <br/> <br/>
+                <form onSubmit={this.handleOnSubmit} type="submit">
+                  <input
+                    onChange={this.handleChangeCode}
+                    value={this.state.confirmationCode}
+                    type="text"
+                    name="confirmationCode"
+                    placeholder="insira seu código de acesso"
+                  />
+                  <button type="submit">Enviar</button>
+
                 </form>
               ) : (
                 <></>
+
               )
               }
               {
@@ -183,21 +201,36 @@ class MainPage extends Component {
       this.getUserServices();
       this.getUserOrders();
       return (
-        <div>
-        <div>
-          <h1> Main Page </h1>
+        <div className="app">
+          <div className="main-page-title-box">
+            <h1> Olá {this.props.user.name}! </h1>
+          </div>
           <div>
-            <Link to="/adicionar-condominio">Adicionar Condominio</Link>  <br/> <br/>
-            <button onClick={()=>this.handleToggle()}>Já tem um convite? Junte-se ao seu condomínio</button> <br/> <br/>
+            <div className="add-building-box">
+              <Link className="add-building-btn" to="/adicionar-condominio">Criar Condominio</Link>
+            </div>
+            <div className="invitation-code-box">
+              <button
+                className="invitation-code-btn"
+                onClick={() => this.handleToggle()}
+              >
+                Já tem um convite? Clique aqui para inserir o código
+              </button>
               {this.state.toggleButton ? (
-                <form onSubmit={this.handleOnSubmit} type= 'submit'>
-                  <input onChange={this.handleChangeCode} value={this.state.confirmationCode} type='text' name='confirmationCode' placeholder='insira seu código de acesso'/>
-                  <button type='submit' >Enviar</button>
+                <form onSubmit={this.handleOnSubmit} type="submit">
+                  <input
+                    onChange={this.handleChangeCode}
+                    value={this.state.confirmationCode}
+                    type="text"
+                    name="confirmationCode"
+                    placeholder="insira seu código de acesso"
+                  />
+                  <button type="submit">Enviar</button>
                 </form>
               ) : (
                 <></>
-              )
-              }
+              )}
+            </div>
           </div>
             <br />
           <Link to="/meus-condominios">Meus condominios</Link>
@@ -233,6 +266,7 @@ class MainPage extends Component {
             ) : <></>}
           </div>
           <div>
+
           <Link to="/meus-pedidos">Meus pedidos</Link>
               <button onClick={this.handleToggleStatus}>
               {this.state.toggleStatusButton ? ('Mostrar todos os pedidos') : ('Mostrar somente pedidos ativos')}

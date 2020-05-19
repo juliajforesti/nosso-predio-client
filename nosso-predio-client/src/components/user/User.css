@@ -2,11 +2,67 @@
   margin: 0;
 }
 
+.main-container{
+  margin: 1rem;
+}
+
+.main-page-title-box{
+  text-align: center;
+  padding: 1rem 0;
+}
+.add-building-box{
+  text-align: center;
+  /* border: 1px solid black; */
+  border-radius: 0.2rem;
+  background-color: #6F7372;
+  padding: 0.3rem 0;
+  margin-bottom: 0.2rem;
+}
+.add-building-btn{
+  text-decoration: none;
+  color: white;
+  font-size: 0.8rem;
+}
+.invitation-code-box{
+  text-align: center;
+  /* border: 1px solid black; */
+}
+.invitation-code-btn{
+  text-decoration: none;
+  border: none;
+  border-radius: 0.2rem;
+  text-align: center;
+  font-size: 0.8rem;
+  background-color: #6F7372;
+  padding: 0.3rem 0;
+  color: white;
+  width: 100%;
+}
+.invitation-code-box form{
+  border: 1px solid #6F7372;
+  width: 100%;
+  padding: 0.3rem 0;
+}
+.invitation-code-box input{
+  border: 1px solid #6F7372;
+  border-radius: 0.2rem;
+  color: #6F7372;
+  width: 80%;
+  height: 1.7rem;
+}
+.invitation-code-box form>button{
+  border: 1px solid #6F7372;
+  border-radius: 0.2rem;
+  color: #6F7372;
+  background-color: white;
+  height: 1.9rem;
+}
+
+/* MY BUILDINGS */
+
 .building-box {
   border: 1px solid black;
   border-radius: 10px;
   width: 20rem;
   padding: 1.5rem;
-  margin: 1rem;
 }
-
