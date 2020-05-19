@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import MainService from "../MainService";
-import "./User.css";
 import ServicesList from "../service/ServicesList";
 import OrderList from "../order/OrderList";
+import "./User.css";
 
 class MainPage extends Component {
   constructor(props) {
@@ -289,11 +289,13 @@ class MainPage extends Component {
             </Link>
           </div>
           <div>
-            <button onClick={this.handleToggleStatus}>
+          <div className='see-more-box'>
+            <button className='see-more-btn' onClick={this.handleToggleStatus}>
               {this.state.toggleStatusButton
                 ? "Mostrar todos os pedidos"
                 : "Mostrar somente pedidos ativos"}
             </button>
+          </div>
             {this.state.toggleStatusButton ? (
               <OrderList
                 activeOrders={this.activeOrders}
