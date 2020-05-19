@@ -13,7 +13,6 @@ class MainPage extends Component {
       orders: [],
       activeOrders: [],
       services: [],
-      search: "",
       buildingApiCalled: false,
       userApiCalled: false,
       serviceApiCalled: false,
@@ -25,16 +24,9 @@ class MainPage extends Component {
     this.service = new MainService();
 
     this.handleChangeCode = this.handleChangeCode.bind(this);
-    this.handleChangeSearch = this.handleChangeSearch.bind(this);
     this.handleOnSubmit = this.handleOnSubmit.bind(this);
     this.handleStatus = this.handleStatus.bind(this);
     this.handleToggleStatus = this.handleToggleStatus.bind(this);
-  }
-
-  handleChangeSearch(e) {
-    this.setState({
-      search: e.target.value.toLowerCase(),
-    });
   }
 
   handleChangeCode(e) {
@@ -186,17 +178,11 @@ class MainPage extends Component {
                 </form>
               ) : (
                 <></>
-              )}
-              <input
-                type="text"
-                value={this.state.search}
-                onChange={this.handleChangeSearch}
-                placeholder="Buscar pelo nome"
-              />
-              {this.state.buildings
-                .filter((elem) => {
-                  return elem.name.toLowerCase().includes(this.state.search);
-                })
+
+              )
+              }
+              {
+              this.state.buildings
                 .map((building, idx) => {
                   return (
                     <div key={idx} className="building-box">
@@ -246,24 +232,18 @@ class MainPage extends Component {
               )}
             </div>
           </div>
-
-          <div>
-            <h3>Meus Condominios</h3>
-            <input
-              type="text"
-              value={this.state.search}
-              onChange={this.handleChangeSearch}
-              placeholder="Buscar pelo nome"
-            />
-
-          </div>
-
-          <div>
+            <br />
           <Link to="/meus-condominios">Meus condominios</Link>
-            {this.state.buildings
-              .filter((elem) => {
-                return elem.name.toLowerCase().includes(this.state.search);
+            { this.props.user.buildings.length > 3 ? (
+              this.state.buildings.slice(0,3).map((building, idx) => {
+                return (
+                  <div key={idx} className="building-box">
+                    <h1>{building.name}</h1>
+                    <Link to={`/condominio/${building._id}`}>Acessar</Link>
+                  </div>
+                )
               })
+            ) :  (this.state.buildings
               .map((building, idx) => {
                 return (
                   <div key={idx} className="building-box">
@@ -271,9 +251,11 @@ class MainPage extends Component {
                     <Link to={`/condominio/${building._id}`}>Acessar</Link>
                   </div>
                 );
-              })}
+              }))}
+              { this.props.user.buildings.length > 3 ? 
+               <Link to="/meus-condominios">Ver mais</Link>
+              : <div></div>}
           </div>
-
           <div>
           <Link to="/meus-serviços">Meus serviços</Link>
             {this.props.user.services.length > 0 ? (
@@ -281,9 +263,7 @@ class MainPage extends Component {
                 services={this.state.services}
                 {...this.props}
               ></ServicesList>
-            ) : (
-              <div></div>
-            )}
+            ) : <></>}
           </div>
           <div>
 
@@ -297,7 +277,7 @@ class MainPage extends Component {
                 <OrderList handleStatus={this.handleStatus} orders={this.state.orders} {...this.props}/>
               )}
           </div>
-        </div>
+          </div>
       );
     }
   }
