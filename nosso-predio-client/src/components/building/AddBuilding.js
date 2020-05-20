@@ -44,7 +44,10 @@ class AddBuilding extends Component {
   render() {
     return (
       <div className="auth-container">
-        <h1 className="auth-title">Adicione seu Condomínio</h1>
+        <h1>
+        <span className="title-first">Adicione </span>
+        <span className="title-second">seu Condomínio </span>
+        </h1>
         <div>
           <form onSubmit={this.handleSubmit}>
             <div className="form-item">

@@ -1,7 +1,7 @@
 
 
 .nav-main-box {
-  padding: 1rem;
+  padding: 0.2rem 1rem;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -18,12 +18,15 @@
   /* border: 1px solid black; */
   /* width: 5rem; */
 }
+.logo-img{
+  width: 5.5rem;
+
+}
 .nav-link-left {
   text-decoration: none;
   color: white;
-  font-size: 1.2rem;
   font-weight: bolder;
-  /* width: 100%; */
+  margin: 0;
 }
 
 .nav-right-side {

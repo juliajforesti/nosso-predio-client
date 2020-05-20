@@ -34,6 +34,18 @@ body{
   margin-bottom: 1rem;
   color: #3F6473;
 }
+.title-first{
+  color: #6593A6;
+  font-weight: bolder;
+}
+.title-second{
+  color: black;
+}
+.title-third{
+  color: #D8EBF2;
+  font-weight: bolder;
+}
+
 .add-building-box{
   text-align: center;
   border-radius: 0.2rem;
@@ -113,6 +125,7 @@ body{
 }
 .card-img{
   width: 4rem;
+  max-height: 4rem;
   margin-right: 1rem;
 }
 .card-box>h3 {
@@ -147,8 +160,15 @@ body{
   display: flex;
   justify-content: space-between;
 }
+.card-order-middle{
+  width: 6rem;
+}
+.card-order-middle>h5{
+  font-size: 0.7rem;
+}
+
 .card-order-right-side{
-  width: 5rem;
+  width: 7rem;
   text-align: center;
 
 }
@@ -157,7 +177,12 @@ body{
   font-size: 0.7rem;
 }
 .cancel-btn{
-
+  font-size: 0.7rem;
+  border: 1px solid #3F6473;
+  border-radius: 0.2rem;
+  padding: 0.2rem;
+  color: white;
+  background-color: #3F6473;
 }
 
 

@@ -179,7 +179,6 @@ class App extends Component {
                 <Route component={RedirectToMain} />
               </Switch>
             </div>
-            <Footer />
           </div>
         )}
       </div>
