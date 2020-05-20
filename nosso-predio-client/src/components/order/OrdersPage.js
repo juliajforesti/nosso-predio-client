@@ -60,8 +60,13 @@ class OrdersPage extends Component {
     if (this.state.orders.length < 1) {
       return (
         <div>
-        <div className='main-page-title-box'>
-          <h1>Meus pedidos</h1> 
+        <div>
+        <div className="main-page-title-box">
+            <h1>
+              <span className="title-first">Meus </span>
+              <span className="title-second">Pedidos</span>
+            </h1>
+          </div>
           <div>
             <h1 className="add-building-err">Você ainda não fez nenhum pedido, acesse um de seus condominios e peça!</h1>
           </div>

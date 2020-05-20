@@ -43,13 +43,16 @@ class ServicesPage extends Component {
     if (this.props.user.services.length < 1) {
       return (
         <div>
-        <div className='main-page-title-box'>
-          <h1>Meus serviços e produtos</h1> 
+        <div className="main-page-title-box">
+            <h1>
+              <span className="title-first">Meus </span>
+              <span className="title-second">Serviços e Produtos</span>
+            </h1>
+          </div>
           <div>
             <h1 className="add-building-err">Você ainda não tem nenhum serviço, entre em um de seus condominios e crie um!</h1>
           </div>
           <button onClick={this.props.history.goBack} className="back-btn">Voltar</button>
-          </div>
         </div>
       );
       // IF USER HAS SERVICES

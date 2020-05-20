@@ -68,18 +68,16 @@ class ServiceDetails extends Component {
 
   changeDeleteStatus() {
     this.setState({
-      deleteToggle: !this.state.deleteToggle
-    })
+      deleteToggle: !this.state.deleteToggle,
+    });
   }
 
   deleteService() {
     const buildingId = this.state.service.building;
     const serviceId = this.state.service._id;
-    this.service
-      .deleteService(buildingId, serviceId)
-      .then((response) => {
-        this.props.history.push('/pagina-principal')
-      });
+    this.service.deleteService(buildingId, serviceId).then((response) => {
+      this.props.history.push("/pagina-principal");
+    });
   }
 
   render() {
@@ -88,9 +86,13 @@ class ServiceDetails extends Component {
     return (
       <div>
         <h1 className="details-page-title">{this.state.service.name}</h1>
-        <div className='details-section-2-container'>
-          <img className="details-page-img" src={this.state.service.image} alt={this.state.service.name} />
-          <div className='details-section-2'>
+        <div className="details-section-2-container">
+          <img
+            className="details-page-img"
+            src={this.state.service.image}
+            alt={this.state.service.name}
+          />
+          <div className="details-section-2">
             <h5 className="item-title">Tipo:</h5>
             <p>{this.state.service.category}</p>
             <h5 className="item-title">Data:</h5>
@@ -99,12 +101,19 @@ class ServiceDetails extends Component {
             <p>{this.state.service.description}</p>
           </div>
         </div>
-        <button onClick={this.props.history.goBack} className="details-btn">Voltar</button>
+        <button onClick={this.props.history.goBack} className="details-btn">
+          Voltar
+        </button>
         {this.state.service.owner === this.props.user._id ? (
           <div>
-              
-                <button className="details-btn form-input-submit" style={{width:"90%", backgroundColor: "red"}} onClick={() => this.deleteService()}>Realmente quero deletar</button>
-              
+            <button
+              className="details-btn form-input-submit"
+              style={{ width: "90%", backgroundColor: "red" }}
+              onClick={() => this.deleteService()}
+            >
+              Realmente quero deletar
+            </button>
+
             {!this.state.toggleEdit ? (
               <>
                 <button className="details-btn" onClick={this.handleClick}>
@@ -127,8 +136,7 @@ class ServiceDetails extends Component {
             />
           </div>
         ) : (
-          <div>
-
+          <div className="order-container">
             <h3>Faça seu pedido</h3>
             <OrderForm {...this.props} service={this.state.service._id} />
           </div>
