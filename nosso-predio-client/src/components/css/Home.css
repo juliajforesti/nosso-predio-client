@@ -1,6 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Balsamiq+Sans:ital@1&family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Roboto&display=swap');
+
 * {
   margin: 0;
   padding: 0;
+  font-family: 'Noto Sans';
 }
 
 html {
@@ -24,6 +27,7 @@ body {
 }
 
 .home-title{
+  padding-top: 0.5rem;
   text-align: center;
   color: white;
   font-weight: 10px;

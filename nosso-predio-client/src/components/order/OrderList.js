@@ -8,6 +8,8 @@ const OrderList = (props) => {
   return (
     <div>
       {orders.map((order, idx) => {
+      let name = order.origin.name.split(' ')[0];
+
         return (
           <div key={idx} >
             <Link
@@ -15,14 +17,15 @@ const OrderList = (props) => {
             >
               <div className="card-box order-card"  >
                 <img className="card-img" src={order.service.image}  alt='' />
-                <div>
+                <div className='card-order-middle'>
                   <h3>{order.service.name}</h3>
                   <h5>Qtd: {order.quantity}</h5>
                 </div>
                 {/* USER CRIOU  */}
-                {props.user.services.includes(order.service._id) ? (
+                {props.user.services.some(item => item._id === order.service._id) ? (
                   <div className='card-order-right-side'>
-                    <p>Pedido por: {order.origin.name}</p>
+                    <p className='order-by'>Pedido por: {name}</p>
+
                     {order.status !== "Cancelado" ? (
                       <form
                         onChange={(e) =>
@@ -34,8 +37,8 @@ const OrderList = (props) => {
                           )
                         }
                       >
-                        <label>Status: </label>
-                        <select name="status">
+                        <label className='status-label'>Alterar status: </label>
+                        <select className='status-select' name="status">
                           <option value={order.status}>{order.status}</option>
                           {statusAvailable
                             .filter((elem) => elem !== order.status)

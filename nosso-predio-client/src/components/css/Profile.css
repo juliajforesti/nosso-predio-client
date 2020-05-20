@@ -23,7 +23,7 @@
 .profile-img{
   width: 60vw;
   border: 3px solid #3F6473;
-  border-radius: 1rem;
+  border-radius: 50%;
   margin: 1rem 0;
 }
 .edit-container{

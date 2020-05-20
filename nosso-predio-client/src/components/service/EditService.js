@@ -73,26 +73,26 @@ class EditService extends Component {
 
   render() {
     return (
-      <div>
+      <div className='edit-container'>
         <label>Alterar imagem:</label>
         <input type="file" onChange={this.handleFileUpload} />
-        <form onSubmit={this.handleFormSubmit}>
+        <form className='edit-container' onSubmit={this.handleFormSubmit}>
           <label>Nome:</label>
-          <input
+          <input className='form-input'
             onChange={this.handleChange}
             type="text"
             name="name"
             value={this.state.name}
           ></input>
           <label>Descrição:</label>
-          <input
+          <input className='form-input'
             onChange={this.handleChange}
             type="text"
             name="description"
             value={this.state.description}
           ></input>
           <label>Preço:</label>
-          <input
+          <input className='form-input'
             onChange={this.handleChange}
             type="number"
             name="price"
@@ -124,7 +124,7 @@ class EditService extends Component {
             name="date"
             value={this.state.date}
           ></input>
-          <button type="submit">Salvar</button>
+          <button className="details-btn" type="submit">Salvar</button>
         </form>
       </div>
     );

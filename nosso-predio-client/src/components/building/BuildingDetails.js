@@ -68,7 +68,9 @@ class BuildingDetails extends Component {
       <div>
         <div>
           {/* <img className='details-page-img' src={this.state.building.image} alt={this.state.building.name} /> */}
-          <h1 className='details-page-title'>{this.state.building.name}</h1>
+          <h1 className='details-page-title'>
+          {this.state.building.name}
+          </h1>
           {this.props.user._id === this.state.building.owner ? (
             <div>
             <InviteLink code={this.state.building.confirmationCode} />

@@ -80,6 +80,8 @@ class ProfilePage extends Component {
       <div className="profile-container">
         <div className="title-container">
           <h1 className="profile-title">Meu Perfil</h1>
+          <img className="profile-img" src={user.image} alt={user.name} />
+
         </div>
 
         <div className="edit-container">
@@ -92,7 +94,6 @@ class ProfilePage extends Component {
             <div className="profile-info">
               <h3>Nome: {user.name}</h3>
               <h3>Email: {user.email}</h3>
-              <img className="profile-img" src={user.image} alt={user.name} />
             </div>
           ) : (
             <div>

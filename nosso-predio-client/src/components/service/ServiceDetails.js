@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import MainService from "../MainService";
-import { Link } from "react-router-dom";
 import OrderList from "../order/OrderList";
 import OrderForm from "../order/OrderForm";
 import EditService from "./EditService";
@@ -52,7 +51,7 @@ class ServiceDetails extends Component {
       });
     }
   }
-  
+
   handleStatus(buildingId, serviceId, orderId, status) {
     this.service
       .changeStatus(buildingId, serviceId, orderId, status)
@@ -70,25 +69,26 @@ class ServiceDetails extends Component {
     this.getServiceOrders();
     return (
       <div>
-        <Link
-          to={`/condominio/${this.state.service.building}/adicionar-serviço`}
-        >
-          Adicionar Serviço/Produto
-        </Link>
-        <br />
-        <h1>{this.state.service.name}</h1>
-        <h4>{this.state.service.date}</h4>
-        <p>{this.state.service.category}</p>
-        <p>{this.state.service.description}</p>
-        <img src={this.state.service.image} alt={this.state.service.name} />
-
-      
+        <h1 className="details-page-title">{this.state.service.name}</h1>
+        <div className='details-section-2-container'>
+          <img className="details-page-img" src={this.state.service.image} alt={this.state.service.name} />
+          <div className='details-section-2'>
+            <h5 className="item-title">Tipo:</h5>
+            <p>{this.state.service.category}</p>
+            <h5 className="item-title">Data:</h5>
+            <h4>{this.state.service.date}</h4>
+            <h5 className="item-title">Descrição:</h5>
+            <p>{this.state.service.description}</p>
+          </div>
+        </div>
         {this.state.service.owner === this.props.user._id ? (
           <div>
-        <Link to='/pagina-principal'><button>Voltar</button></Link>
+              <button onClick={this.props.history.goBack} className="details-btn">Voltar</button>
             {!this.state.toggleEdit ? (
               <>
-            <button onClick={this.handleClick}>Editar</button>
+                <button className="details-btn" onClick={this.handleClick}>
+                  Editar
+                </button>
               </>
             ) : (
               <EditService
@@ -107,7 +107,7 @@ class ServiceDetails extends Component {
           </div>
         ) : (
           <div>
-        <Link to={`/condominio/${this.state.service.building}`}><button>Voltar</button></Link>
+            <button onClick={this.props.history.goBack} className="details-btn">Voltar</button>
             <h3>Faça seu pedido</h3>
             <OrderForm {...this.props} service={this.state.service._id} />
           </div>

@@ -6,7 +6,7 @@ const Home = (props) => {
   return (
     <div>
       <div className="home-title">
-        <h1>Nosso Prédio</h1>
+        <img src='https://res.cloudinary.com/juliajforesti/image/upload/v1589995572/nosso-predio/NOSSO_2_cdmf2u.png' alt='Nosso Prédio' />
       </div>
       {props.user ? (
         <div className="home-link-box">
