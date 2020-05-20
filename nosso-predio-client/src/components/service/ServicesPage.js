@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import MainService from "../MainService";
 import ServicesList from "../service/ServicesList";
-import { Link } from "react-router-dom";
 
 
 class ServicesPage extends Component {
@@ -39,36 +38,41 @@ class ServicesPage extends Component {
   }
 
   render() {
-    // IF USER DOESNT HAVE BUILDINGS
+    // IF USER DOESNT HAVE SERVICES
     this.getUserServices();
     if (this.props.user.services.length < 1) {
       return (
         <div>
-          <h1> Meus serviços/produtos </h1> <br />
+        <div className='main-page-title-box'>
+          <h1>Meus serviços e produtos</h1> 
           <div>
-            <h1>Você ainda não tem nenhum serviço, entre em um dos seus condominios e crie um!</h1>
+            <h1 className="add-building-err">Você ainda não tem nenhum serviço, entre em um de seus condominios e crie um!</h1>
           </div>
-          <Link to='/pagina-principal'><button>Voltar</button></Link>
+          <button onClick={this.props.history.goBack} className="form-input-submit">Voltar</button>
+          </div>
         </div>
       );
-
-      // IF USER HAS BUILDINGS
+      // IF USER HAS SERVICES
     } else {
       return (
         <div>
+        <div className='main-page-title-box'>
           <h1> Meus serviços/produtos </h1>
+          </div>
           <div>
             <br />
             <input
               type="text"
+              className="form-input"
               value={this.state.search}
               onChange={this.handleChangeSearch}
-              placeholder="Buscar pelo nome"
+              placeholder="Buscar serviço pelo nome"
             />
           </div>
 
           <div>
           <ServicesList
+              servicePage={true}  
                 services={this.state.services
                     .filter((elem) => {
                       return elem.name.toLowerCase().includes(this.state.search);
@@ -76,7 +80,7 @@ class ServicesPage extends Component {
                 {...this.props}
               ></ServicesList>
           </div>
-          <Link to='/pagina-principal'><button>Voltar</button></Link>
+          <button onClick={this.props.history.goBack} className="form-input-submit">Voltar</button>
         </div>
       );
     }

@@ -61,11 +61,13 @@ class OrdersPage extends Component {
     if (this.state.orders.length < 1) {
       return (
         <div>
-          <h1> Meus pedidos </h1> <br />
+        <div className='main-page-title-box'>
+          <h1>Meus pedidos</h1> 
           <div>
-            <h1>Você ainda não tem nenhum pedido, acesse um de seus condominios e peça!</h1>
+            <h1 className="add-building-err">Você ainda não fez nenhum pedido, acesse um de seus condominios e peça!</h1>
           </div>
-          <Link to='/pagina-principal'><button>Voltar</button></Link>
+          <button onClick={this.props.history.goBack} className="form-input-submit">Voltar</button>
+          </div>
         </div>
       );
 
