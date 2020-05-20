@@ -37,15 +37,17 @@ class BuildingsPage extends Component {
     });
   }
 
-  handleOnSubmit(e){
-    e.preventDefault()
-    this.service.buildingInvite(this.state.confirmationCode).then(response => {
-      this.setState({
-        toggleButton: !this.state.toggleButton,
-        confirmationCode: '',
-        buildingApiCalled:false,
-      })
-    })
+  handleOnSubmit(e) {
+    e.preventDefault();
+    this.service
+      .buildingInvite(this.state.confirmationCode)
+      .then((response) => {
+        this.setState({
+          toggleButton: !this.state.toggleButton,
+          confirmationCode: "",
+          buildingApiCalled: false,
+        });
+      });
   }
 
   getBuildings() {
@@ -81,35 +83,37 @@ class BuildingsPage extends Component {
     if (this.props.user.buildings.length < 1) {
       this.getBuildings();
       return (
-        <div>
-          <h1> Meus condominios </h1> <br />
-          <div>
-            <div>
-              <Link to="/adicionar-condominio">Adicionar Condominio</Link>{" "}
-              <br /> <br />
-            <h1>Você ainda não tem nenhum condominio, entre peça o link para seus vizinhos ou crie!</h1>
-            <br /> <br />
-              <button onClick={() => this.handleToggle()}>
-                Já tem um convite? Junte-se ao seu condomínio
-              </button>{" "}
-              <br /> <br />
-              {this.state.toggleButton ? (
-                <form onSubmit={this.handleOnSubmit} type="submit">
-                  <input
-                    onChange={this.handleChangeCode}
-                    value={this.state.confirmationCode}
-                    type="text"
-                    name="confirmationCode"
-                    placeholder="insira seu código de acesso"
-                  />
-                  <button type="submit">Enviar</button>
-                </form>
-              ) : (
-                <></>
-              )}
-            </div>
-          </div>
-          <Link to='/pagina-principal'><button>Voltar</button></Link>
+        <div className='main-page-title-box'>
+          <h1> Meus condominios </h1> <br/>
+          <div className="add-building-box">
+                <Link className="add-building-btn" to="/adicionar-condominio">
+                  Criar Condominio
+                </Link>
+              </div>
+              <div className="invitation-code-box">
+                <button
+                  className="invitation-code-btn"
+                  onClick={() => this.handleToggle()}
+                >
+                  Já tem um convite? Clique aqui para inserir o código
+                </button>
+
+                {this.state.toggleButton ? (
+                  <form onSubmit={this.handleOnSubmit} type="submit">
+                    <input
+                      onChange={this.handleChangeCode}
+                      value={this.state.confirmationCode}
+                      type="text"
+                      name="confirmationCode"
+                      placeholder="insira seu código de acesso"
+                    />
+                    <button type="submit">Enviar</button>
+                  </form>
+                ) : (
+                  <></>
+                )}
+              </div>
+              <button onClick={this.props.history.goBack} className="form-input-submit">Voltar</button>
         </div>
       );
 
@@ -117,40 +121,45 @@ class BuildingsPage extends Component {
     } else {
       this.getUserBuildings();
       return (
-        <div>
-          <h1> Meus condominios </h1>
+        <div className='main-page-title-box'>
+          <h1> Meus condominios </h1> <br/>
+          <div className="add-building-box">
+                <Link className="add-building-btn" to="/adicionar-condominio">
+                  Criar Condominio
+                </Link>
+              </div>
+              <div className="invitation-code-box">
+                <button
+                  className="invitation-code-btn"
+                  onClick={() => this.handleToggle()}
+                >
+                  Já tem um convite? Clique aqui para inserir o código
+                </button>
+
+                {this.state.toggleButton ? (
+                  <form onSubmit={this.handleOnSubmit} type="submit">
+                    <input
+                      onChange={this.handleChangeCode}
+                      value={this.state.confirmationCode}
+                      type="text"
+                      name="confirmationCode"
+                      placeholder="insira seu código de acesso"
+                    />
+                    <button type="submit">Enviar</button>
+                  </form>
+                ) : (
+                  <></>
+                )}
+              </div>
           <div>
-            <Link to="/adicionar-condominio">Adicionar Condominio</Link> <br />{" "}
-            <br />
-            <button onClick={() => this.handleToggle()}>
-              Já tem um convite? Junte-se ao seu condomínio
-            </button>{" "}
-            <br /> <br />
-            {this.state.toggleButton ? (
-              <form onSubmit={this.handleOnSubmit} type="submit">
-                <input
-                  onChange={this.handleChangeCode}
-                  value={this.state.confirmationCode}
-                  type="text"
-                  name="confirmationCode"
-                  placeholder="insira seu código de acesso"
-                />
-                <button type="submit">Enviar</button>
-              </form>
-            ) : (
-              <></>
-            )}
-          </div>
-          <div>
-            <br />
             <input
+              className="form-input"
               type="text"
               value={this.state.search}
               onChange={this.handleChangeSearch}
-              placeholder="Buscar pelo nome"
+              placeholder="Buscar condomínio pelo nome"
             />
           </div>
-
           <div>
             {this.state.buildings
               .filter((elem) => {
@@ -158,14 +167,28 @@ class BuildingsPage extends Component {
               })
               .map((building, idx) => {
                 return (
-                  <div key={idx} className="building-box">
-                    <h1>{building.name}</h1>
-                    <Link to={`/condominio/${building._id}`}>Acessar</Link>
-                  </div>
+                  <div key={idx}>
+                        <Link to={`/condominio/${building._id}`}>
+                          <div className="card-box">
+                            <img
+                              className="card-img"
+                              src={building.image}
+                              alt={building.name}
+                            />
+                            <h3>{building.name}</h3>
+                            <div>
+                            <p>CEP: {building.address.cep}</p>
+                            <p>Número: {building.address.number}</p>
+                            </div>
+                          </div>
+                        </Link>
+                      </div>
                 );
               })}
           </div>
-          <Link to='/pagina-principal'><button>Voltar</button></Link>
+          <Link to="/pagina-principal">
+            <button className="form-input-submit" >Voltar</button>
+          </Link>
         </div>
       );
     }

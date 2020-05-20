@@ -10,7 +10,7 @@ class ProfilePage extends Component {
       toggleEdit: false,
       name: user.name,
       email: user.email,
-      password: user.password,
+      password: "qualquer-coisa",
       passwordConfirmation: "",
     };
     this.handleClick = this.handleClick.bind(this);
@@ -92,6 +92,7 @@ class ProfilePage extends Component {
           </button>
           {!this.state.toggleEdit ? (
             <div className="profile-info">
+              <img className="profile-img" src={user.image} alt={user.name} />
               <h3>Nome: {user.name}</h3>
               <h3>Email: {user.email}</h3>
             </div>
@@ -101,6 +102,7 @@ class ProfilePage extends Component {
                 <label>Nome:</label>
                 <input
                   onChange={this.handleChange}
+                  className="form-input"
                   type="text"
                   name="name"
                   value={this.state.name}
@@ -108,11 +110,12 @@ class ProfilePage extends Component {
                 <label>Email:</label>
                 <input
                   onChange={this.handleChange}
+                  className="form-input"
                   type="email"
                   name="email"
                   value={this.state.email}
                 ></input>
-                <button className='save-btn' type="submit">Salvar</button>
+                <button className="form-input-submit" type="submit">Salvar</button>
               </form>
               <form className="edit-password-container" onSubmit={this.handlePasswordSubmit}>
                   <label>Senha:</label>
@@ -120,16 +123,18 @@ class ProfilePage extends Component {
                     onChange={this.handleChange}
                     type="password"
                     name="password"
+                    className="form-input"
                     value={this.state.password}
                   ></input>
                   <label>Confirme sua senha:</label>
                   <input
                     onChange={this.handleChange}
+                    className="form-input"
                     type="password"
                     name="passwordConfirmation"
                     value={this.state.passwordConfirmation}
                   ></input>
-                  <button className='save-btn' type="submit">Salvar</button>
+                  <button className="form-input-submit" type="submit">Alterar senha</button>
                 </form>
 
               <div className="edit-photo-container">

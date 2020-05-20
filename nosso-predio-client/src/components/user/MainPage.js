@@ -222,6 +222,7 @@ class MainPage extends Component {
                 Já tem um convite? Clique aqui para inserir o código
               </button>
 
+
               {this.state.toggleButton ? (
                 <form onSubmit={this.handleOnSubmit} type="submit">
                   <input
