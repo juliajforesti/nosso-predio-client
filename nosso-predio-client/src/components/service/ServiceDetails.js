@@ -128,7 +128,7 @@ class ServiceDetails extends Component {
           </div>
         ) : (
           <div>
-            <button onClick={this.props.history.goBack} className="details-btn">Voltar</button>
+
             <h3>Faça seu pedido</h3>
             <OrderForm {...this.props} service={this.state.service._id} />
           </div>
