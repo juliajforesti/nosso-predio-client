@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./App.css";
+import "./components/css/Home.css";
 import { Route, Switch } from "react-router-dom";
 import Navbar from "./components/navbar/Navbar";
 import AuthService from "./components/auth/AuthService";
@@ -77,6 +77,7 @@ class App extends Component {
               logout={this.logout}
               {...this.props}
             />
+
             <div className="app-container">
               <Switch>
                 <Route exact path="/" render={(props) => <Home user={this.state.loggedUser} {...props} />}/>

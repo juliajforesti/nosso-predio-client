@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import ServicesList from "../service/ServicesList";
 import EditBuilding from "./EditBuilding";
 import InviteLink from "./InviteLink";
-import '../DetailsPage.css';
+import '../css/DetailsPage.css';
 
 class BuildingDetails extends Component {
   constructor(props) {
@@ -67,34 +67,32 @@ class BuildingDetails extends Component {
     return (
       <div>
         <div>
-          <img className='details-page-img' src={this.state.building.image} alt={this.state.building.name} />
+          {/* <img className='details-page-img' src={this.state.building.image} alt={this.state.building.name} /> */}
           <h1 className='details-page-title'>{this.state.building.name}</h1>
           {this.props.user._id === this.state.building.owner ? (
-            <button onClick={this.handleClick}>Editar</button>
-          ) : (
-            <></>
-          )}
-          {this.state.toggleEdit ? (
-            <EditBuilding
-              getEditedBuilding={this.getEditedBuilding}
-              building={this.state.building}
-              handleClick={this.handleClick}
-            />
+            <div>
+            <InviteLink code={this.state.building.confirmationCode} />
+            <button className='details-btn' onClick={this.handleClick}>Editar</button>
+              {this.state.toggleEdit ? (
+                <EditBuilding
+                  getEditedBuilding={this.getEditedBuilding}
+                  building={this.state.building}
+                  handleClick={this.handleClick}
+                />
+              ) : (
+                <></>
+              )}
+            </div>
           ) : (
             <></>
           )}
         </div>
-        {this.state.building.owner === this.props.user._id ? (
-          <InviteLink code={this.state.building.confirmationCode} />
-        ) : (
-          <></>
-        )}
-        <div>
-          <Link to={`/condominio/${this.state.building._id}/adicionar-serviço`}>
+        <h2 className='details-section-title'>Serviços/Produtos disponíveis</h2>
+        <div className='details-btn'>
+          <Link className='details-link' to={`/condominio/${this.state.building._id}/adicionar-serviço`}>
             Adicionar Serviço/Produto
           </Link>
         </div>
-        <h2>Serviços/Produtos disponíveis</h2>
         <ServicesList services={this.state.services} {...this.props} />
       </div>
     );

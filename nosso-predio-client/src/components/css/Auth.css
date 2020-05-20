@@ -10,18 +10,22 @@ body{
 
 }
 .auth-title{
-  /* border: 1px solid black; */
-  padding: 0.8rem 0;
+  text-align: center;
+  color: white;
+  font-weight: 10px;
+  text-shadow: 3px 2px 5px #6593A6;
+  font-size: 1.8rem;
+  margin: 1rem;
 }
 
 .form-item{
   /* border: 1px solid black; */
+  font-size: 0.8rem;
   padding: 0.8rem 0;
 }
 .form-item>input{
-  border: 1px solid black;
   /* padding: 0.8rem 0; */
-  width: 80%;
+  width: 15rem;
 }
 .password-warning{
   /* border: 1px solid black; */
@@ -44,6 +48,22 @@ body{
 }
 
 .auth-alternative{
-    /* border: 1px solid black; */
-    padding: 0.8rem 0;
+  margin-bottom: 1rem;
+  font-size: 0.8rem;
+  color: black;
 }
+.social-login-container{
+  /* border: 1px solid black; */
+  display: flex;
+  justify-content: center;
+}
+.social-login-box{
+  /* border: 1px solid black; */
+  width: 7rem;
+}
+.social-login{
+  text-decoration: none;
+  color: #6593A6;
+  font-size: 1rem;
+}
+

@@ -3,7 +3,7 @@
 import React, { Component } from "react";
 import AuthService from "./AuthService";
 import { Link } from "react-router-dom";
-import "./Auth.css";
+import "../css/Auth.css";
 
 class Login extends Component {
   constructor(props) {
@@ -50,9 +50,9 @@ class Login extends Component {
     return (
       <div className="auth-container">
         <h2 className="auth-title">Entrar</h2>
-        <p>
+        <p className="auth-alternative">
           Não tem uma conta?
-          <Link to={"/signup"}> Cadastre-se</Link>
+          <Link className="auth-alternative" to={"/signup"}>  Cadastre-se <strong>aqui!</strong></Link>
         </p>
         <form onSubmit={this.handleFormSubmit}>
           <div className="form-item">
@@ -78,6 +78,19 @@ class Login extends Component {
           </div>
           <input className="auth-button" type="submit" value="Entrar" />
         </form>
+        <div className="auth-google">
+          <p className="auth-alternative">
+            Ou então entre com sua conta Google/Facebook
+          </p>
+          <div className='social-login-container'>
+            <div className='social-login-box'>
+              <a className='social-login' href="http://localhost:5000/api/auth/google">GOOGLE</a>
+            </div>
+            <div className='social-login-box'>
+              <a className='social-login' href="http://localhost:5000/api/auth/facebook">FACEBOOK</a>
+            </div>
+          </div>
+        </div>
         <div>
           <p>{this.state.errorMessage}</p>
         </div>

@@ -1,13 +1,17 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import "./Navbar.css";
+import "../css/Navbar.css";
+import BurguerMenu from '../menu/BurguerMenu'
+
 
 const Navbar = (props) => {
   return (
+    
     <nav className="nav-main-box">
       <div className="nav-left-side">
         <NavLink className='nav-link-left' to="/">Nosso Predio</NavLink>
       </div>
+        {/* <BurguerMenu /> */}
       <div >
         {!props.user ? (
           <div className="nav-right-side">

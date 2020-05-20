@@ -1,7 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import '../user/User.css'
-
 
 
 const OrderList = (props) => {
