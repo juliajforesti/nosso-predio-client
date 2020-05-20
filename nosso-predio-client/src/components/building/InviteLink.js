@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import '../css/InviteLink.css'
 
 export default class InviteLink extends Component {
   constructor(props) {
@@ -17,12 +18,12 @@ export default class InviteLink extends Component {
 
   render() {
     return (
-      <div>
-        <div>
+      <div className='invite-container'>
+        <div className='code-container'>
           <p>Código de acesso: {this.props.code}</p>
         </div>
         <div>
-          <button onClick={() => {
+          <button className='code-link' onClick={() => {
             navigator.clipboard.writeText(`http://nosso-predio.herokuapp.com/convite/${this.props.code}`);
             this.copyCodeToClipboard();
           }}>

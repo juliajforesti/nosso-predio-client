@@ -81,7 +81,6 @@ class ProfilePage extends Component {
         <div className="title-container">
           <h1 className="profile-title">Meu Perfil</h1>
           <img className="profile-img" src={user.image} alt={user.name} />
-
         </div>
 
         <div className="edit-container">
@@ -92,7 +91,7 @@ class ProfilePage extends Component {
           </button>
           {!this.state.toggleEdit ? (
             <div className="profile-info">
-              <img className="profile-img" src={user.image} alt={user.name} />
+
               <h3>Nome: {user.name}</h3>
               <h3>Email: {user.email}</h3>
             </div>

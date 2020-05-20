@@ -36,19 +36,19 @@ class OrderForm extends Component {
   render() {
     return (
       <form onSubmit={this.handleFormSubmit}>
-        <div className="">
-          <div className="">
+        <div className="order-box">
+          <div>
             <label>Quantidade:</label>
             <input
-              className=""
+              className="quantity-input"
               type="number"
               name="quantity"
               value={this.state.quantity}
               onChange={this.handleChange}
             />
           </div>
+          <input className="details-btn" type="submit" value="Pedir" />
         </div>
-        <input className="button" type="submit" value="Pedir" />
       </form>
     );
   }

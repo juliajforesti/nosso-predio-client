@@ -112,10 +112,12 @@ class BuildingDetails extends Component {
             Adicionar Serviço/Produto
           </Link>
         </div>
-        <ServicesList services={this.state.services.filter((elem) => {
-                return elem.name.toLowerCase().includes(this.state.search);
-              })} {...this.props} />
-              <button onClick={this.props.history.goBack} className="details-btn">Voltar</button>
+        <div className='services-list-container'>
+          <ServicesList services={this.state.services.filter((elem) => {
+                  return elem.name.toLowerCase().includes(this.state.search);
+                })} {...this.props} />
+                <button onClick={this.props.history.goBack} className="details-btn">Voltar</button>
+        </div>
       </div>
     );
   }
