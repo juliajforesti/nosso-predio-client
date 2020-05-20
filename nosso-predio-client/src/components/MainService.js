@@ -96,6 +96,11 @@ class MainService {
     .then(response => response.data)
   }
 
+  deleteService(buildingId, serviceId){
+    return this.service.delete(`/building/${buildingId}/delete-service/${serviceId}`)
+    .then(response => response.data)
+  }
+
   editServicePhoto(image, buildingId, serviceId){
     return this.service
     .post(`/building/${buildingId}/edit-service-photo/${serviceId}`, image, {new: true})

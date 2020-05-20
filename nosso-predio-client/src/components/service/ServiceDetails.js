@@ -18,7 +18,9 @@ class ServiceDetails extends Component {
     this.handleStatus = this.handleStatus.bind(this);
     this.getEditedService = this.getEditedService.bind(this);
     this.handleClick = this.handleClick.bind(this);
+    this.changeDeleteStatus = this.changeDeleteStatus.bind(this);
   }
+
   handleClick() {
     this.setState({
       toggleEdit: !this.state.toggleEdit,
@@ -64,6 +66,22 @@ class ServiceDetails extends Component {
     });
   }
 
+  changeDeleteStatus() {
+    this.setState({
+      deleteToggle: !this.state.deleteToggle
+    })
+  }
+
+  deleteService() {
+    const buildingId = this.state.service.building;
+    const serviceId = this.state.service._id;
+    this.service
+      .deleteService(buildingId, serviceId)
+      .then((response) => {
+        this.props.history.push('/pagina-principal')
+      });
+  }
+
   render() {
     this.getServiceDetails();
     this.getServiceOrders();
@@ -84,6 +102,9 @@ class ServiceDetails extends Component {
         {this.state.service.owner === this.props.user._id ? (
           <div>
               <button onClick={this.props.history.goBack} className="details-btn">Voltar</button>
+              
+                <button className="form-input-submit" style={{ backgroundColor: "red"}} onClick={() => this.deleteService()}>Realmente quero deletar</button>
+              
             {!this.state.toggleEdit ? (
               <>
                 <button className="details-btn" onClick={this.handleClick}>
