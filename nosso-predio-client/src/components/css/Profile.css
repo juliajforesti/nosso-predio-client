@@ -1,0 +1,70 @@
+
+.profile-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profile-title{
+  text-align: center;
+  color: white;
+  text-shadow: 3px 2px 5px #6593A6;
+  font-size: 2.5rem;
+}
+
+.profile-info{
+  margin: 1rem;
+  text-align: center;
+  color: #3F6473;
+  font-size: 1.3rem;
+
+}
+
+.profile-img{
+  width: 60vw;
+  border: 3px solid #3F6473;
+  border-radius: 1rem;
+  margin: 1rem 0;
+}
+.edit-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.edit-btn{
+  text-decoration: none;
+  border: none;
+  border-radius: 0.2rem;
+  text-align: center;
+  font-size: 0.8rem;
+  background-color: #6593A6;
+  box-shadow: 2px 2px 6px #3F6473;
+  padding: 0.3rem 0;
+  color: white;
+  width: 60vw;
+  cursor: pointer;
+}
+
+.edit-form{
+  margin: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.edit-photo-container{
+  padding: 0 1rem 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.edit-password-container{
+  padding: 0 1rem 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.save-btn{
+  width: 5rem;
+  margin: 1rem 0;
+}

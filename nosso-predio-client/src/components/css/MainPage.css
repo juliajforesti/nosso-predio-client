@@ -4,14 +4,12 @@
 }
 html {
   height: 100%;
+  background-color: #D8EBF2;
 }
 body{
   background-color: #D8EBF2;
   min-height: 100%;
 }
-
-
-
 .main-container{
   margin: 1rem;
 }
