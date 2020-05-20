@@ -6,12 +6,14 @@ const ServicesList = (props) => {
     <div>
       {props.services.map((service, idx) => {
         return (
+          <div key={idx}>
           <Link to={`/condominio/${service.building}/serviço/${service._id}`}>
-            <div key={idx} className="card-box">
+            <div className="card-box">
               <img className="card-img" src={service.image} alt="" />
               <h3>{service.name}</h3>
             </div>
           </Link>
+          </div>
         );
       })}
     </div>

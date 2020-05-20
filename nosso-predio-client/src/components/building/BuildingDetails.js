@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import ServicesList from "../service/ServicesList";
 import EditBuilding from "./EditBuilding";
 import InviteLink from "./InviteLink";
+import '../DetailsPage.css';
 
 class BuildingDetails extends Component {
   constructor(props) {
@@ -66,8 +67,8 @@ class BuildingDetails extends Component {
     return (
       <div>
         <div>
-          <img src={this.state.building.image} alt={this.state.building.name} />
-          <h1>{this.state.building.name}</h1>
+          <img className='details-page-img' src={this.state.building.image} alt={this.state.building.name} />
+          <h1 className='details-page-title'>{this.state.building.name}</h1>
           {this.props.user._id === this.state.building.owner ? (
             <button onClick={this.handleClick}>Editar</button>
           ) : (

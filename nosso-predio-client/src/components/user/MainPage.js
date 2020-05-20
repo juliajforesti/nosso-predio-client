@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import MainService from "../MainService";
-import "./User.css";
 import ServicesList from "../service/ServicesList";
 import OrderList from "../order/OrderList";
+import "./User.css";
 
 class MainPage extends Component {
   constructor(props) {
@@ -155,36 +155,39 @@ class MainPage extends Component {
           <div className='main-page-title-box'>
             <h1> Olá {this.props.user.name} </h1>
           </div>
+          <div className='welcome-section'>
+            <p>Seja bem vindo(a) ao Nosso Prédio! </p>
+            <p>Você ainda não faz parte de nenhum condomínio da nossa rede.</p>
+          </div>
           <div>
-            <div>
-              <Link to="/adicionar-condominio">Adicionar Condominio</Link>{" "}
-              <br /> <br />
-              <button onClick={() => this.handleToggle()}>
-                Já tem um convite? Junte-se ao seu condomínio
-              </button>{" "}
-              <br /> <br />
-              {this.state.toggleButton ? (
-                <form onSubmit={this.handleOnSubmit} type="submit">
-                  <input
-                    onChange={this.handleChangeCode}
-                    value={this.state.confirmationCode}
-                    type="text"
-                    name="confirmationCode"
-                    placeholder="insira seu código de acesso"
-                  />
-                  <button type="submit">Enviar</button>
-                </form>
-              ) : (
-                <></>
-              )}
-              {this.state.buildings.map((building, idx) => {
-                return (
-                  <div key={idx} className="card-box">
-                    <h1>{building.name}</h1>
-                  </div>
-                );
-              })}
-            </div>
+              <div className="add-building-box">
+                <Link className="add-building-btn" to="/adicionar-condominio">
+                  Criar Condominio
+                </Link>
+              </div>
+              <div className="invitation-code-box">
+                <button
+                  className="invitation-code-btn"
+                  onClick={() => this.handleToggle()}
+                >
+                  Já tem um convite? Clique aqui para inserir o código
+                </button>
+
+                {this.state.toggleButton ? (
+                  <form onSubmit={this.handleOnSubmit} type="submit">
+                    <input
+                      onChange={this.handleChangeCode}
+                      value={this.state.confirmationCode}
+                      type="text"
+                      name="confirmationCode"
+                      placeholder="insira seu código de acesso"
+                    />
+                    <button type="submit">Enviar</button>
+                  </form>
+                ) : (
+                  <></>
+                )}
+              </div>
           </div>
         </div>
       );
@@ -240,7 +243,7 @@ class MainPage extends Component {
               {this.props.user.buildings.length > 3
                 ? this.state.buildings.slice(0, 3).map((building, idx) => {
                     return (
-                      <div>
+                      <div key={idx}>
                         <Link to={`/condominio/${building._id}`}>
                           <div className="card-box">
                             <img
@@ -304,11 +307,13 @@ class MainPage extends Component {
                 </Link>
               </div>
               <div>
-                <button onClick={this.handleToggleStatus}>
-                  {this.state.toggleStatusButton
-                    ? "Mostrar todos os pedidos"
-                    : "Mostrar somente pedidos ativos"}
-                </button>
+                <div className='see-more-box'>
+                  <button className='see-more-btn' onClick={this.handleToggleStatus}>
+                    {this.state.toggleStatusButton
+                      ? "Mostrar todos os pedidos"
+                      : "Mostrar somente pedidos ativos"}
+                  </button>
+                </div>
                 {this.state.toggleStatusButton ? (
                   <OrderList
                     activeOrders={this.activeOrders}
