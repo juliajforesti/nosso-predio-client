@@ -3,9 +3,9 @@
   padding: 0;
   
 }
-body{
-  width: 100vw;
-  font-size: 10px;
+html{
+  background-color: #D8EBF2;
+
 }
 
 .app-outer-container{
