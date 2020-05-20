@@ -1,24 +1,38 @@
 import React from "react";
 import "../css/Footer.css";
 import { Link } from "react-router-dom";
-
+import { AiOutlineHome, AiOutlineUser } from "react-icons/ai";
+import { FaRegBuilding } from "react-icons/fa";
 
 const Footer = (props) => {
   return (
     <footer className="footer">
-      <div className='footer-left'>
-        <p className='footer-title'> Nosso Prédio </p>
-        <p className='footer-by'>por </p>
-        <p className='footer-by'>Gabriel Bohn e Júlia Foresti</p>
-      </div>
-      <div className='footer-right'>
-        <Link className='footer-link' to="/">Nosso Predio</Link>
-        <Link className='footer-link' to="/pagina-principal">Página Principal</Link>
-        <Link className='footer-link' to="/meus-condominios">Meus Condomínios</Link>
-        <Link className='footer-link' to="/perfil">Perfil</Link>
+      <div className="footer-top">
 
+        <Link className="footer-link" to="/pagina-principal">
+          <AiOutlineHome className='footer-icon' />
+          Página Principal
+        </Link>
 
+        <Link className="footer-link" to="/meus-condominios">
+          <FaRegBuilding className='footer-icon' />
+          Meus Condomínios
+        </Link>
+
+        <Link className="footer-link" to="/perfil">
+          <AiOutlineUser className='footer-icon' />
+          Perfil
+        </Link>
       </div>
+      {/* <div className="footer-bottom">
+        <div>
+          <p className="footer-title"> Nosso Prédio </p>
+        </div>
+        <div>
+          <p className="footer-by">por </p>
+          <p className="footer-by">Gabriel Bohn e Júlia Foresti</p>
+        </div>
+      </div> */}
     </footer>
   );
 };
