@@ -34,8 +34,9 @@ body{
   text-align: center;
   border-radius: 0.2rem;
   background-color: #6593A6;
+  box-shadow: 2px 2px 6px #3F6473;
   padding: 0.3rem 0;
-  margin: 0 1rem 0.2rem 1rem;
+  margin: 0 1rem 1rem 1rem;
 }
 .add-building-btn{
   text-decoration: none;
@@ -44,7 +45,7 @@ body{
 }
 .invitation-code-box{
   text-align: center;
-  margin: 0 1rem 0.2rem 1rem;
+  margin: 0 1rem 1rem 1rem;
 }
 .invitation-code-btn{
   text-decoration: none;
@@ -53,6 +54,7 @@ body{
   text-align: center;
   font-size: 0.8rem;
   background-color: #6593A6;
+  box-shadow: 2px 2px 6px #3F6473;
   padding: 0.3rem 0;
   color: white;
   width: 100%;
@@ -106,7 +108,7 @@ body{
   box-shadow: 1px 1px 2px #6593A6;
 }
 .card-img{
-  width: 3rem;
+  width: 4rem;
   margin-right: 1rem;
 }
 .card-box>h3 {
@@ -123,8 +125,35 @@ body{
   margin: 0 1rem 0.2rem 1rem;
 }
 .see-more-btn{
+  text-align: center;
   color: white;
   background-color: #6593A6;
   border: none;
+  cursor: pointer;
 }
+.see-more-box{
+  text-align: center;
+  color: white;
+  background-color: #6593A6;
+  box-shadow: 2px 2px 6px #3F6473;
+  border-radius: 0.2rem;
+  border: none;
+}
+.order-card{
+  display: flex;
+  justify-content: space-between;
+}
+.card-order-right-side{
+  width: 5rem;
+  text-align: center;
+
+}
+.status-info{
+
+  font-size: 0.7rem;
+}
+.cancel-btn{
+
+}
+
 

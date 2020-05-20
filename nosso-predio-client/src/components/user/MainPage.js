@@ -307,7 +307,7 @@ class MainPage extends Component {
                 </Link>
               </div>
               <div>
-                <div className='see-more-btn'>
+                <div className='see-more-box'>
                   <button className='see-more-btn' onClick={this.handleToggleStatus}>
                     {this.state.toggleStatusButton
                       ? "Mostrar todos os pedidos"
