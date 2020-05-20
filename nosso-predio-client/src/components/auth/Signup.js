@@ -3,7 +3,7 @@
 import React, { Component } from "react";
 import AuthService from "./AuthService";
 import { Link } from "react-router-dom";
-import "./Auth.css";
+import "../css/Auth.css";
 
 class Signup extends Component {
   constructor(props) {
@@ -61,9 +61,9 @@ class Signup extends Component {
     return (
       <div className="auth-container">
         <h2 className="auth-title">Cadastrar</h2>
-        <p>
+        <p className="auth-alternative">
           Já tem uma conta?
-          <Link to={"/login"}> Entre aqui!</Link>
+          <Link className="auth-alternative" to={"/login"}> Entre <strong> aqui! </strong></Link>
         </p>
         <form onSubmit={this.handleFormSubmit}>
           <div className="form-item">
@@ -97,7 +97,9 @@ class Signup extends Component {
               value={this.state.password}
               onChange={this.handleChange}
             />
-            <p className='password-warning'>Crie uma senha com no mínimo 6 caracteres</p>
+            <p className="password-warning">
+              Crie uma senha com no mínimo 6 caracteres
+            </p>
           </div>
           {this.state.password.length < 6 ? (
             <input
@@ -111,14 +113,20 @@ class Signup extends Component {
           )}
         </form>
 
-        <div className='auth-google'>
-        <p className='auth-alternative'>Ou então entre com sua conta Google/Facebook</p>
-        <a href="http://localhost:5000/api/auth/google">GOOGLE</a>
-        <a href="http://localhost:5000/api/auth/facebook">FACEBOOK</a>
-          />
+        <div className="auth-google">
+          <p className="auth-alternative">
+            Ou então entre com sua conta Google/Facebook
+          </p>
+          <div className='social-login-container'>
+            <div className='social-login-box'>
+              <a className='social-login' href="http://localhost:5000/api/auth/google">GOOGLE</a>
+            </div>
+            <div className='social-login-box'>
+              <a className='social-login' href="http://localhost:5000/api/auth/facebook">FACEBOOK</a>
+            </div>
+          </div>
         </div>
         <p>{this.state.errorMessage}</p>
-
       </div>
     );
   }
