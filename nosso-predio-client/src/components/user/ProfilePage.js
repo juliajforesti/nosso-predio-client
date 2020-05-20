@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import AuthService from "../auth/AuthService";
+import "../css/Profile.css";
 
 class ProfilePage extends Component {
   constructor(props) {
@@ -76,21 +77,26 @@ class ProfilePage extends Component {
   render() {
     const { user } = this.props;
     return (
-      <div>
-        <div>
-          <h1>Meu Perfil</h1>
+      <div className="profile-container">
+        <div className="title-container">
+          <h1 className="profile-title">Meu Perfil</h1>
         </div>
-        <div>
-          <button onClick={this.handleClick}>Editar</button>
+
+        <div className="edit-container">
+          <button className="edit-btn" onClick={this.handleClick}>
+          
+          {!this.state.toggleEdit ? "Editar" : "Voltar"}
+            
+          </button>
           {!this.state.toggleEdit ? (
-            <div>
+            <div className="profile-info">
               <h3>Nome: {user.name}</h3>
               <h3>Email: {user.email}</h3>
-              <img src={user.image} alt={user.name} />
+              <img className="profile-img" src={user.image} alt={user.name} />
             </div>
           ) : (
             <div>
-              <form onSubmit={this.handleFormSubmit}>
+              <form className="edit-form" onSubmit={this.handleFormSubmit}>
                 <label>Nome:</label>
                 <input
                   onChange={this.handleChange}
@@ -105,30 +111,33 @@ class ProfilePage extends Component {
                   name="email"
                   value={this.state.email}
                 ></input>
-                <button type="submit">Salvar</button>
+                <button className='save-btn' type="submit">Salvar</button>
               </form>
-              <label>Alterar foto de perfil:</label>
-              <input
-                onChange={this.handleFileUpload}
-                type="file"
-              />
-              <form onSubmit={this.handlePasswordSubmit}>
-                <label>Senha:</label>
-                <input
-                  onChange={this.handleChange}
-                  type="password"
-                  name="password"
-                  value={this.state.password}
-                ></input>
-                <label>Confirme sua senha:</label>
-                <input
-                  onChange={this.handleChange}
-                  type="password"
-                  name="passwordConfirmation"
-                  value={this.state.passwordConfirmation}
-                ></input>
-                <button type="submit">Salvar</button>
-              </form>
+              <form className="edit-password-container" onSubmit={this.handlePasswordSubmit}>
+                  <label>Senha:</label>
+                  <input
+                    onChange={this.handleChange}
+                    type="password"
+                    name="password"
+                    value={this.state.password}
+                  ></input>
+                  <label>Confirme sua senha:</label>
+                  <input
+                    onChange={this.handleChange}
+                    type="password"
+                    name="passwordConfirmation"
+                    value={this.state.passwordConfirmation}
+                  ></input>
+                  <button className='save-btn' type="submit">Salvar</button>
+                </form>
+
+              <div className="edit-photo-container">
+                <label>Alterar foto de perfil:</label>
+                <input onChange={this.handleFileUpload} type="file" />
+              </div>
+
+                
+
             </div>
           )}
         </div>

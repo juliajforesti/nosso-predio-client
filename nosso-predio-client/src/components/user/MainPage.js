@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import MainService from "../MainService";
 import ServicesList from "../service/ServicesList";
 import OrderList from "../order/OrderList";
-import "../css/User.css";
+import "../css/MainPage.css";
 
 class MainPage extends Component {
   constructor(props) {
