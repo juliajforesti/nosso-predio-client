@@ -48,52 +48,75 @@ class AddService extends Component {
 
   render() {
     return (
-      <div>
-        <h1>Adicione seu Serviço/Produto</h1>
+      <div className="auth-container">
+        <h1 className="auth-title">Adicione seu Serviço/Produto</h1>
         <div>
           <form onSubmit={this.handleSubmit}>
-            <label>Nome:</label>
-            <input
-              onChange={this.handleChange}
-              type="text"
-              name="name"
-              value={this.state.name}
-            />
-            <label>Descrição:</label>
-            <input
-              onChange={this.handleChange}
-              type="text-area"
-              name="description"
-              value={this.state.description}
-            />
-            <label>Categoria:</label>
-            <select onChange={this.handleChange} name="category">
-              <option value="Produto">Produto</option>
-              <option value="Serviço">Serviço</option>
-            </select>
-            
-            <label>Preço:</label>
-            <input
-              onChange={this.handleChange}
-              type="number"
-              name="price"
-              value={this.state.price}
-            />
-            <label>Data:</label>
-            <input
-              onChange={this.handleChange}
-              type="date"
-              name="date"
-              value={this.state.date}
-            />
-            <label>Complemento:</label>
-            <input
-              onChange={this.handleChange}
-              type="text"
-              name="apartment"
-              value={this.state.apartment}
-            />
-            <button type="submit">Salvar</button>
+            <div className="form-item">
+              <label>Nome:</label> <br />
+              <input
+                onChange={this.handleChange}
+                type="text"
+                className="form-input"
+                name="name"
+                value={this.state.name}
+                placeholder='Cookies do bem'
+              />
+            </div>
+            <div className="form-item">
+              <label>Descrição:</label> <br />
+              <input
+                onChange={this.handleChange}
+                type="text-area"
+                name="description"
+                value={this.state.description}
+                placeholder='Cookies caseiros feitos com muito amor e carinho'
+              />
+            </div>
+            <div className="form-item">
+              <label>Categoria:</label> <br />
+              <select onChange={this.handleChange} name="category">
+                <option value="Produto">Produto</option>
+                <option value="Serviço">Serviço</option>
+              </select>
+            </div>
+            <div className="form-item">
+              <label>Preço:</label> <br />
+              <input
+              className="form-input"
+                onChange={this.handleChange}
+                type="number"
+                name="price"
+                value={this.state.price}
+              />
+            </div>
+
+            <div className="form-item">
+              <label>Data:</label> <br />
+              <input
+              className="form-input"
+                onChange={this.handleChange}
+                type="date"
+                name="date"
+                value={this.state.date}
+              />
+            </div>
+
+            <div className="form-item">
+              <label>Complemento:</label> <br />
+              <input
+              className="form-input"
+                onChange={this.handleChange}
+                type="text"
+                name="apartment"
+                value={this.state.apartment}
+                placeholder='Apt. 103'
+              />
+            </div>
+
+            <button className="form-button" type="submit">
+              Adicionar serviço
+            </button>
           </form>
         </div>
       </div>

@@ -13,6 +13,8 @@ class Signup extends Component {
       password: "",
       name: "",
       errorMessage: null,
+      passwordCheck: null,
+      passwordCounter: 0,
     };
     this.service = new AuthService();
 
@@ -26,6 +28,22 @@ class Signup extends Component {
     this.setState({
       [name]: value,
     });
+    if (name === "password") {
+      this.checkPasswordLength();
+    }
+  }
+
+  checkPasswordLength() {
+    console.log(this.state.password.length);
+    if (this.state.password.length+1 > 5) {
+      this.setState({
+        passwordCheck: "2px solid green",
+      });
+    } else {
+      this.setState({
+        passwordCheck: "2px solid red",
+      });
+    }
   }
 
   handleFormSubmit(e) {
@@ -63,13 +81,16 @@ class Signup extends Component {
         <h2 className="auth-title">Cadastrar</h2>
         <p className="auth-alternative">
           Já tem uma conta?
-          <Link className="auth-alternative" to={"/login"}> Entre <strong> aqui! </strong></Link>
+          <Link className="auth-alternative" to={"/login"}>
+            {" "}
+            Entre <strong> aqui! </strong>
+          </Link>
         </p>
         <form onSubmit={this.handleFormSubmit}>
           <div className="form-item">
             <label>Nome:</label> <br />
             <input
-              className=""
+              className="form-input"
               type="text"
               name="name"
               value={this.state.name}
@@ -80,7 +101,7 @@ class Signup extends Component {
           <div className="form-item">
             <label>Email:</label> <br />
             <input
-              className=""
+              className="form-input"
               type="email"
               name="email"
               value={this.state.email}
@@ -91,9 +112,10 @@ class Signup extends Component {
           <div className="form-item">
             <label>Senha:</label> <br />
             <input
-              className=""
+              className="form-input"
               type="password"
               name="password"
+              style={{ border: this.state.passwordCheck }}
               value={this.state.password}
               onChange={this.handleChange}
             />
@@ -104,26 +126,30 @@ class Signup extends Component {
           {this.state.password.length < 6 ? (
             <input
               disabled
-              className="auth-button"
+              className="form-input-submit"
               type="submit"
-              value="Signup"
+              value="Cadastrar"
             />
           ) : (
-            <input className="auth-button" type="submit" value="Signup" />
+            <input
+              className="form-input-submit"
+              type="submit"
+              value="Cadastrar"
+            />
           )}
         </form>
 
         <div className="auth-google">
           <p className="auth-alternative">
-            Ou então entre com sua conta Google/Facebook
+            Ou então entre com sua conta Google
           </p>
-          <div className='social-login-container'>
-            <div className='social-login-box'>
-              <a className='social-login' href="http://localhost:5000/api/auth/google">GOOGLE</a>
-            </div>
-            <div className='social-login-box'>
-              <a className='social-login' href="http://localhost:5000/api/auth/facebook">FACEBOOK</a>
-            </div>
+          <div className="social-login-container">
+            <a
+              className="social-login form-input-submit"
+              href="http://nosso-predio.herokuapp.com/api/auth/google"
+            >
+              GOOGLE
+            </a>
           </div>
         </div>
         <p>{this.state.errorMessage}</p>

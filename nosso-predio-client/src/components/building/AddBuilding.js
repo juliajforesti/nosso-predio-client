@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import MainService from "../MainService";
 
-
 class AddBuilding extends Component {
   constructor(props) {
     super(props);
@@ -9,7 +8,7 @@ class AddBuilding extends Component {
       name: "",
       cep: "",
       number: "",
-      // residents: props.user._id,
+      border: null,
     };
     this.service = new MainService();
 
@@ -19,13 +18,20 @@ class AddBuilding extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    const {name, cep, number} = this.state
-    this.service
-      .addBuilding(name, cep, number)
-      .then((response) => {
-        this.props.history.push("/pagina-principal");
-      });
-      console.log(this.props)
+    const { name, cep, number } = this.state;
+    this.service.addBuilding(name, cep, number).then((response) => {
+      if (response.message) {
+        //arrumar um jeito melhor de mandar essa mensagem
+        this.setState({
+          duplicate:
+            "Este prédio já está cadastrado, entre em contato com seus vizinhos para conseguir o link de acesso.",
+          border: "2px solid red",
+        });
+        return;
+      }
+      this.props.history.push("/pagina-principal");
+    });
+    console.log(this.props);
   }
 
   handleChange(e) {
@@ -37,33 +43,59 @@ class AddBuilding extends Component {
 
   render() {
     return (
-      <div>
-        <h1>Adicione seu Condomínio</h1>
+      <div className="auth-container">
+        <h1 className="auth-title">Adicione seu Condomínio</h1>
         <div>
           <form onSubmit={this.handleSubmit}>
-            <label>Nome:</label>
-            <input
-              onChange={this.handleChange}
-              type="text"
-              name="name"
-              value={this.state.name}
-            />
-            <label>CEP:</label>
-            <input
-              onChange={this.handleChange}
-              type="text"
-              name="cep"
-              value={this.state.cep}
-            />
-            <label>Número:</label>
-            <input
-              onChange={this.handleChange}
-              type="number"
-              name="number"
-              value={this.state.number}
-            />
-            <button type="submit">Salvar</button>
+            <div className="form-item">
+              <label>Nome:</label> <br />
+              <input
+                onChange={this.handleChange}
+                type="text"
+                name="name"
+                className="form-input"
+                value={this.state.name}
+              />
+            </div>
+
+            <div className="form-item">
+              <label>CEP:</label> <br />
+              <input
+                onChange={this.handleChange}
+                type="text"
+                name="cep"
+                style={{ border: this.state.border }}
+                className="form-input"
+                value={this.state.cep}
+              />
+            </div>
+
+            <div className="form-item">
+              <label>Número:</label> <br />
+              <input
+                onChange={this.handleChange}
+                type="number"
+                style={{ border: this.state.border }}
+                name="number"
+                className="form-input"
+                value={this.state.number}
+              />
+            </div>
+
+            <button
+              style={{ width: "200px", border: this.state.border }}
+              className="form-input-submit"
+              type="submit"
+            >
+              Adicionar Condomínio
+            </button>
           </form>
+          <br />
+          {this.state.duplicate ? (
+            <div className="add-building-err">
+              <p>{this.state.duplicate}</p>
+            </div>
+          ) : null}
         </div>
       </div>
     );
