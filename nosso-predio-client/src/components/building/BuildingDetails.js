@@ -20,7 +20,15 @@ class BuildingDetails extends Component {
     this.service = new MainService();
     this.handleClick = this.handleClick.bind(this);
     this.getEditedBuilding = this.getEditedBuilding.bind(this);
+    this.handleChangeSearch = this.handleChangeSearch.bind(this);
   }
+
+  handleChangeSearch(e) {
+    this.setState({
+      search: e.target.value.toLowerCase(),
+    });
+  }
+
   handleClick() {
     this.setState({
       toggleEdit: !this.state.toggleEdit,
@@ -89,13 +97,25 @@ class BuildingDetails extends Component {
             <></>
           )}
         </div>
+        <div>
+            <input
+              className="form-input"
+              type="text"
+              value={this.state.search}
+              onChange={this.handleChangeSearch}
+              placeholder="Buscar serviço pelo nome"
+            />
+          </div>
         <h2 className='details-section-title'>Serviços/Produtos disponíveis</h2>
         <div className='details-btn'>
           <Link className='details-link' to={`/condominio/${this.state.building._id}/adicionar-serviço`}>
             Adicionar Serviço/Produto
           </Link>
         </div>
-        <ServicesList services={this.state.services} {...this.props} />
+        <ServicesList services={this.state.services.filter((elem) => {
+                return elem.name.toLowerCase().includes(this.state.search);
+              })} {...this.props} />
+              <button onClick={this.props.history.goBack} className="details-btn">Voltar</button>
       </div>
     );
   }

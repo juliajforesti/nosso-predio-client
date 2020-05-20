@@ -99,11 +99,11 @@ class ServiceDetails extends Component {
             <p>{this.state.service.description}</p>
           </div>
         </div>
+        <button onClick={this.props.history.goBack} className="details-btn">Voltar</button>
         {this.state.service.owner === this.props.user._id ? (
           <div>
-              <button onClick={this.props.history.goBack} className="details-btn">Voltar</button>
               
-                <button className="form-input-submit" style={{ backgroundColor: "red"}} onClick={() => this.deleteService()}>Realmente quero deletar</button>
+                <button className="details-btn form-input-submit" style={{width:"90%", backgroundColor: "red"}} onClick={() => this.deleteService()}>Realmente quero deletar</button>
               
             {!this.state.toggleEdit ? (
               <>
