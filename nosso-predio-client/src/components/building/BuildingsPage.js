@@ -83,8 +83,13 @@ class BuildingsPage extends Component {
     if (this.props.user.buildings.length < 1) {
       this.getBuildings();
       return (
-        <div className='main-page-title-box'>
-          <h1> Meus condominios </h1> <br/>
+        <div>
+          <div className="main-page-title-box">
+            <h1>
+              <span className="title-first">Meus </span>
+              <span className="title-second">Condomínios</span>
+            </h1>
+          </div>
           <div className="add-building-box">
                 <Link className="add-building-btn" to="/adicionar-condominio">
                   Criar Condominio
@@ -112,8 +117,8 @@ class BuildingsPage extends Component {
                 ) : (
                   <></>
                 )}
+              <button onClick={this.props.history.goBack} className="back-btn">Voltar</button>
               </div>
-              <button onClick={this.props.history.goBack} className="form-input-submit">Voltar</button>
         </div>
       );
 
@@ -121,8 +126,13 @@ class BuildingsPage extends Component {
     } else {
       this.getUserBuildings();
       return (
-        <div className='main-page-title-box'>
-          <h1> Meus condominios </h1> <br/>
+        <div>
+          <div className="main-page-title-box">
+            <h1>
+              <span className="title-first">Meus </span>
+              <span className="title-second">Condomínios</span>
+            </h1>
+          </div>
           <div className="add-building-box">
                 <Link className="add-building-btn" to="/adicionar-condominio">
                   Criar Condominio
@@ -151,9 +161,9 @@ class BuildingsPage extends Component {
                   <></>
                 )}
               </div>
-          <div>
+          <div className='search-bar-container'>
             <input
-              className="form-input"
+              className="form-input search-bar"
               type="text"
               value={this.state.search}
               onChange={this.handleChangeSearch}
@@ -186,9 +196,7 @@ class BuildingsPage extends Component {
                 );
               })}
           </div>
-          <Link to="/pagina-principal">
-            <button className="form-input-submit" >Voltar</button>
-          </Link>
+          <button onClick={this.props.history.goBack} className="back-btn">Voltar</button>
         </div>
       );
     }

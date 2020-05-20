@@ -17,10 +17,9 @@ const ServicesList = (props) => {
                     src={service.image}
                     alt={service.name}
                   />
-                  <div>
-                  <h3>{service.name}</h3>
-                  <br />
-                  <p>{service.description}</p>
+                  <div className='service-card-right-side'>
+                    <h3>{service.name.toUpperCase()}</h3>
+                    <p>{service.description}</p>
                   </div>
                 </div>
               </Link>

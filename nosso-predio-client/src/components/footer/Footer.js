@@ -4,11 +4,11 @@ import { Link } from "react-router-dom";
 import { AiOutlineHome, AiOutlineUser } from "react-icons/ai";
 import { FaRegBuilding } from "react-icons/fa";
 
+
 const Footer = (props) => {
   return (
     <footer className="footer">
       <div className="footer-top">
-
         <Link className="footer-link" to="/pagina-principal">
           <AiOutlineHome className='footer-icon' />
           Página Principal
@@ -24,15 +24,6 @@ const Footer = (props) => {
           Perfil
         </Link>
       </div>
-      {/* <div className="footer-bottom">
-        <div>
-          <p className="footer-title"> Nosso Prédio </p>
-        </div>
-        <div>
-          <p className="footer-by">por </p>
-          <p className="footer-by">Gabriel Bohn e Júlia Foresti</p>
-        </div>
-      </div> */}
     </footer>
   );
 };

@@ -66,7 +66,7 @@ class OrdersPage extends Component {
           <div>
             <h1 className="add-building-err">Você ainda não fez nenhum pedido, acesse um de seus condominios e peça!</h1>
           </div>
-          <button onClick={this.props.history.goBack} className="form-input-submit">Voltar</button>
+          <button onClick={this.props.history.goBack} className="back-btn">Voltar</button>
           </div>
         </div>
       );
@@ -75,9 +75,14 @@ class OrdersPage extends Component {
     } else {
       return (
         <div>
-          <h1> Meus pedidos </h1>
+          <div className="main-page-title-box">
+            <h1>
+              <span className="title-first">Meus </span>
+              <span className="title-second">Pedidos</span>
+            </h1>
+          </div>
           <div>
-          <button onClick={this.handleToggleStatus}>
+          <button className="back-btn" onClick={this.handleToggleStatus}>
               {this.state.toggleStatusButton ? ('Mostrar todos os pedidos') : ('Mostrar somente pedidos ativos')}
               </button>
               {this.state.toggleStatusButton ? (
@@ -86,7 +91,7 @@ class OrdersPage extends Component {
                 <OrderList handleStatus={this.handleStatus} orders={this.state.orders} {...this.props}/>
               )}
           </div>
-          <Link to='/pagina-principal'><button>Voltar</button></Link>
+          <button onClick={this.props.history.goBack} className="back-btn">Voltar</button>
         </div>
       );
     }

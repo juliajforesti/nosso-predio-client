@@ -221,8 +221,6 @@ class MainPage extends Component {
               >
                 Já tem um convite? Clique aqui para inserir o código
               </button>
-
-
               {this.state.toggleButton ? (
                 <form onSubmit={this.handleOnSubmit} type="submit">
                   <input
@@ -299,12 +297,17 @@ class MainPage extends Component {
             <div>
               {this.props.user.services.length > 0 ? (
                 <ServicesList
-                  services={this.state.services}
+                  services={this.state.services.slice(0,3)}
                   {...this.props}
                 ></ServicesList>
               ) : (
                 <></>
               )}
+              <div className="see-more-box">
+              <Link className="see-more-btn" to="/meus-serviços">
+                  Ver mais
+              </Link>
+              </div>
             </div>
 
             <div className="main-page-section-title-container">

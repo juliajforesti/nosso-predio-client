@@ -121,6 +121,7 @@ body{
   /* text-shadow: 1px 1px 3px #6593A6; */
   display: flex;
   align-items: center;
+  justify-content: space-between;
   box-shadow: 1px 1px 2px #6593A6;
 }
 .card-img{
@@ -185,4 +186,11 @@ body{
   background-color: #3F6473;
 }
 
-
+.service-card-right-side{
+  width: 9rem;
+}
+.service-card-right-side>h3{
+  font-size: 1rem;
+  font-weight: bolder;
+  text-decoration: underline;
+}

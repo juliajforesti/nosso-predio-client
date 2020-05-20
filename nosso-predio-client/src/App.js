@@ -77,7 +77,6 @@ class App extends Component {
             <Navbar
               user={this.state.loggedUser}
               logout={this.logout}
-              {...this.props}
             />
 
             <div className="app-container">
@@ -150,7 +149,7 @@ class App extends Component {
                 <Route component={RedirectToMain} />
               </Switch>
             </div>
-            <Footer />
+            <Footer/>
           </div>
         ) : (
           <div>
