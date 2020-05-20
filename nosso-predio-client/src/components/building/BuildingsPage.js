@@ -113,9 +113,7 @@ class BuildingsPage extends Component {
                   <></>
                 )}
               </div>
-          <Link to="/pagina-principal">
-            <button className="form-input-submit" >Voltar</button>
-          </Link>
+              <button onClick={this.props.history.goBack} className="form-input-submit">Voltar</button>
         </div>
       );
 

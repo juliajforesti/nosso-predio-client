@@ -69,7 +69,6 @@ class Login extends Component {
           <div className="form-item">
             <label>Senha:</label> <br/>
             <input
-              className=""
               type="password"
               name="password"
               className="form-input"
