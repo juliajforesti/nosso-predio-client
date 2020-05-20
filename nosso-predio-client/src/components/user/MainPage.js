@@ -249,7 +249,7 @@ class MainPage extends Component {
                             <img
                               className="card-img"
                               src={building.image}
-                              alt=""
+                              alt={building.name}
                             />
                             <h3>{building.name}</h3>
                             <p>CEP: {building.address.cep}</p>
@@ -266,7 +266,7 @@ class MainPage extends Component {
                             <img
                               className="card-img"
                               src={building.image}
-                              alt=""
+                              alt={building.name}
                             />
                             <h3>{building.name}</h3>
                             <p>{building.address.cep}</p>
