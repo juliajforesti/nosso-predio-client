@@ -58,7 +58,7 @@ class Login extends Component {
           <div className="form-item">
             <label>Email:</label> <br/>
             <input
-              className=""
+              className="form-input"
               type="email"
               name="email"
               value={this.state.email}
@@ -72,23 +72,19 @@ class Login extends Component {
               className=""
               type="password"
               name="password"
+              className="form-input"
               value={this.state.password}
               onChange={this.handleChange}
             />
           </div>
-          <input className="auth-button" type="submit" value="Entrar" />
+          <input className="form-input-submit" type="submit" value="Entrar" />
         </form>
         <div className="auth-google">
           <p className="auth-alternative">
-            Ou então entre com sua conta Google/Facebook
+            Ou então entre com sua conta Google
           </p>
           <div className='social-login-container'>
-            <div className='social-login-box'>
-              <a className='social-login' href="http://localhost:5000/api/auth/google">GOOGLE</a>
-            </div>
-            <div className='social-login-box'>
-              <a className='social-login' href="http://localhost:5000/api/auth/facebook">FACEBOOK</a>
-            </div>
+              <a className='social-login form-input-submit' href="http://nosso-predio.herokuapp.com/api/auth/google">GOOGLE</a>
           </div>
         </div>
         <div>

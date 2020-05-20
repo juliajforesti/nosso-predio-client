@@ -1,13 +1,90 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+.form-input {
+  width: 300px;
+  padding: 12px 20px;
+  background-color: white;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+select {
+  width: 240px;
+  padding: 12px 20px;
+  background-color: white;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.form-input-submit {
+  width: 150px;
+  padding: 12px 20px;
+  background-color: white;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.form-button {
+  width: 150px;
+  padding: 12px 20px;
+  background-color: white;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.form-button:hover {
+  background-color: whitesmoke;
+}
+
+.form-input-submit:hover {
+  background-color: whitesmoke;
+}
+
+input[type="text-area"] {
+  width: 300px;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: white;
+  resize: vertical;
+  word-wrap: normal;
+  overflow-wrap: normal;
+}
+
+.add-building-err{
+  background-color: #8EB1BF;
+  border-radius: 0.2rem;
+  box-shadow: 2px 2px 6px black;
+  text-align: center;
+  color: white;
+  font-weight: 10px;
+  text-shadow: 3px 2px 5px #6593A6;
+  font-size: 1.2rem;
+  margin: 2rem 0;
+  padding: 1rem;
 }
