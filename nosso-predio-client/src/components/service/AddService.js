@@ -49,7 +49,11 @@ class AddService extends Component {
   render() {
     return (
       <div className="auth-container">
-        <h1 className="auth-title">Adicione seu Serviço/Produto</h1>
+        <h1>
+        <span className="title-first">Adicione </span>
+        <span className="title-second">seu Serviço ou Produto </span>
+        </h1>
+        <div></div>
         <div>
           <form onSubmit={this.handleSubmit}>
             <div className="form-item">
@@ -115,7 +119,7 @@ class AddService extends Component {
             </div>
 
             <button className="form-button" type="submit">
-              Adicionar serviço
+              Adicionar
             </button>
           </form>
         </div>

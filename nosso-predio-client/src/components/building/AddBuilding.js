@@ -100,6 +100,7 @@ class AddBuilding extends Component {
             </div>
           ) : null}
         </div>
+        <button onClick={this.props.history.goBack} className="back-btn">Voltar</button>
       </div>
     );
   }

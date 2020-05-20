@@ -97,7 +97,8 @@ class BuildingDetails extends Component {
             <></>
           )}
         </div>
-        <div>
+        <h2 className='details-section-title'>Serviços/Produtos disponíveis</h2>
+        <div className='search-bar-container'>
             <input
               className="form-input"
               type="text"
@@ -106,7 +107,6 @@ class BuildingDetails extends Component {
               placeholder="Buscar serviço pelo nome"
             />
           </div>
-        <h2 className='details-section-title'>Serviços/Produtos disponíveis</h2>
         <div className='details-btn'>
           <Link className='details-link' to={`/condominio/${this.state.building._id}/adicionar-serviço`}>
             Adicionar Serviço/Produto
