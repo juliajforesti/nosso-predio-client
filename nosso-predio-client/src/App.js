@@ -18,6 +18,8 @@ import ServicesPage from "./components/service/ServicesPage";
 import OrdersPage from "./components/order/OrdersPage";
 import InvitePage from "./components/building/InvitePage";
 import RedirectToMain from "./components/RedirectToMain";
+import 'bulma/css/bulma.css';
+import Footer from './components/footer/Footer'
 
 class App extends Component {
   constructor(props) {
@@ -148,6 +150,7 @@ class App extends Component {
                 <Route component={RedirectToMain} />
               </Switch>
             </div>
+            <Footer />
           </div>
         ) : (
           <div>
@@ -176,6 +179,7 @@ class App extends Component {
                 <Route component={RedirectToMain} />
               </Switch>
             </div>
+            <Footer />
           </div>
         )}
       </div>

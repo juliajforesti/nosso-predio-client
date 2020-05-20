@@ -2,9 +2,15 @@
   margin: 0;
   text-decoration: none;
 }
+html {
+  height: 100%;
+}
 body{
   background-color: #D8EBF2;
+  min-height: 100%;
 }
+
+
 
 .main-container{
   margin: 1rem;

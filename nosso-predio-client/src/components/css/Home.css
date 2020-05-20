@@ -3,17 +3,23 @@
   padding: 0;
   
 }
-body{
-  width: 100vw;
-  font-size: 10px;
+
+html {
+  height: 100%;
 }
+body {
+  min-height: 100%;
+}
+
 
 .app-outer-container{
 
 }
 .app-container{
   margin: 1rem;
-  margin-top: 70px;
+  margin-top: 60px;
+  padding-bottom: 88px;
+
 }
 
 .home-title{
@@ -21,7 +27,7 @@ body{
   color: white;
   font-weight: 10px;
   text-shadow: 3px 2px 5px #6593A6;
-  font-size: 1.5rem;
+  font-size: 2.5rem;
 }
 
 .home-link-box{
@@ -49,6 +55,12 @@ body{
   font-size: 1.2rem;
   margin: 2rem 0;
   padding: 1rem;
+}
+.home-about-box>h2{
+  font-size: 2rem;
+}
+.home-about-box>h4{
+  font-size: 1.5rem;
 }
 .home-about-text-container{
   margin-top: 1rem;

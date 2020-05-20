@@ -1,0 +1,38 @@
+html, body {height:100%;}
+.footer{
+  display: flex;
+  justify-content: space-around;
+  padding: 1rem;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+}
+.footer-title{
+  color: #3F6473;
+  font-weight: bolder;
+}
+
+.footer-by{
+  font-size: 0.6rem;
+  color: #3F6473;
+
+}
+
+.footer-left{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  
+}
+.footer-right{
+  border-left: 1px solid black;
+  padding-left: 2rem;
+  display: flex;
+  flex-direction: column;
+  font-size: 0.6rem;
+}
+
+.footer-link{
+  color: #3F6473;
+}

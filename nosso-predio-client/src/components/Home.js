@@ -53,7 +53,7 @@ const Home = (props) => {
           </li>
           <li>Você sabe montar móveis e gostaria de oferecer esse serviço?</li>
         </ul>
-        <h4>Participe do Nosso Prédio!</h4>
+        <h4>Junte-se ao Nosso Prédio!</h4>
       </div>
       <div className="home-about-box">
         <h2>Quem somos</h2>
