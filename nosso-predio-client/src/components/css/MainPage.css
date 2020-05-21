@@ -227,6 +227,24 @@ body{
     flex-direction: column;
     /* border: 1px solid black; */
   }
+  .desktop-title-box{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  .desktop-box-btn{
+    /* border: 1px solid red; */
+    width: 20rem;
+    height: max-content;
+    margin-left: -1rem;
+  }
+  .invitation-code-btn{
+    padding: 0.5rem;
+  }
+
+  .desktop-btn{
+    width: 12rem;
+  }
   .main-page-section-title-container{
     text-align: left;
     background-color: whitesmoke ;
@@ -247,6 +265,7 @@ body{
 
   .card-box {
     min-height: 8rem;
+    max-width: 22rem;
     /* border: 1px solid blue; */
     display: flex;
     flex-direction: row;
