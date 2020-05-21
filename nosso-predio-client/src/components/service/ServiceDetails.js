@@ -3,6 +3,7 @@ import MainService from "../MainService";
 import OrderList from "../order/OrderList";
 import OrderForm from "../order/OrderForm";
 import EditService from "./EditService";
+import '../css/DetailsPage.css'
 
 class ServiceDetails extends Component {
   constructor(props) {
@@ -113,20 +114,22 @@ class ServiceDetails extends Component {
           </div>
         </div>
         {this.state.service.owner === this.props.user._id ? (
-          <div>
+          <div className='service-owner-box'>
+            <button className="details-btn" onClick={this.handleClick}>
+              Editar
+            </button>
             <button
               className="details-btn"
               style={{ backgroundColor: "red" }}
               onClick={() => this.deleteService()}
             >
+
               Deletar {this.state.service.category.toLowerCase()}
-            </button> <br/>
+            </button> 
+
 
             {!this.state.toggleEdit ? (
               <>
-                <button className="details-btn" onClick={this.handleClick}>
-                  Editar
-                </button>
               </>
             ) : (
               <EditService
@@ -135,7 +138,7 @@ class ServiceDetails extends Component {
                 service={this.state.service}
               />
             )}
-            <h3>Pedidos:</h3>
+            <h3 className='service-owner-h3'>Pedidos:</h3>
             <OrderList
               handleStatus={this.handleStatus}
               building={this.state.service.building}
@@ -145,8 +148,10 @@ class ServiceDetails extends Component {
           </div>
         ) : (
           <div className="order-container">
-            <h3>Faça seu pedido</h3>
+            <h3>Faça seu pedido!</h3>
+            <div className='order-form' >
             <OrderForm {...this.props} service={this.state.service._id} />
+            </div>
           </div>
         )}
         <button onClick={this.props.history.goBack} className="details-btn">

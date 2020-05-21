@@ -75,6 +75,9 @@ class ServicesPage extends Component {
               onChange={this.handleChangeSearch}
               placeholder="Buscar serviço pelo nome"
             />
+
+          <button onClick={this.props.history.goBack} className="details-btn">Voltar</button>
+
           </div>
 
           <div>
@@ -87,9 +90,7 @@ class ServicesPage extends Component {
                 {...this.props}
               ></ServicesList>
           </div>
-        <div className="search-bar-container">
-          <button onClick={this.props.history.goBack} className="details-btn">Voltar</button>
-        </div>
+
         </div>
       );
     }

@@ -120,6 +120,9 @@ class BuildingDetails extends Component {
             onChange={this.handleChangeSearch}
             placeholder="Buscar serviço pelo nome"
           />
+          <button onClick={this.props.history.goBack} className="details-btn">
+            Voltar
+          </button>
         </div>
         <div className="services-list-container">
           <ServicesList
@@ -128,11 +131,7 @@ class BuildingDetails extends Component {
             })}
             {...this.props}
           />
-        <div className="search-bar-container">
-          <button onClick={this.props.history.goBack} className="details-btn">
-            Voltar
-          </button>
-        </div>
+
         </div>
       </div>
     );

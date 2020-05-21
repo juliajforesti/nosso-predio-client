@@ -90,37 +90,39 @@ class BuildingsPage extends Component {
               <span className="title-second">Condomínios</span>
             </h1>
           </div>
-          <div className="add-building-box">
-                <Link className="add-building-btn" to="/adicionar-condominio">
-                  Criar Condominio
-                </Link>
-              </div>
-              <div className="invitation-code-box">
-                <button
-                  className="invitation-code-btn"
-                  onClick={() => this.handleToggle()}
-                >
-                  Já tem um convite? Clique aqui para inserir o código
-                </button>
+          <div className="building-page-btn-box">
+            <div className="add-building-box">
+              <Link className="add-building-btn" to="/adicionar-condominio">
+                Criar Condominio
+              </Link>
+            </div>
+            <div className="invitation-code-box">
+              <button
+                className="invitation-code-btn"
+                onClick={() => this.handleToggle()}
+              >
+                Já tem um convite? Clique aqui para inserir o código
+              </button>
 
-                {this.state.toggleButton ? (
-                  <form onSubmit={this.handleOnSubmit} type="submit">
-                    <input
-                      onChange={this.handleChangeCode}
-                      value={this.state.confirmationCode}
-                      type="text"
-                      name="confirmationCode"
-                      placeholder="insira seu código de acesso"
-                    />
-                    <button type="submit">Enviar</button>
-                  </form>
-                ) : (
-                  <></>
-                )}
-                <div className="search-bar-container">
-          <button onClick={this.props.history.goBack} className="details-btn">Voltar</button>
-        </div>
-              </div>
+              {this.state.toggleButton ? (
+                <form onSubmit={this.handleOnSubmit} type="submit">
+                  <input
+                    onChange={this.handleChangeCode}
+                    value={this.state.confirmationCode}
+                    type="text"
+                    name="confirmationCode"
+                    placeholder="insira seu código de acesso"
+                  />
+                  <button type="submit">Enviar</button>
+                </form>
+              ) : (
+                <></>
+              )}
+            </div>
+            <button onClick={this.props.history.goBack} className="details-btn">
+              Voltar
+            </button>
+          </div>
         </div>
       );
 
@@ -135,15 +137,20 @@ class BuildingsPage extends Component {
               <span className="title-second">Condomínios</span>
             </h1>
           </div>
-          <div className='profile-info-img'> 
-          <div className="add-building-box">
-                <Link className="add-building-btn" to="/adicionar-condominio">
+
+          <div className="building-page-btn-container">
+            <div className="building-page-btn-box">
+              <div className="add-building-box">
+                <Link
+                  className="add-building-btn building-page-btn"
+                  to="/adicionar-condominio"
+                >
                   Criar Condominio
                 </Link>
               </div>
               <div className="invitation-code-box">
                 <button
-                  className="invitation-code-btn"
+                  className="invitation-code-btn building-page-btn"
                   onClick={() => this.handleToggle()}
                 >
                   Já tem um convite? Clique aqui para inserir o código
@@ -164,8 +171,9 @@ class BuildingsPage extends Component {
                   <></>
                 )}
               </div>
-              </div>
-          <div className='search-bar-container'>
+            </div>
+          </div>
+          <div className="search-bar-container">
             <input
               className="form-input search-bar"
               type="text"
@@ -173,8 +181,11 @@ class BuildingsPage extends Component {
               onChange={this.handleChangeSearch}
               placeholder="Buscar condomínio pelo nome"
             />
+            <button onClick={this.props.history.goBack} className="details-btn">
+              Voltar
+            </button>
           </div>
-          <div className='cards-countainer'>
+          <div className="cards-countainer">
             {this.state.buildings
               .filter((elem) => {
                 return elem.name.toLowerCase().includes(this.state.search);
@@ -182,27 +193,24 @@ class BuildingsPage extends Component {
               .map((building, idx) => {
                 return (
                   <div key={idx}>
-                        <Link to={`/condominio/${building._id}`}>
-                          <div className="card-box">
-                            <img
-                              className="card-img"
-                              src={building.image}
-                              alt={building.name}
-                            />
-                            <h3>{building.name}</h3>
-                            <div>
-                            <p>CEP: {building.address.cep}</p>
-                            <p>Número: {building.address.number}</p>
-                            </div>
-                          </div>
-                        </Link>
+                    <Link to={`/condominio/${building._id}`}>
+                      <div className="card-box">
+                        <img
+                          className="card-img"
+                          src={building.image}
+                          alt={building.name}
+                        />
+                        <h3>{building.name}</h3>
+                        <div>
+                          <p>CEP: {building.address.cep}</p>
+                          <p>Número: {building.address.number}</p>
+                        </div>
                       </div>
+                    </Link>
+                  </div>
                 );
               })}
           </div>
-        <div className="search-bar-container">
-          <button onClick={this.props.history.goBack} className="details-btn">Voltar</button>
-        </div>
         </div>
       );
     }
