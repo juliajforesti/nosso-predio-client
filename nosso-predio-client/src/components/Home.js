@@ -79,10 +79,9 @@ const Home = (props) => {
                   src="https://res.cloudinary.com/juliajforesti/image/upload/v1589924069/nosso-predio/IMG_2847_r8kbbo.jpg"
                   alt=""
                 />
-                <h3>Julia Foresti</h3>
+                <h3>Júlia Foresti</h3>
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                  eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Potterhead, formada em Engenharia Química, trabalhei na área comercial por 5 anos, até descobrir a paixão pela programação.
                 </p>
               </div>
             </div>
