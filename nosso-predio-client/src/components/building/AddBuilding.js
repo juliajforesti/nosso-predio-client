@@ -31,7 +31,6 @@ class AddBuilding extends Component {
       }
       this.props.history.push("/pagina-principal");
     });
-    console.log(this.props);
   }
 
   handleChange(e) {

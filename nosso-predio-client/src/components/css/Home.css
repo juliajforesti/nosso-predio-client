@@ -103,13 +103,11 @@ body {
     background-color: lightblue;
   }
   .home-link-container{
-    /* border: 1px solid black; */
     display: flex;
     justify-content: space-around;
   }
   .home-link-box{
     width: 40vw;
-    /* border: 1px solid black; */
   }
   .home-section-2-container{
     display: flex;
@@ -123,9 +121,9 @@ body {
   }
 .app-container{
   background-color: whitesmoke;
+  margin-top: 87px;
   }
   #img-home-desktop{
-    margin-top: 4rem;
     visibility: visible;
     width: 34rem;
     height: 20rem;

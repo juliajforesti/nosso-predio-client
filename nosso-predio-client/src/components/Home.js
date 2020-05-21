@@ -74,8 +74,7 @@ const Home = (props) => {
                 <h3>Gabriel Bohn</h3>
                 <img src="" alt="" />
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                  eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Estudante de engenharia, entusiasta do mundo de games, que fez com que eu fizesse o curso de desenvolvimento web da Ironhack.
                 </p>
               </div>
               <div className="home-about-text">

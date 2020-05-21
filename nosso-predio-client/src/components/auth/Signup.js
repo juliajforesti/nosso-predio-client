@@ -34,7 +34,6 @@ class Signup extends Component {
   }
 
   checkPasswordLength() {
-    console.log(this.state.password.length);
     if (this.state.password.length+1 > 5) {
       this.setState({
         passwordCheck: "2px solid green",
@@ -70,9 +69,7 @@ class Signup extends Component {
   responseGoogle(response) {
     this.service
       .googleLogin()
-      .then((resp) => console.log("RESP:", resp))
-      .catch((err) => console.log(err));
-    console.log("RESPONSE:", response);
+      .then((resp) => {})
   }
 
   render() {
