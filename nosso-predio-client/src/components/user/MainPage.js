@@ -205,41 +205,44 @@ class MainPage extends Component {
         <div>
           <div>
             <div className="main-page-top">
-              <div className="main-page-title-box">
+              <div className="main-page-title-box desktop-title-box">
                 <h1>
                   <span className="title-first">Olá</span>
                   <span className="title-second"> {this.props.user.name}</span>
                 </h1>
               </div>
-              <div>
-                <div className="add-building-box">
-                  <Link className="add-building-btn" to="/adicionar-condominio">
-                    Criar Condominio
-                  </Link>
+                <div className='desktop-box-btn'>
+                  <div className="add-building-box desktop-btn">
+                    <Link
+                      className="add-building-btn"
+                      to="/adicionar-condominio"
+                    >
+                      Criar Condominio
+                    </Link>
+                  </div>
+                  <div className="invitation-code-box desktop-btn">
+                    <button
+                      className="invitation-code-btn"
+                      onClick={() => this.handleToggle()}
+                    >
+                      Já tem um convite? Clique aqui para inserir o código
+                    </button>
+                    {this.state.toggleButton ? (
+                      <form onSubmit={this.handleOnSubmit} type="submit">
+                        <input
+                          onChange={this.handleChangeCode}
+                          value={this.state.confirmationCode}
+                          type="text"
+                          name="confirmationCode"
+                          placeholder="insira seu código de acesso"
+                        />
+                        <button type="submit">Enviar</button>
+                      </form>
+                    ) : (
+                      <></>
+                    )}
+                  </div>
                 </div>
-                <div className="invitation-code-box">
-                  <button
-                    className="invitation-code-btn"
-                    onClick={() => this.handleToggle()}
-                  >
-                    Já tem um convite? Clique aqui para inserir o código
-                  </button>
-                  {this.state.toggleButton ? (
-                    <form onSubmit={this.handleOnSubmit} type="submit">
-                      <input
-                        onChange={this.handleChangeCode}
-                        value={this.state.confirmationCode}
-                        type="text"
-                        name="confirmationCode"
-                        placeholder="insira seu código de acesso"
-                      />
-                      <button type="submit">Enviar</button>
-                    </form>
-                  ) : (
-                    <></>
-                  )}
-                </div>
-              </div>
             </div>
 
             <div className="main-page-section-title-container">
@@ -274,18 +277,19 @@ class MainPage extends Component {
                   : this.state.buildings.map((building, idx) => {
                       return (
                         <div key={idx} className="card-box">
-                          <Link 
-                          className="card-box-link" 
-                          to={`/condominio/${building._id}`}>
-                              <img
-                                className="card-img"
-                                src={building.image}
-                                alt=""
-                              />
-                              <h3 className="card-title">{building.name}</h3>
-                              <p className="card-text">
-                                CEP: {building.address.cep}
-                              </p>
+                          <Link
+                            className="card-box-link"
+                            to={`/condominio/${building._id}`}
+                          >
+                            <img
+                              className="card-img"
+                              src={building.image}
+                              alt=""
+                            />
+                            <h3 className="card-title">{building.name}</h3>
+                            <p className="card-text">
+                              CEP: {building.address.cep}
+                            </p>
                           </Link>
                         </div>
                       );
@@ -323,17 +327,21 @@ class MainPage extends Component {
               ) : (
                 <></>
               )}
-              <div className="see-more-box">
-                  <Link className="see-more-btn" to="/meus-condominios">
-                    Ver mais
-                  </Link>
-                  <Link
-                    className="see-more-btn mobile-hidden"
-                    to="/meus-condominios"
-                  >
-                    <GoChevronRight className="next-icon" />
-                  </Link>
-                </div>
+              {this.props.user.services.length > 3 ? (
+                <div className="see-more-box">
+                <Link className="see-more-btn" to="/meus-serviços">
+                  Ver mais
+                </Link>
+                <Link
+                  className="see-more-btn mobile-hidden"
+                  to="/meus-serviços"
+                >
+                  <GoChevronRight className="next-icon" />
+                </Link>
+              </div>
+              ):(
+                <></>
+              )}
             </div>
 
             <div className="main-page-section-title-container">
@@ -343,25 +351,25 @@ class MainPage extends Component {
               </Link>
             </div>
             <div>
-
-            <div className="section-card-container">
-              {this.state.toggleStatusButton ? (
-                <OrderList
-                  activeOrders={this.activeOrders}
-                  handleStatus={this.handleStatus}
-                  orders={this.state.orders.filter(
-                    (order) => order.status !== "Cancelado"
-                  )}
-                  {...this.props}
-                />
-              ) : (
-                <OrderList
-                  handleStatus={this.handleStatus}
-                  orders={this.state.orders}
-                  {...this.props}
-                />
-              )}
-              <div className="see-more-box">
+              <div className="section-card-container">
+                {this.state.toggleStatusButton ? (
+                  <OrderList
+                    activeOrders={this.activeOrders}
+                    handleStatus={this.handleStatus}
+                    orders={this.state.orders.filter(
+                      (order) => order.status !== "Cancelado"
+                    )}
+                    {...this.props}
+                  />
+                ) : (
+                  <OrderList
+                    handleStatus={this.handleStatus}
+                    orders={this.state.orders}
+                    {...this.props}
+                  />
+                )}
+              {this.props.user.services.length > 3 ? (
+                <div className="see-more-box">
                   <Link className="see-more-btn" to="/meus-pedidos">
                     Ver mais
                   </Link>
@@ -372,8 +380,12 @@ class MainPage extends Component {
                     <GoChevronRight className="next-icon" />
                   </Link>
                 </div>
-            </div>
+              ):(
+                <></>
+              )}
+
               </div>
+            </div>
           </div>
         </div>
       );
