@@ -30,7 +30,6 @@ class OrderForm extends Component {
         });
         this.props.history.push(`/meus-pedidos`);
       })
-      .catch((err) => console.log(err));
   }
 
   render() {

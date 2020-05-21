@@ -29,7 +29,6 @@ class ProfilePage extends Component {
   }
 
   handleFormSubmit(e) {
-    console.log(this.props);
     e.preventDefault();
     const { email, name } = this.state;
     const userId = this.props.user._id;

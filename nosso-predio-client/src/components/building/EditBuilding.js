@@ -25,7 +25,6 @@ class EditBuilding extends Component {
     this.service
       .editBuilding(buildingId, name, cep, number)
       .then((response) => {
-        console.log(response);
         this.props.handleClick();
         this.props.getEditedBuilding(response);
       });
@@ -41,14 +40,11 @@ class EditBuilding extends Component {
   handleFileUpload(e) {
     const uploadData = new FormData();
 
-    console.log(e.target.files[0])
-
     uploadData.append("image", e.target.files[0]);
     const buildingId = this.props.building._id;
 
     this.service.editBuildingPhoto(uploadData, buildingId)
     .then((response) => {
-      console.log(response)
       this.props.getEditedBuilding(response);
       this.props.handleClick();
     });
