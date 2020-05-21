@@ -133,6 +133,7 @@ class BuildingsPage extends Component {
               <span className="title-second">Condomínios</span>
             </h1>
           </div>
+          <div className='profile-info-img'> 
           <div className="add-building-box">
                 <Link className="add-building-btn" to="/adicionar-condominio">
                   Criar Condominio
@@ -160,6 +161,7 @@ class BuildingsPage extends Component {
                 ) : (
                   <></>
                 )}
+              </div>
               </div>
           <div className='search-bar-container'>
             <input

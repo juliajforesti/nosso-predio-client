@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import ServicesList from "../service/ServicesList";
 import EditBuilding from "./EditBuilding";
 import InviteLink from "./InviteLink";
-import '../css/DetailsPage.css';
+import "../css/DetailsPage.css";
 
 class BuildingDetails extends Component {
   constructor(props) {
@@ -75,13 +75,20 @@ class BuildingDetails extends Component {
       <div>
         <div>
           {/* <img className='details-page-img' src={this.state.building.image} alt={this.state.building.name} /> */}
-          <h1 className='details-page-title'>
-          {this.state.building.name}
-          </h1>
+          <h1 className="details-page-title">{this.state.building.name}</h1>
+          <div className="detail-img-count">
+            <img
+              className="detail-image"
+              src={this.state.building.image}
+              alt={this.state.building.name}
+            />
+          </div>
           {this.props.user._id === this.state.building.owner ? (
             <div>
-            <InviteLink code={this.state.building.confirmationCode} />
-            <button className='details-btn' onClick={this.handleClick}>Editar</button>
+              <InviteLink
+                btn={this.handleClick}
+                code={this.state.building.confirmationCode}
+              />
               {this.state.toggleEdit ? (
                 <EditBuilding
                   getEditedBuilding={this.getEditedBuilding}
@@ -96,26 +103,36 @@ class BuildingDetails extends Component {
             <></>
           )}
         </div>
-        <h2 className='details-section-title'>Serviços/Produtos disponíveis</h2>
-        <div className='search-bar-container'>
-            <input
-              className="form-input"
-              type="text"
-              value={this.state.search}
-              onChange={this.handleChangeSearch}
-              placeholder="Buscar serviço pelo nome"
-            />
+        <h2 className="details-section-title">Serviços/Produtos disponíveis</h2>
+        <div className="search-bar-container">
+          <div className="details-btn">
+            <Link
+              className="details-link"
+              to={`/condominio/${this.state.building._id}/adicionar-serviço`}
+            >
+              Adicionar Serviço/Produto
+            </Link>
           </div>
-        <div className='details-btn'>
-          <Link className='details-link' to={`/condominio/${this.state.building._id}/adicionar-serviço`}>
-            Adicionar Serviço/Produto
-          </Link>
+          <input
+            className="form-input"
+            type="text"
+            value={this.state.search}
+            onChange={this.handleChangeSearch}
+            placeholder="Buscar serviço pelo nome"
+          />
         </div>
-        <div className='services-list-container'>
-          <ServicesList services={this.state.services.filter((elem) => {
-                  return elem.name.toLowerCase().includes(this.state.search);
-                })} {...this.props} />
-                <button onClick={this.props.history.goBack} className="details-btn">Voltar</button>
+        <div className="services-list-container">
+          <ServicesList
+            services={this.state.services.filter((elem) => {
+              return elem.name.toLowerCase().includes(this.state.search);
+            })}
+            {...this.props}
+          />
+        <div className="search-bar-container">
+          <button onClick={this.props.history.goBack} className="details-btn">
+            Voltar
+          </button>
+        </div>
         </div>
       </div>
     );

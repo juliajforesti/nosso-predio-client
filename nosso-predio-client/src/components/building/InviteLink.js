@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import '../css/InviteLink.css'
+import "../css/InviteLink.css";
 
 export default class InviteLink extends Component {
   constructor(props) {
@@ -18,15 +18,25 @@ export default class InviteLink extends Component {
 
   render() {
     return (
-      <div className='invite-container'>
-        <div className='code-container'>
-          <p>Código de acesso: {this.props.code}</p>
+      <div className="invite-container">
+        <button className="details-btn" onClick={this.props.btn}>
+          Editar
+        </button>
+        <div className="code-container">
+          <p style={{ textAlign: "center" }}>
+            Código de acesso: <strong>{this.props.code}</strong>
+          </p>
         </div>
         <div>
-          <button className='code-link' onClick={() => {
-            navigator.clipboard.writeText(`http://nosso-predio.herokuapp.com/convite/${this.props.code}`);
-            this.copyCodeToClipboard();
-          }}>
+          <button
+            className="code-link form-input-submit"
+            onClick={() => {
+              navigator.clipboard.writeText(
+                `http://nosso-predio.herokuapp.com/convite/${this.props.code}`
+              );
+              this.copyCodeToClipboard();
+            }}
+          >
             Copiar link
           </button>
           {this.state.copySuccess ? (
