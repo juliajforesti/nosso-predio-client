@@ -48,7 +48,6 @@ class BuildingDetails extends Component {
   }
 
   getEditedBuilding(newBuilding) {
-    console.log();
     this.setState({
       building: newBuilding,
     });

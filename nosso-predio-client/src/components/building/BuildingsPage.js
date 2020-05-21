@@ -170,7 +170,7 @@ class BuildingsPage extends Component {
               placeholder="Buscar condomínio pelo nome"
             />
           </div>
-          <div>
+          <div className='cards-countainer'>
             {this.state.buildings
               .filter((elem) => {
                 return elem.name.toLowerCase().includes(this.state.search);

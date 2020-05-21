@@ -44,7 +44,6 @@ class EditService extends Component {
         date
       )
       .then((response) => {
-        console.log(response);
         this.props.handleClick();
         this.props.getEditedService(response);
       });

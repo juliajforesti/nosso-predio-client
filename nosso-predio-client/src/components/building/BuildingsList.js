@@ -1,7 +1,6 @@
 import React from "react";
 
 const BuildingsList = (props) => {
-  console.log(props.buildings);
   return (
     <div>
       {props.buildings.map((building, idx) => {

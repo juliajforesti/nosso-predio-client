@@ -69,9 +69,7 @@ class Signup extends Component {
   responseGoogle(response) {
     this.service
       .googleLogin()
-      .then((resp) => console.log("RESP:", resp))
-      .catch((err) => console.log(err));
-    console.log("RESPONSE:", response);
+      .then((resp) => {})
   }
 
   render() {

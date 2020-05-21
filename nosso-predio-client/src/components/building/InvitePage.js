@@ -19,7 +19,6 @@ class InvitePage extends Component {
 
     render() { 
         this.inviteCode()
-        console.log(this.props)
         return ( <div>
             <h1>Encontrando seu predio</h1>
         </div> );
