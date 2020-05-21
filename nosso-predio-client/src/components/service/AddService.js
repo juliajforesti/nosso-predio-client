@@ -122,9 +122,12 @@ class AddService extends Component {
             <button className="form-button" type="submit">
               Adicionar
             </button>
-            <button onClick={this.props.history.goBack} className="back-btn">
+            <div>
+
+            <button onClick={this.props.history.goBack} className="details-btn">
               Voltar
             </button>
+            </div>
           </form>
         </div>
       </div>
