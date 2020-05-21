@@ -117,7 +117,9 @@ class BuildingsPage extends Component {
                 ) : (
                   <></>
                 )}
-              <button onClick={this.props.history.goBack} className="back-btn">Voltar</button>
+                <div className="search-bar-container">
+          <button onClick={this.props.history.goBack} className="details-btn">Voltar</button>
+        </div>
               </div>
         </div>
       );
@@ -198,7 +200,9 @@ class BuildingsPage extends Component {
                 );
               })}
           </div>
-          <button onClick={this.props.history.goBack} className="back-btn">Voltar</button>
+        <div className="search-bar-container">
+          <button onClick={this.props.history.goBack} className="details-btn">Voltar</button>
+        </div>
         </div>
       );
     }

@@ -38,6 +38,7 @@
   border: none;
   color: white;
   width: 90%;
+  cursor: pointer;
 }
 .details-link{
   background-color: #6593A6;
