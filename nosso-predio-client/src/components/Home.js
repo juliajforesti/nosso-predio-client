@@ -10,10 +10,6 @@ const Home = (props) => {
           src="https://res.cloudinary.com/juliajforesti/image/upload/v1589995572/nosso-predio/NOSSO_2_cdmf2u.png"
           alt="Nosso Prédio"
         />
-        <img id='img-home-desktop'
-          src="https://res.cloudinary.com/juliajforesti/image/upload/v1590020788/nosso-predio/NOSSO_3_p0ddar.png"
-          alt="Nosso Prédio"
-        />
       </div>
       {props.user ? (
         <div className="home-link-container">
@@ -62,28 +58,28 @@ const Home = (props) => {
             </ul>
             <h4>Junte-se ao Nosso Prédio!</h4>
           </div>
-          <div className="home-about-box new-backgroud">
-            <h2>Quem somos</h2>
+          <div className="home-about-box new-background">
+            <h2>Quem somos?</h2>
             <hr />
             <div className="home-about-text-container">
               <div className="home-about-text">
                 <img
+                  id='gabriel-picture'
                   src="https://res.cloudinary.com/juliajforesti/image/upload/v1589924085/nosso-predio/bf542bbc-bdbe-46a2-a6bc-e8d39c4f2d5f_2_zc0fhb.jpg"
                   alt=""
                 />
                 <h3>Gabriel Bohn</h3>
-                <img src="" alt="" />
                 <p>
                   Estudante de engenharia, entusiasta do mundo dos games e de tecnologia, sendo esse o motivo de fazer curso de desenvolvimento web da Ironhack.
                 </p>
               </div>
               <div className="home-about-text">
                 <img
+                  id='julia-picture'
                   src="https://res.cloudinary.com/juliajforesti/image/upload/v1589924069/nosso-predio/IMG_2847_r8kbbo.jpg"
                   alt=""
                 />
                 <h3>Julia Foresti</h3>
-                <img src="" alt="" />
                 <p>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                   eiusmod tempor incididunt ut labore et dolore magna aliqua.

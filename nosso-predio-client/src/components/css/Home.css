@@ -99,9 +99,6 @@ body {
 }
 
 @media (min-width: 700px) {
-  body{
-    background-color: lightblue;
-  }
   .home-link-container{
     display: flex;
     justify-content: space-around;
@@ -116,21 +113,23 @@ body {
   .home-about-box{
     width: 40vw;
   }
-  .new-backgroud{
+  .new-background{
     background-color: #3F6473;
   }
-.app-container{
-  background-color: whitesmoke;
-  margin-top: 87px;
+  .app-container{
+    height: 100%;
   }
-  #img-home-desktop{
-    visibility: visible;
-    width: 34rem;
-    height: 20rem;
+
+  .app-outer-container{
+    min-height: 100vh;
   }
-  #img-home-mobile{
-    visibility: hidden;
-    width: 0;
-    height: 0;
+  #gabriel-picture{
+    width: 15vw;
+    /* flex-shrink: 1; */
+  }
+  #julia-picture{
+    width: 15vw;
+    /* flex-shrink: 1; */
+
   }
 }

@@ -151,11 +151,14 @@ class ProfilePage extends Component {
                   <button className="form-input-submit" type="submit">Alterar senha</button>
                   </div>
                 </form>
-              <div className="edit-photo-container">
-                <label>Alterar foto de perfil:</label>
-                <div className='profile-info-img'>
-                <input onChange={this.handleFileUpload} type="file" />
-                </div>
+              <div className="edit-building-img">
+                <label for="file-select" className="input-file">Alterar foto de perfil</label>
+                <input 
+                id="file-select"
+                className="input-file"
+                onChange={this.handleFileUpload} 
+                type="file" 
+                />
               </div>
             </div>
           )}

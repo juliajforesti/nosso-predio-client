@@ -152,7 +152,7 @@ class MainPage extends Component {
     if (this.props.user.buildings.length < 1) {
       this.getBuildings();
       return (
-        <div>
+        <div >
           <div className="main-page-title-box">
             <h1>
               <span className="title-first">Olá</span>

@@ -101,8 +101,8 @@ body{
   margin: 1rem 0;
   padding: 0.5rem 0;
   text-align: center;
-  background-color: #8EB1BF ;
-
+  background-color: #3F6473 ; 
+  margin: auto -1rem;
 }
 .main-page-section-title{
   text-decoration: none;
@@ -222,7 +222,7 @@ body{
   .main-page-top{
     width: 20rem;
     margin: 1rem;
-    margin-top: 6rem;
+    margin-top: 5rem;
     display: flex;
     flex-direction: column;
     /* border: 1px solid black; */
@@ -247,7 +247,7 @@ body{
   }
   .main-page-section-title-container{
     text-align: left;
-    background-color: whitesmoke ;
+    background-color: #d8ebf2 ;
     width: 30rem;
     margin-left: 1rem;
   }
