@@ -43,7 +43,7 @@ const ServicesList = (props) => {
                     alt='img'
                   />
                   <h3 className="card-title">{service.name}</h3>
-                  <h3 className="card-text">R${service.price}</h3>
+                  <h3 className="card-text">R${service.price.toFixed(2)}</h3>
               </Link>
             </div>
           );

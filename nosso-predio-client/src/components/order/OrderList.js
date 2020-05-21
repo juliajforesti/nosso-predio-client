@@ -50,7 +50,7 @@ const OrderList = (props) => {
                         </select>
                       </form>
                     ) : (
-                      <p>Status: Cancelado</p>
+                      <p className="card-text">Status: Cancelado</p>
                     )}
                   </div>
                 ) : (
