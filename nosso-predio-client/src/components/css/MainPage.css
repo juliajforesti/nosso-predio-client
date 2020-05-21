@@ -4,127 +4,127 @@
 }
 html {
   height: 100%;
-  background-color: #D8EBF2;
+  background-color: #d8ebf2;
 }
-body{
-  background-color: #D8EBF2;
+body {
+  background-color: #d8ebf2;
   min-height: 100%;
 }
-.main-container{
+.main-container {
   margin: 1rem;
 }
 
-.main-page-title-box{
+.main-page-title-box {
   text-align: center;
   padding: 1rem 0;
 }
-.main-page-title-box>h1{
+.main-page-title-box > h1 {
   text-align: center;
   color: white;
   font-weight: 10px;
-  text-shadow: 3px 2px 5px #6593A6;
+  text-shadow: 3px 2px 5px #6593a6;
   font-size: 2.5rem;
 }
 
-.welcome-section{
+.welcome-section {
   text-align: center;
   padding: 1rem;
   background-color: white;
   border-radius: 0.5rem;
   margin-bottom: 1rem;
-  color: #3F6473;
+  color: #3f6473;
 }
-.title-first{
-  color: #6593A6;
+.title-first {
+  color: #6593a6;
   font-weight: bolder;
 }
-.title-second{
+.title-second {
   color: black;
 }
-.title-third{
-  color: #D8EBF2;
+.title-third {
+  color: #d8ebf2;
   font-weight: bolder;
 }
 
-.add-building-box{
+.add-building-box {
   text-align: center;
   border-radius: 0.2rem;
-  background-color: #6593A6;
-  box-shadow: 2px 2px 6px #3F6473;
+  background-color: #6593a6;
+  box-shadow: 2px 2px 6px #3f6473;
   padding: 0.3rem 0;
   margin: 0 1rem 1rem 1rem;
 }
-.add-building-btn{
+.add-building-btn {
   text-decoration: none;
   color: white;
   font-size: 0.8rem;
 }
-.invitation-code-box{
+.invitation-code-box {
   text-align: center;
   margin: 0 1rem 1rem 1rem;
 }
-.invitation-code-btn{
+.invitation-code-btn {
   text-decoration: none;
   border: none;
   border-radius: 0.2rem;
   text-align: center;
   font-size: 0.8rem;
-  background-color: #6593A6;
-  box-shadow: 2px 2px 6px #3F6473;
+  background-color: #6593a6;
+  box-shadow: 2px 2px 6px #3f6473;
   padding: 0.3rem 0;
   color: white;
   width: 100%;
   cursor: pointer;
 }
-.invitation-code-box form{
+.invitation-code-box form {
   /* border: 1px solid #6F7372; */
   width: 100%;
   padding: 0.3rem 0;
 }
-.invitation-code-box input{
-  border: 1px solid #6593A6;
+.invitation-code-box input {
+  border: 1px solid #6593a6;
   border-radius: 0.2rem;
-  color: #6593A6;
+  color: #6593a6;
   width: 80%;
   height: 1.7rem;
 }
-.invitation-code-box form>button{
-  border: 1px solid #6593A6;
+.invitation-code-box form > button {
+  border: 1px solid #6593a6;
   border-radius: 0.2rem;
-  color: #6593A6;
+  color: #6593a6;
   background-color: white;
   height: 1.9rem;
 }
 
 /* MY BUILDINGS */
-.main-page-section-title-container{
+.main-page-section-title-container {
   margin: 1rem 0;
   padding: 0.5rem 0;
   text-align: center;
-  background-color: #3F6473 ; 
+  background-color: #3f6473;
   margin: auto -1rem;
 }
-.main-page-section-title{
+.main-page-section-title {
   text-decoration: none;
   color: white;
   font-size: 1.8rem;
-  text-shadow: 3px 2px 5px #6593A6;
+  text-shadow: 3px 2px 5px #6593a6;
 }
 
 .card-box {
-  border: 2px solid #3F6473;
+  border: 2px solid #3f6473;
   background-color: whitesmoke;
   border-radius: 10px;
   padding: 1rem;
   margin: 1rem;
-  color: #3F6473;
+  color: #3f6473;
   /* text-shadow: 1px 1px 3px #6593A6; */
   display: flex;
   align-items: center;
   justify-content: space-between;
-  box-shadow: 1px 1px 2px #6593A6;
+  box-shadow: 1px 1px 2px #6593a6;
 }
-.card-box-link{
+.card-box-link {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -135,78 +135,77 @@ body{
   padding: 1rem;
   /* border: 1px solid blue; */
 }
-.card-img{
+.card-img {
   max-height: 4rem;
   margin-right: 1rem;
 }
 .card-title {
   margin-right: 1rem;
-  color: #3F6473;
+  color: #3f6473;
   font-size: 1.5rem;
   font-weight: bolder;
   flex-grow: 1;
   flex-shrink: 1;
 }
 .card-text {
-  color: #3F6473;
+  color: #3f6473;
   font-size: 0.8rem;
   flex-grow: 1;
   flex-shrink: 1;
   text-shadow: none;
 }
-.see-more-btn{
+.see-more-btn {
   text-align: center;
   color: white;
-  background-color: #6593A6;
+  background-color: #6593a6;
   border: none;
   cursor: pointer;
 }
-.see-all-orders-btn{
+.see-all-orders-btn {
   text-align: center;
   color: white;
-  background-color: #6593A6;
+  background-color: #6593a6;
   border: none;
   cursor: pointer;
 }
-.see-more-box{
+.see-more-box {
   text-align: center;
   color: white;
-  background-color: #6593A6;
-  box-shadow: 2px 2px 6px #3F6473;
+  background-color: #6593a6;
+  box-shadow: 2px 2px 6px #3f6473;
   border-radius: 0.2rem;
-  margin: 0 1rem 0.2rem 1rem;
+  margin: 0 1rem 1rem 1rem;
   border: none;
   padding: 0.3rem 0;
 }
-.card-order-middle{
+.card-order-middle {
   /* border: 1px solid black; */
   text-align: center;
   flex-shrink: 1;
   flex-grow: 1;
 }
-.card-order-right-side{
+.card-order-right-side {
   text-align: center;
   /* border: 1px solid blue; */
-
 }
-.cancel-btn{
+.cancel-btn {
   font-size: 0.7rem;
-  border: 1px solid #3F6473;
+  border: 1px solid #3f6473;
   border-radius: 0.2rem;
   padding: 0.2rem;
   color: white;
-  background-color: #3F6473;
+  background-color: #3f6473;
 }
 
-.service-card-right-side{
+.service-card-right-side {
   width: 9rem;
 }
-.service-card-right-side>h3{
+.service-card-right-side > h3 {
   font-size: 1rem;
   font-weight: bolder;
   text-decoration: underline;
 }
-.mobile-hidden{
+.mobile-hidden {
   visibility: hidden;
   height: 0;
   width: 0;
@@ -214,12 +213,11 @@ body{
 
 /* --------------------------------------------------------------------- */
 
-
 @media (min-width: 700px) {
-  body{
+  body {
     background-color: whitesmoke;
   }
-  .main-page-top{
+  .main-page-top {
     width: 20rem;
     margin: 1rem;
     margin-top: 5rem;
@@ -227,37 +225,37 @@ body{
     flex-direction: column;
     /* border: 1px solid black; */
   }
-  .desktop-title-box{
+  .desktop-title-box {
     display: flex;
     justify-content: flex-start;
     align-items: center;
   }
-  .desktop-box-btn{
+  .desktop-box-btn {
     /* border: 1px solid red; */
     width: 20rem;
     height: max-content;
     margin-left: -1rem;
   }
-  .invitation-code-btn{
+  .invitation-code-btn {
     padding: 0.5rem;
   }
 
-  .desktop-btn{
+  .desktop-btn {
     width: 12rem;
   }
-  .main-page-section-title-container{
+  .main-page-section-title-container {
     text-align: left;
-    background-color: #d8ebf2 ;
+    background-color: #d8ebf2;
     width: 30rem;
     margin-left: 1rem;
   }
-  .title-third{
-    color: #3F6473;
+  .title-third {
+    color: #3f6473;
   }
-  .section-card-container{
+  .section-card-container {
     display: flex;
   }
-  .card-container{
+  .card-container {
     display: flex;
     width: 80%;
     /* border: 1px solid red; */
@@ -273,7 +271,7 @@ body{
     flex-shrink: 1;
     flex-wrap: wrap;
   }
-  .card-box-link{
+  .card-box-link {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -286,7 +284,7 @@ body{
     /* padding: 1rem; */
     /* border: 1px solid blue; */
   }
-  .card-img{
+  .card-img {
     flex-shrink: 1;
   }
 
@@ -299,33 +297,33 @@ body{
     font-size: 0.8rem;
     flex-shrink: 1;
   }
-  .card-order-middle{
+  .card-order-middle {
     max-width: 7rem;
     flex-shrink: 1;
     flex-grow: 1;
   }
-  .card-order-right-side{
+  .card-order-right-side {
     /* border: 1px solid black; */
     max-width: 7rem;
     flex-shrink: 1;
     flex-grow: 1;
   }
 
-  .see-more-btn{
+  .see-more-btn {
     visibility: hidden;
     height: 0%;
     width: 0;
   }
-  .mobile-hidden{
+  .mobile-hidden {
     visibility: visible;
     height: 5rem;
     width: 2rem;
   }
-  .see-more-box{
+  .see-more-box {
     text-align: center;
     color: white;
-    background-color: #6593A6;
-    box-shadow: 2px 2px 6px #3F6473;
+    background-color: #6593a6;
+    box-shadow: 2px 2px 6px #3f6473;
     border-radius: 0.2rem;
     border: none;
     margin: 1rem;
@@ -337,25 +335,38 @@ body{
     justify-content: center;
     align-items: center;
   }
-  .next-icon{
+  .next-icon {
     color: white;
     height: 5rem;
     /* border: 1px solid black; */
   }
-  .see-more-box-desktop{
+  .see-more-box-desktop {
     height: 2rem;
     width: 12rem;
   }
-  .see-all-orders-btn{
+  .see-all-orders-btn {
     /* border: 1px solid red; */
     height: 2rem;
     width: 11rem;
+  }
+  .building-page-btn-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
 
   }
-
-
-
-
-
-
+  .building-page-btn-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 20rem;
+    align-self: center;
+  }
+  .building-page-btn{
+  }
+  .search-bar-container{
+    padding-bottom: 2rem;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid #3f6473;
+  }
 }

@@ -46,7 +46,7 @@ class OrderForm extends Component {
               onChange={this.handleChange}
             />
           </div>
-          <input className="details-btn" type="submit" value="Pedir" />
+          <input className="details-btn order-btn" type="submit" value="Pedir" />
         </div>
       </form>
     );

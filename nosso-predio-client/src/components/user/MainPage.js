@@ -368,7 +368,7 @@ class MainPage extends Component {
                     {...this.props}
                   />
                 )}
-              {this.props.user.services.length > 3 ? (
+              {this.props.user.orders.length > 3 ? (
                 <div className="see-more-box">
                   <Link className="see-more-btn" to="/meus-pedidos">
                     Ver mais
