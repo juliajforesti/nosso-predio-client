@@ -34,7 +34,6 @@ class Signup extends Component {
   }
 
   checkPasswordLength() {
-    console.log(this.state.password.length);
     if (this.state.password.length+1 > 5) {
       this.setState({
         passwordCheck: "2px solid green",

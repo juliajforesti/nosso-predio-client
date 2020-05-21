@@ -12,6 +12,8 @@ class ProfilePage extends Component {
       email: user.email,
       password: "qualquer-coisa",
       passwordConfirmation: "",
+      passwordCheck: null,
+      passwordMessage: null,
     };
     this.handleClick = this.handleClick.bind(this);
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
@@ -50,7 +52,10 @@ class ProfilePage extends Component {
         })
       );
     } else {
-      return;
+        this.setState({
+          passwordCheck: "2px solid red",
+          passwordMessage: "As senhas não são iguais."
+        });
     }
   }
 
@@ -80,9 +85,9 @@ class ProfilePage extends Component {
       <div className="profile-container">
         <div className="title-container">
           <h1 className="profile-title">Meu Perfil</h1>
-          <img className="profile-img" src={user.image} alt={user.name} />
         </div>
-
+        <div className='profile-info-img'>
+          <img className="profile-img" src={user.image} alt={user.name} />
         <div className="edit-container">
           <button className="edit-btn" onClick={this.handleClick}>
           
@@ -91,12 +96,14 @@ class ProfilePage extends Component {
           </button>
           {!this.state.toggleEdit ? (
             <div className="profile-info">
-
-              <h3>Nome: {user.name}</h3>
-              <h3>Email: {user.email}</h3>
+              <h3 className='profile-fields'>Nome: {user.name}</h3>
+              <h3 className='profile-fields'>Email: {user.email}</h3>
+              <h3 className='profile-fields'>Condomínios: {user.buildings.length}</h3>
+              <h3 className='profile-fields'>Serviços: {user.services.length}</h3>
+              <h3 className='profile-fields'>Pedidos: {user.orders.length}</h3>
             </div>
           ) : (
-            <div>
+            <div className="profile-info">
               <form className="edit-form" onSubmit={this.handleFormSubmit}>
                 <label>Nome:</label>
                 <input
@@ -114,7 +121,9 @@ class ProfilePage extends Component {
                   name="email"
                   value={this.state.email}
                 ></input>
+                <div className='profile-info-img'>
                 <button className="form-input-submit" type="submit">Salvar</button>
+                </div>
               </form>
               <form className="edit-password-container" onSubmit={this.handlePasswordSubmit}>
                   <label>Senha:</label>
@@ -122,6 +131,7 @@ class ProfilePage extends Component {
                     onChange={this.handleChange}
                     type="password"
                     name="password"
+                    style={{ border: this.state.passwordCheck }}
                     className="form-input"
                     value={this.state.password}
                   ></input>
@@ -130,21 +140,27 @@ class ProfilePage extends Component {
                     onChange={this.handleChange}
                     className="form-input"
                     type="password"
+                    style={{ border: this.state.passwordCheck }}
                     name="passwordConfirmation"
                     value={this.state.passwordConfirmation}
                   ></input>
+                  {this.state.passwordMessage ?
+                  <p>{this.state.passwordMessage}</p> :
+                  null
+                  }
+                  <div className='profile-info-img'>
                   <button className="form-input-submit" type="submit">Alterar senha</button>
+                  </div>
                 </form>
-
               <div className="edit-photo-container">
                 <label>Alterar foto de perfil:</label>
+                <div className='profile-info-img'>
                 <input onChange={this.handleFileUpload} type="file" />
+                </div>
               </div>
-
-                
-
             </div>
           )}
+        </div>
         </div>
       </div>
     );
