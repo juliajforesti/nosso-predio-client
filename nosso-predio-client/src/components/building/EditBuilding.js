@@ -41,14 +41,13 @@ class EditBuilding extends Component {
   handleFileUpload(e) {
     const uploadData = new FormData();
 
-    console.log(e.target.files[0])
+    console.log(e.target.files[0]);
 
     uploadData.append("image", e.target.files[0]);
     const buildingId = this.props.building._id;
 
-    this.service.editBuildingPhoto(uploadData, buildingId)
-    .then((response) => {
-      console.log(response)
+    this.service.editBuildingPhoto(uploadData, buildingId).then((response) => {
+      console.log(response);
       this.props.getEditedBuilding(response);
       this.props.handleClick();
     });
@@ -56,33 +55,42 @@ class EditBuilding extends Component {
 
   render() {
     return (
-      <div>
-        <label>Alterar imagem:</label>
-        <input type="file" onChange={this.handleFileUpload} />
-        <form onSubmit={this.handleFormSubmit}>
+      <div className="edit-building-container">
+        <form className="edit-building-form" onSubmit={this.handleFormSubmit}>
           <label>Nome:</label>
-          <input
+          <input className='form-input'
             onChange={this.handleChange}
             type="text"
             name="name"
             value={this.state.name}
           ></input>
           <label>cep:</label>
-          <input
+          <input className='form-input'
             onChange={this.handleChange}
             type="text"
             name="cep"
             value={this.state.cep}
           ></input>
           <label>Número:</label>
-          <input
+          <input className='form-input'
             onChange={this.handleChange}
             type="text"
             name="number"
             value={this.state.number}
           ></input>
-          <button type="submit">Salvar</button>
+          <button className='edit-form-button' type="submit">Salvar</button>
         </form>
+        <div className="edit-building-img">
+          <label for="file-select" className="input-file">
+            Alterar imagem
+          </label>
+          <input
+            id="file-select"
+            className="input-file"
+            type="file"
+            onChange={this.handleFileUpload}
+          />
+        </div>
       </div>
     );
   }

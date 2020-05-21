@@ -124,18 +124,44 @@ body{
   justify-content: space-between;
   box-shadow: 1px 1px 2px #6593A6;
 }
+.card-box-link{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  flex-grow: 1;
+  flex-shrink: 1;
+
+  padding: 1rem;
+  /* border: 1px solid blue; */
+}
 .card-img{
-  width: 4rem;
   max-height: 4rem;
   margin-right: 1rem;
 }
-.card-box>h3 {
+.card-title {
   margin-right: 1rem;
+  color: #3F6473;
+  font-size: 1.5rem;
+  font-weight: bolder;
+  flex-grow: 1;
+  flex-shrink: 1;
 }
-.card-box>p {
+.card-text {
+  color: #3F6473;
+  font-size: 0.8rem;
+  flex-grow: 1;
+  flex-shrink: 1;
   text-shadow: none;
 }
 .see-more-btn{
+  text-align: center;
+  color: white;
+  background-color: #6593A6;
+  border: none;
+  cursor: pointer;
+}
+.see-all-orders-btn{
   text-align: center;
   color: white;
   background-color: #6593A6;
@@ -152,25 +178,16 @@ body{
   border: none;
   padding: 0.3rem 0;
 }
-.order-card{
-  display: flex;
-  justify-content: space-between;
-}
 .card-order-middle{
-  width: 6rem;
-}
-.card-order-middle>h5{
-  font-size: 0.7rem;
-}
-
-.card-order-right-side{
-  width: 7rem;
+  /* border: 1px solid black; */
   text-align: center;
-
+  flex-shrink: 1;
+  flex-grow: 1;
 }
-.status-info{
+.card-order-right-side{
+  text-align: center;
+  /* border: 1px solid blue; */
 
-  font-size: 0.7rem;
 }
 .cancel-btn{
   font-size: 0.7rem;
@@ -195,6 +212,9 @@ body{
   width: 0;
 }
 
+/* --------------------------------------------------------------------- */
+
+
 @media (min-width: 700px) {
   body{
     background-color: whitesmoke;
@@ -218,32 +238,60 @@ body{
   }
   .section-card-container{
     display: flex;
-    /* border: 1px solid blue; */
   }
   .card-container{
     display: flex;
+    width: 80%;
     /* border: 1px solid red; */
-    flex-wrap: wrap;
   }
 
   .card-box {
-    width: 23rem;
-    height: 10rem;
-    
+    min-height: 8rem;
+    /* border: 1px solid blue; */
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-wrap: wrap;
+  }
+  .card-box-link{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: center;
+    align-items: center;
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-wrap: wrap;
+    padding: 0;
+    /* padding: 1rem; */
+    /* border: 1px solid blue; */
   }
   .card-img{
-    width: 8rem;
-    max-height: 8rem;
+    flex-shrink: 1;
   }
-  .card-box>h3 {
-    font-size: 1.5rem;
+
+  .card-title {
+    font-size: 1.2rem;
     font-weight: bolder;
+    flex-shrink: 1;
   }
-  /* .desktop-hidden{
-    visibility: hidden;
-    height: 0;
-    width: 0;
-  } */
+  .card-text {
+    font-size: 0.8rem;
+    flex-shrink: 1;
+  }
+  .card-order-middle{
+    max-width: 7rem;
+    flex-shrink: 1;
+    flex-grow: 1;
+  }
+  .card-order-right-side{
+    /* border: 1px solid black; */
+    max-width: 7rem;
+    flex-shrink: 1;
+    flex-grow: 1;
+  }
+
   .see-more-btn{
     visibility: hidden;
     height: 0%;
@@ -264,51 +312,31 @@ body{
     margin: 1rem;
     color: white;
     width: 2rem;
+    /* border: 1px solid black; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
   .next-icon{
     color: white;
-    height: 6rem;
-    border: 1px solid black;
+    height: 5rem;
+    /* border: 1px solid black; */
+  }
+  .see-more-box-desktop{
+    height: 2rem;
+    width: 12rem;
+  }
+  .see-all-orders-btn{
+    /* border: 1px solid red; */
+    height: 2rem;
+    width: 11rem;
+
   }
 
 
-/* ----------------------------------------------------- */
 
-  .order-card{
-    display: flex;
-    justify-content: space-between;
-  }
-  .card-order-middle{
-    width: 6rem;
-  }
-  .card-order-middle>h5{
-    font-size: 0.7rem;
-  }
-  
-  .card-order-right-side{
-    width: 7rem;
-    text-align: center;
-  
-  }
-  .status-info{
-  
-    font-size: 0.7rem;
-  }
-  .cancel-btn{
-    font-size: 0.7rem;
-    border: 1px solid #3F6473;
-    border-radius: 0.2rem;
-    padding: 0.2rem;
-    color: white;
-    background-color: #3F6473;
-  }
-  
-  .service-card-right-side{
-    width: 9rem;
-  }
-  .service-card-right-side>h3{
-    font-size: 1rem;
-    font-weight: bolder;
-    text-decoration: underline;
-  }
+
+
+
 }

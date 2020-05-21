@@ -15,7 +15,7 @@ const ServicesList = (props) => {
                   <img
                     className="card-img"
                     src={service.image}
-                    alt={service.name}
+                    alt='img'
                   />
                   <div className='service-card-right-side'>
                     <h3>{service.name.toUpperCase()}</h3>
@@ -30,22 +30,20 @@ const ServicesList = (props) => {
     );
   } else {
     return (
-      <div>
+      <div className="card-container" >
         {props.services.map((service, idx) => {
           return (
-            <div key={idx}>
-              <Link
+            <div key={idx} className="card-box">
+              <Link className="card-box-link"
                 to={`/condominio/${service.building}/serviço/${service._id}`}
               >
-                <div className="card-box">
                   <img
                     className="card-img"
                     src={service.image}
-                    alt={service.name}
+                    alt='img'
                   />
-                  <h3>{service.name}</h3> <br />
-                  <h3>R${service.price}</h3>
-                </div>
+                  <h3 className="card-title">{service.name}</h3>
+                  <h3 className="card-text">R${service.price}</h3>
               </Link>
             </div>
           );

@@ -50,8 +50,8 @@ class AddService extends Component {
     return (
       <div className="auth-container">
         <h1>
-        <span className="title-first">Adicione </span>
-        <span className="title-second">seu Serviço ou Produto </span>
+          <span className="title-first">Adicione </span>
+          <span className="title-second">seu Serviço ou Produto </span>
         </h1>
         <div></div>
         <div>
@@ -64,7 +64,7 @@ class AddService extends Component {
                 className="form-input"
                 name="name"
                 value={this.state.name}
-                placeholder='Cookies do bem'
+                placeholder="Cookies do bem"
               />
             </div>
             <div className="form-item">
@@ -74,7 +74,7 @@ class AddService extends Component {
                 type="text-area"
                 name="description"
                 value={this.state.description}
-                placeholder='Cookies caseiros feitos com muito amor e carinho'
+                placeholder="Cookies caseiros feitos com muito amor e carinho"
               />
             </div>
             <div className="form-item">
@@ -87,7 +87,7 @@ class AddService extends Component {
             <div className="form-item">
               <label>Preço:</label> <br />
               <input
-              className="form-input"
+                className="form-input"
                 onChange={this.handleChange}
                 type="number"
                 name="price"
@@ -98,7 +98,7 @@ class AddService extends Component {
             <div className="form-item">
               <label>Data:</label> <br />
               <input
-              className="form-input"
+                className="form-input"
                 onChange={this.handleChange}
                 type="date"
                 name="date"
@@ -109,17 +109,20 @@ class AddService extends Component {
             <div className="form-item">
               <label>Complemento:</label> <br />
               <input
-              className="form-input"
+                className="form-input"
                 onChange={this.handleChange}
                 type="text"
                 name="apartment"
                 value={this.state.apartment}
-                placeholder='Apt. 103'
+                placeholder="Apt. 103"
               />
             </div>
 
             <button className="form-button" type="submit">
               Adicionar
+            </button>
+            <button onClick={this.props.history.goBack} className="back-btn">
+              Voltar
             </button>
           </form>
         </div>
