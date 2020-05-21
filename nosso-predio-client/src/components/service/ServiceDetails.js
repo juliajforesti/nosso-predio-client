@@ -14,6 +14,7 @@ class ServiceDetails extends Component {
       serviceAPICalled: false,
       orderAPICalled: false,
       toggleEdit: false,
+      dataFormated: '',
     };
     this.service = new MainService();
     this.handleStatus = this.handleStatus.bind(this);
@@ -38,6 +39,7 @@ class ServiceDetails extends Component {
             service: response,
             serviceAPICalled: true,
           });
+          this.formatData()
         });
     }
   }
@@ -81,6 +83,15 @@ class ServiceDetails extends Component {
     });
   }
 
+  formatData() {
+      const newArr = this.state.service.date.split("-");
+      let month = newArr[1];
+      let day = newArr[2];
+    this.setState({
+      dataFormated: `${day}/${month}`
+    })
+  }
+
   render() {
     this.getServiceDetails();
     this.getServiceOrders();
@@ -97,14 +108,11 @@ class ServiceDetails extends Component {
             <h5 className="item-title">Tipo:</h5>
             <p>{this.state.service.category}</p>
             <h5 className="item-title">Data:</h5>
-            <h4>{this.state.service.date}</h4>
+            <h4>{this.state.dataFormated}</h4>
             <h5 className="item-title">Descrição:</h5>
             <p>{this.state.service.description}</p>
           </div>
         </div>
-        <button onClick={this.props.history.goBack} className="details-btn">
-          Voltar
-        </button>
         {this.state.service.owner === this.props.user._id ? (
           <div className='service-owner-box'>
             <button className="details-btn" onClick={this.handleClick}>
@@ -115,8 +123,10 @@ class ServiceDetails extends Component {
               style={{ backgroundColor: "red" }}
               onClick={() => this.deleteService()}
             >
-              DELETAR
-            </button>
+
+              Deletar {this.state.service.category.toLowerCase()}
+            </button> 
+
 
             {!this.state.toggleEdit ? (
               <>
@@ -144,6 +154,9 @@ class ServiceDetails extends Component {
             </div>
           </div>
         )}
+        <button onClick={this.props.history.goBack} className="details-btn">
+          Voltar
+        </button>
       </div>
     );
   }
