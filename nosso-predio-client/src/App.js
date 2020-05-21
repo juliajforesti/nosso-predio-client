@@ -154,7 +154,7 @@ class App extends Component {
                   getUser={this.getUser}
                 />
                 {/* this route will catch any route that wasnt matched in previous routes */}
-                <Route component={RedirectToMain} />
+                {/* <Route component={RedirectToMain} /> */}
               </Switch>
             </div>
             <Footer/>

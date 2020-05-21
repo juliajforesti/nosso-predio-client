@@ -4,7 +4,7 @@ import MainService from "../MainService";
 import ServicesList from "../service/ServicesList";
 import OrderList from "../order/OrderList";
 import "../css/MainPage.css";
-import { GrFormNext } from "react-icons/gr";
+import { GoChevronRight } from "react-icons/go";
 
 class MainPage extends Component {
   constructor(props) {
@@ -253,34 +253,39 @@ class MainPage extends Component {
                 {this.props.user.buildings.length > 3
                   ? this.state.buildings.slice(0, 3).map((building, idx) => {
                       return (
-                        <div key={idx}>
-                          <Link to={`/condominio/${building._id}`}>
-                            <div className="card-box">
-                              <img
-                                className="card-img"
-                                src={building.image}
-                                alt=""
-                              />
-                              <h3>{building.name}</h3>
-                              <p>CEP: {building.address.cep}</p>
-                            </div>
+                        <div key={idx} className="card-box">
+                          <Link
+                            className="card-box-link"
+                            to={`/condominio/${building._id}`}
+                          >
+                            <img
+                              className="card-img"
+                              src={building.image}
+                              alt=""
+                            />
+                            <h3 className="card-title">{building.name}</h3>
+                            <p className="card-text">
+                              CEP: {building.address.cep}
+                            </p>
                           </Link>
                         </div>
                       );
                     })
                   : this.state.buildings.map((building, idx) => {
                       return (
-                        <div key={idx}>
-                          <Link to={`/condominio/${building._id}`}>
-                            <div className="card-box">
+                        <div key={idx} className="card-box">
+                          <Link 
+                          className="card-box-link" 
+                          to={`/condominio/${building._id}`}>
                               <img
                                 className="card-img"
                                 src={building.image}
                                 alt=""
                               />
-                              <h3>{building.name}</h3>
-                              <p>{building.address.cep}</p>
-                            </div>
+                              <h3 className="card-title">{building.name}</h3>
+                              <p className="card-text">
+                                CEP: {building.address.cep}
+                              </p>
                           </Link>
                         </div>
                       );
@@ -288,17 +293,14 @@ class MainPage extends Component {
               </div>
               {this.props.user.buildings.length > 3 ? (
                 <div className="see-more-box">
-                  <Link
-                    className="see-more-btn"
-                    to="/meus-condominios"
-                  >
+                  <Link className="see-more-btn" to="/meus-condominios">
                     Ver mais
                   </Link>
                   <Link
                     className="see-more-btn mobile-hidden"
                     to="/meus-condominios"
                   >
-                    <GrFormNext className="next-icon" />
+                    <GoChevronRight className="next-icon" />
                   </Link>
                 </div>
               ) : (
@@ -312,7 +314,7 @@ class MainPage extends Component {
                 <span className="title-second">serviços e produtos </span>
               </Link>
             </div>
-            <div>
+            <div className="section-card-container">
               {this.props.user.services.length > 0 ? (
                 <ServicesList
                   services={this.state.services.slice(0, 3)}
@@ -322,10 +324,16 @@ class MainPage extends Component {
                 <></>
               )}
               <div className="see-more-box">
-                <Link className="see-more-btn" to="/meus-serviços">
-                  Ver mais
-                </Link>
-              </div>
+                  <Link className="see-more-btn" to="/meus-condominios">
+                    Ver mais
+                  </Link>
+                  <Link
+                    className="see-more-btn mobile-hidden"
+                    to="/meus-condominios"
+                  >
+                    <GoChevronRight className="next-icon" />
+                  </Link>
+                </div>
             </div>
 
             <div className="main-page-section-title-container">
@@ -335,16 +343,8 @@ class MainPage extends Component {
               </Link>
             </div>
             <div>
-              <div className="see-more-box">
-                <button
-                  className="see-more-btn"
-                  onClick={this.handleToggleStatus}
-                >
-                  {this.state.toggleStatusButton
-                    ? "Mostrar todos os pedidos"
-                    : "Mostrar somente pedidos ativos"}
-                </button>
-              </div>
+
+            <div className="section-card-container">
               {this.state.toggleStatusButton ? (
                 <OrderList
                   activeOrders={this.activeOrders}
@@ -361,7 +361,19 @@ class MainPage extends Component {
                   {...this.props}
                 />
               )}
+              <div className="see-more-box">
+                  <Link className="see-more-btn" to="/meus-pedidos">
+                    Ver mais
+                  </Link>
+                  <Link
+                    className="see-more-btn mobile-hidden"
+                    to="/meus-pedidos"
+                  >
+                    <GoChevronRight className="next-icon" />
+                  </Link>
+                </div>
             </div>
+              </div>
           </div>
         </div>
       );
