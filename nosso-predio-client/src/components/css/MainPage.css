@@ -135,13 +135,6 @@ body{
 .card-box>p {
   text-shadow: none;
 }
-.see-more-box{
-  text-align: center;
-  border-radius: 0.2rem;
-  background-color: #6593A6;
-  padding: 0.3rem 0;
-  margin: 0 1rem 0.2rem 1rem;
-}
 .see-more-btn{
   text-align: center;
   color: white;
@@ -155,7 +148,9 @@ body{
   background-color: #6593A6;
   box-shadow: 2px 2px 6px #3F6473;
   border-radius: 0.2rem;
+  margin: 0 1rem 0.2rem 1rem;
   border: none;
+  padding: 0.3rem 0;
 }
 .order-card{
   display: flex;
@@ -193,4 +188,127 @@ body{
   font-size: 1rem;
   font-weight: bolder;
   text-decoration: underline;
+}
+.mobile-hidden{
+  visibility: hidden;
+  height: 0;
+  width: 0;
+}
+
+@media (min-width: 700px) {
+  body{
+    background-color: whitesmoke;
+  }
+  .main-page-top{
+    width: 20rem;
+    margin: 1rem;
+    margin-top: 6rem;
+    display: flex;
+    flex-direction: column;
+    /* border: 1px solid black; */
+  }
+  .main-page-section-title-container{
+    text-align: left;
+    background-color: whitesmoke ;
+    width: 30rem;
+    margin-left: 1rem;
+  }
+  .title-third{
+    color: #3F6473;
+  }
+  .section-card-container{
+    display: flex;
+    /* border: 1px solid blue; */
+  }
+  .card-container{
+    display: flex;
+    /* border: 1px solid red; */
+    flex-wrap: wrap;
+  }
+
+  .card-box {
+    width: 23rem;
+    height: 10rem;
+    
+  }
+  .card-img{
+    width: 8rem;
+    max-height: 8rem;
+  }
+  .card-box>h3 {
+    font-size: 1.5rem;
+    font-weight: bolder;
+  }
+  /* .desktop-hidden{
+    visibility: hidden;
+    height: 0;
+    width: 0;
+  } */
+  .see-more-btn{
+    visibility: hidden;
+    height: 0%;
+    width: 0;
+  }
+  .mobile-hidden{
+    visibility: visible;
+    height: 5rem;
+    width: 2rem;
+  }
+  .see-more-box{
+    text-align: center;
+    color: white;
+    background-color: #6593A6;
+    box-shadow: 2px 2px 6px #3F6473;
+    border-radius: 0.2rem;
+    border: none;
+    margin: 1rem;
+    color: white;
+    width: 2rem;
+  }
+  .next-icon{
+    color: white;
+    height: 6rem;
+    border: 1px solid black;
+  }
+
+
+/* ----------------------------------------------------- */
+
+  .order-card{
+    display: flex;
+    justify-content: space-between;
+  }
+  .card-order-middle{
+    width: 6rem;
+  }
+  .card-order-middle>h5{
+    font-size: 0.7rem;
+  }
+  
+  .card-order-right-side{
+    width: 7rem;
+    text-align: center;
+  
+  }
+  .status-info{
+  
+    font-size: 0.7rem;
+  }
+  .cancel-btn{
+    font-size: 0.7rem;
+    border: 1px solid #3F6473;
+    border-radius: 0.2rem;
+    padding: 0.2rem;
+    color: white;
+    background-color: #3F6473;
+  }
+  
+  .service-card-right-side{
+    width: 9rem;
+  }
+  .service-card-right-side>h3{
+    font-size: 1rem;
+    font-weight: bolder;
+    text-decoration: underline;
+  }
 }

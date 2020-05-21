@@ -20,6 +20,9 @@ import InvitePage from "./components/building/InvitePage";
 import RedirectToMain from "./components/RedirectToMain";
 import 'bulma/css/bulma.css';
 import Footer from './components/footer/Footer'
+import { Helmet } from 'react-helmet'
+
+const TITLE = 'Nosso Prédio'
 
 class App extends Component {
   constructor(props) {
@@ -71,7 +74,12 @@ class App extends Component {
   render() {
     this.fetchUser();
     return (
+
       <div className="app-outer-container">
+      <Helmet>
+        <title>{ TITLE }</title>
+      </Helmet>
+
         {this.state.loggedUser ? (
           <div>
             <Navbar

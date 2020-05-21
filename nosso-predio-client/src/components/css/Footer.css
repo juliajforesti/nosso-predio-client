@@ -8,7 +8,7 @@ html, body {height:100%;}
   width: 100%;
   bottom: 0;
 }
-.footer-bottom{
+/* .footer-bottom{
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -24,7 +24,7 @@ html, body {height:100%;}
   font-size: 0.5rem;
   color: #3F6473;
   text-align: center;
-}
+} */
 
 
 .footer-top{
@@ -45,4 +45,10 @@ html, body {height:100%;}
   width: 2rem;
   height: 2rem;
 
+}
+
+@media (min-width: 600px) {
+  .footer{
+    visibility: hidden;
+  }
 }
