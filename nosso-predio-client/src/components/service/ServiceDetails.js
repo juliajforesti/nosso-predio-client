@@ -111,6 +111,14 @@ class ServiceDetails extends Component {
             <h4>{this.state.dataFormated}</h4>
             <h5 className="item-title">Descrição:</h5>
             <p>{this.state.service.description}</p>
+            <h5 className="item-title">Preço:</h5>
+            {this.state.service.price === 0 ? (
+                  <p className="card-text">Grátis</p>
+                ) : (
+                  <p className="card-text">R${this.state.service.price}</p>
+                )}
+            <h5 className="item-title">Apartamento/complemento:</h5>
+            <p>{this.state.service.apartment}</p>
           </div>
         </div>
         {this.state.service.owner === this.props.user._id ? (
