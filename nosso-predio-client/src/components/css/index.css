@@ -10,6 +10,9 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+#root{
+  min-height: 100vh;
+}
 
 .form-input {
   width: 300px;
