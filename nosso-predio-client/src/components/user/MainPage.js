@@ -4,6 +4,7 @@ import MainService from "../MainService";
 import ServicesList from "../service/ServicesList";
 import OrderList from "../order/OrderList";
 import "../css/MainPage.css";
+import { GrFormNext } from "react-icons/gr";
 
 class MainPage extends Component {
   constructor(props) {
@@ -202,118 +203,135 @@ class MainPage extends Component {
       this.getUserOrders();
       return (
         <div>
-          <div className="main-page-title-box">
-            <h1>
-              <span className="title-first">Olá</span>
-              <span className="title-second"> {this.props.user.name}</span>
-            </h1>
-          </div>
           <div>
-            <div className="add-building-box">
-              <Link className="add-building-btn" to="/adicionar-condominio">
-                Criar Condominio
-              </Link>
-            </div>
-            <div className="invitation-code-box">
-              <button
-                className="invitation-code-btn"
-                onClick={() => this.handleToggle()}
-              >
-                Já tem um convite? Clique aqui para inserir o código
-              </button>
-              {this.state.toggleButton ? (
-                <form onSubmit={this.handleOnSubmit} type="submit">
-                  <input
-                    onChange={this.handleChangeCode}
-                    value={this.state.confirmationCode}
-                    type="text"
-                    name="confirmationCode"
-                    placeholder="insira seu código de acesso"
-                  />
-                  <button type="submit">Enviar</button>
-                </form>
-              ) : (
-                <></>
-              )}
+            <div className="main-page-top">
+              <div className="main-page-title-box">
+                <h1>
+                  <span className="title-first">Olá</span>
+                  <span className="title-second"> {this.props.user.name}</span>
+                </h1>
+              </div>
+              <div>
+                <div className="add-building-box">
+                  <Link className="add-building-btn" to="/adicionar-condominio">
+                    Criar Condominio
+                  </Link>
+                </div>
+                <div className="invitation-code-box">
+                  <button
+                    className="invitation-code-btn"
+                    onClick={() => this.handleToggle()}
+                  >
+                    Já tem um convite? Clique aqui para inserir o código
+                  </button>
+                  {this.state.toggleButton ? (
+                    <form onSubmit={this.handleOnSubmit} type="submit">
+                      <input
+                        onChange={this.handleChangeCode}
+                        value={this.state.confirmationCode}
+                        type="text"
+                        name="confirmationCode"
+                        placeholder="insira seu código de acesso"
+                      />
+                      <button type="submit">Enviar</button>
+                    </form>
+                  ) : (
+                    <></>
+                  )}
+                </div>
+              </div>
             </div>
 
             <div className="main-page-section-title-container">
               <Link className="main-page-section-title" to="/meus-condominios">
-              <span className="title-third">Meus </span>
-              <span className="title-second">Condomínios</span>
+                <span className="title-third">Meus </span>
+                <span className="title-second">Condomínios</span>
               </Link>
             </div>
-            {this.props.user.buildings.length > 3
-              ? this.state.buildings.slice(0, 3).map((building, idx) => {
-                  return (
-                    <div key={idx}>
-                      <Link to={`/condominio/${building._id}`}>
-                        <div className="card-box">
-                          <img
-                            className="card-img"
-                            src={building.image}
-                            alt=""
-                          />
-                          <h3>{building.name}</h3>
-                          <p>CEP: {building.address.cep}</p>
+            <div className="section-card-container">
+              <div className="card-container">
+                {this.props.user.buildings.length > 3
+                  ? this.state.buildings.slice(0, 3).map((building, idx) => {
+                      return (
+                        <div key={idx}>
+                          <Link to={`/condominio/${building._id}`}>
+                            <div className="card-box">
+                              <img
+                                className="card-img"
+                                src={building.image}
+                                alt=""
+                              />
+                              <h3>{building.name}</h3>
+                              <p>CEP: {building.address.cep}</p>
+                            </div>
+                          </Link>
                         </div>
-                      </Link>
-                    </div>
-                  );
-                })
-              : this.state.buildings.map((building, idx) => {
-                  return (
-                    <div key={idx}>
-                      <Link to={`/condominio/${building._id}`}>
-                        <div className="card-box">
-                          <img
-                            className="card-img"
-                            src={building.image}
-                            alt=""
-                          />
-                          <h3>{building.name}</h3>
-                          <p>{building.address.cep}</p>
+                      );
+                    })
+                  : this.state.buildings.map((building, idx) => {
+                      return (
+                        <div key={idx}>
+                          <Link to={`/condominio/${building._id}`}>
+                            <div className="card-box">
+                              <img
+                                className="card-img"
+                                src={building.image}
+                                alt=""
+                              />
+                              <h3>{building.name}</h3>
+                              <p>{building.address.cep}</p>
+                            </div>
+                          </Link>
                         </div>
-                      </Link>
-                    </div>
-                  );
-                })}
-            {this.props.user.buildings.length > 3 ? (
-              <div className="see-more-box">
-                <Link className="see-more-btn" to="/meus-condominios">
-                  Ver mais
-                </Link>
+                      );
+                    })}
               </div>
-            ) : (
-              <div></div>
-            )}
+              {this.props.user.buildings.length > 3 ? (
+                <div className="see-more-box">
+                  <Link
+                    className="see-more-btn"
+                    to="/meus-condominios"
+                  >
+                    Ver mais
+                  </Link>
+                  <Link
+                    className="see-more-btn mobile-hidden"
+                    to="/meus-condominios"
+                  >
+                    <GrFormNext className="next-icon" />
+                  </Link>
+                </div>
+              ) : (
+                <div></div>
+              )}
+            </div>
 
             <div className="main-page-section-title-container">
               <Link className="main-page-section-title" to="/meus-serviços">
-              <div className="title-third">Meus </div>
-              <div className="title-second">serviços e produtos </div>
+                <span className="title-third">Meus </span>
+                <span className="title-second">serviços e produtos </span>
               </Link>
             </div>
             <div>
               {this.props.user.services.length > 0 ? (
                 <ServicesList
-                  services={this.state.services.slice(0,3)}
+                  services={this.state.services.slice(0, 3)}
                   {...this.props}
                 ></ServicesList>
               ) : (
                 <></>
               )}
               <div className="see-more-box">
-              <Link className="see-more-btn" to="/meus-serviços">
+                <Link className="see-more-btn" to="/meus-serviços">
                   Ver mais
-              </Link>
+                </Link>
               </div>
             </div>
 
             <div className="main-page-section-title-container">
               <Link className="main-page-section-title" to="/meus-pedidos">
-              <span className="title-third">Meus </span>
-              <span className="title-second">pedidos </span>
+                <span className="title-third">Meus </span>
+                <span className="title-second">pedidos </span>
               </Link>
             </div>
             <div>
