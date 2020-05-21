@@ -15,8 +15,7 @@ const OrderList = (props) => {
                 <img className="card-img" src={order.service.image}  alt='' />
             <Link className="card-box-link"
               to={`/condominio/${order.service.building}/serviço/${order.service._id}`}
-            >
-                
+            >  
                 <div className='card-order-middle'>
                   <h3 className="card-title">{order.service.name}</h3>
                   <h5 className="card-text">Qtd: {order.quantity}</h5>

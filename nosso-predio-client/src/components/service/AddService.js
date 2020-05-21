@@ -8,7 +8,7 @@ class AddService extends Component {
       name: "",
       description: "",
       category: "Produto",
-      price: "",
+      price: 0,
       date: "",
       apartment: "",
     };
@@ -91,6 +91,7 @@ class AddService extends Component {
                 onChange={this.handleChange}
                 type="number"
                 name="price"
+                min={0}
                 value={this.state.price}
               />
             </div>
