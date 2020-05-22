@@ -153,7 +153,7 @@ class MainPage extends Component {
       this.getBuildings();
       return (
         <div >
-          <div className="main-page-title-box">
+          <div className="main-page-title-box desktop-title-box">
             <h1>
               <span className="title-first">Olá</span>
               <span className="title-second"> {this.props.user.name}</span>
@@ -268,7 +268,7 @@ class MainPage extends Component {
                             />
                             <h3 className="card-title">{building.name}</h3>
                             <p className="card-text">
-                              CEP: {building.address.cep}
+                              CEP: {building.address.cep} - Número: {building.address.number}
                             </p>
                           </Link>
                         </div>

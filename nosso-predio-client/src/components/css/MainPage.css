@@ -223,15 +223,14 @@ body {
     margin-top: 5rem;
     display: flex;
     flex-direction: column;
-    /* border: 1px solid black; */
   }
   .desktop-title-box {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
+    width: max-content;
+  }
+  .desktop-title-box>h1{
+    text-align: start;
   }
   .desktop-box-btn {
-    /* border: 1px solid red; */
     width: 20rem;
     height: max-content;
     margin-left: -1rem;
@@ -264,7 +263,6 @@ body {
   .card-box {
     min-height: 8rem;
     max-width: 22rem;
-    /* border: 1px solid blue; */
     display: flex;
     flex-direction: row;
     flex-grow: 1;
@@ -291,11 +289,17 @@ body {
   .card-title {
     font-size: 1.2rem;
     font-weight: bolder;
+    display: flex;
     flex-shrink: 1;
+    flex-wrap: wrap;
+    max-width: 12rem;
+
   }
   .card-text {
     font-size: 0.8rem;
     flex-shrink: 1;
+    display: flex;
+    justify-content: flex-end;
   }
   .card-order-middle {
     max-width: 7rem;
@@ -368,5 +372,8 @@ body {
     padding-bottom: 2rem;
     margin-bottom: 1rem;
     border-bottom: 2px solid #3f6473;
+  }
+  .card-order-quantity{
+    margin-right: 1rem;
   }
 }

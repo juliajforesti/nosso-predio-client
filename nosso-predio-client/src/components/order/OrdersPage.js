@@ -96,10 +96,10 @@ class OrdersPage extends Component {
               ):(
                 <OrderList handleStatus={this.handleStatus} orders={this.state.orders} {...this.props}/>
               )}
-          </div>
-        <div className="search-bar-container">
           <button onClick={this.props.history.goBack} className="details-btn">Voltar</button>
-        </div>
+          </div>
+
+
         </div>
       );
     }

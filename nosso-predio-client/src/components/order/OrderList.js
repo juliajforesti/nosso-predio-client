@@ -18,7 +18,7 @@ const OrderList = (props) => {
             >  
                 <div className='card-order-middle'>
                   <h3 className="card-title">{order.service.name}</h3>
-                  <h5 className="card-text">Qtd: {order.quantity}</h5>
+                  <h5 className="card-text card-order-quantity">Qtd: {order.quantity}</h5>
                 </div>
                 {/* USER CRIOU  */}
                 {props.user.services.some(item => item._id === order.service._id) ? (

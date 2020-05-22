@@ -83,6 +83,9 @@ body {
   box-shadow: 2px 2px 6px #3F6473;
 
 }
+.our-name{
+  font-weight: bolder;
+}
 .home-about-text>img{
   width: 30vw;
   border-radius: 10rem;

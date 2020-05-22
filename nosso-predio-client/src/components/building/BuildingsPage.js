@@ -192,20 +192,17 @@ class BuildingsPage extends Component {
               })
               .map((building, idx) => {
                 return (
-                  <div key={idx}>
-                    <Link to={`/condominio/${building._id}`}>
-                      <div className="card-box">
+                  <div key={idx} className="card-box">
+                    <Link className="card-box-link" to={`/condominio/${building._id}`}>
                         <img
                           className="card-img"
                           src={building.image}
                           alt={building.name}
                         />
-                        <h3>{building.name}</h3>
-                        <div>
-                          <p>CEP: {building.address.cep}</p>
-                          <p>Número: {building.address.number}</p>
-                        </div>
-                      </div>
+                        <h3 className="card-title">{building.name}</h3>
+                        <p className="card-text">
+                              CEP: {building.address.cep} - Número: {building.address.number}
+                        </p>
                     </Link>
                   </div>
                 );

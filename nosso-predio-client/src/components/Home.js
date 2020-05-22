@@ -68,7 +68,7 @@ const Home = (props) => {
                   src="https://res.cloudinary.com/juliajforesti/image/upload/v1589924085/nosso-predio/bf542bbc-bdbe-46a2-a6bc-e8d39c4f2d5f_2_zc0fhb.jpg"
                   alt=""
                 />
-                <h3>Gabriel Bohn</h3>
+                <h3 className='our-name'>Gabriel Bohn</h3>
                 <p>
                   Estudante de engenharia, entusiasta do mundo dos games e de tecnologia, sendo esse o motivo de fazer curso de desenvolvimento web da Ironhack.
                 </p>
@@ -79,7 +79,7 @@ const Home = (props) => {
                   src="https://res.cloudinary.com/juliajforesti/image/upload/v1589924069/nosso-predio/IMG_2847_r8kbbo.jpg"
                   alt=""
                 />
-                <h3>Júlia Foresti</h3>
+                <h3 className='our-name'>Júlia Foresti</h3>
                 <p>
                   Potterhead, formada em Engenharia Química, trabalhei na área comercial por 5 anos, até descobrir a paixão pela programação.
                 </p>
