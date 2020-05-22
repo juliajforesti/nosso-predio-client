@@ -52,9 +52,9 @@ class ServicesPage extends Component {
           <div>
             <h1 className="add-building-err">Você ainda não tem nenhum serviço, entre em um de seus condominios e crie um!</h1>
           </div>
-          <div className="search-bar-container">
+
           <button onClick={this.props.history.goBack} className="details-btn">Voltar</button>
-        </div>
+
         </div>
       );
       // IF USER HAS SERVICES

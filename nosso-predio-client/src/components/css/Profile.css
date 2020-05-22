@@ -2,11 +2,11 @@
 .profile-container{
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .profile-title{
-  text-align: center;
+  text-align: left;
   color: white;
   text-shadow: 3px 2px 5px #6593A6;
   font-size: 2.5rem;
@@ -14,7 +14,7 @@
 
 .profile-info{
   margin: 1rem;
-  text-align: center;
+  text-align: left;
   color: #3F6473;
   font-size: 1.3rem;
 }
@@ -29,7 +29,7 @@
 .edit-container{
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .edit-btn{
